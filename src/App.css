@@ -57,33 +57,13 @@ img {
   top: 24px;
   right: 24px;
   z-index: 20;
-  display: inline-flex;
-  align-items: center;
-  padding: 12px 26px;
-  border-radius: 999px;
+}
+
+.demo-pill.hero-button {
+  padding: 12px 22px;
   font-size: 0.75rem;
   letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--black);
-  background: rgba(245, 245, 245, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow:
-    0 16px 40px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(18px) saturate(160%);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.demo-pill:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    0 24px 60px rgba(0, 0, 0, 0.55),
-    inset 0 1px 0 rgba(255, 255, 255, 0.45);
-}
-
-.demo-pill:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.75);
-  outline-offset: 3px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
 }
 
 .hero h1 {
@@ -128,6 +108,31 @@ img {
   color: var(--muted);
   font-size: 1.2rem;
   line-height: 1.6;
+}
+
+.hero-cta {
+  margin-top: 36px;
+}
+
+.hero-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 40px;
+  gap: 12px;
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--black);
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.45);
 }
 
 .brand-pill {
@@ -392,6 +397,9 @@ main section {
   padding: 16px 8px;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  flex: 1 1 0%;
+  min-width: 0;
+  justify-content: center;
 }
 
 .testimonial-track::-webkit-scrollbar {
@@ -410,6 +418,7 @@ main section {
   scroll-snap-align: start;
   align-items: center;
   text-align: center;
+  margin-inline: auto;
 }
 
 .testimonial-media {
@@ -423,6 +432,14 @@ main section {
   place-items: center;
   font-weight: 600;
   letter-spacing: 0.12em;
+  padding: 8px;
+}
+
+.testimonial-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(1.4);
 }
 
 .testimonial-card blockquote {
@@ -439,6 +456,59 @@ main section {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-align: center;
+  margin: 0;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(15, 15, 15, 0.95), rgba(5, 5, 5, 0.95));
+  padding: 60px min(8vw, 140px);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.footer-brand {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.footer-grid {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.footer-block {
+  min-width: 200px;
+}
+
+.footer-label {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.footer-block p {
+  margin: 0;
+  color: var(--white);
+  line-height: 1.6;
+}
+
+.footer-block a {
+  color: var(--white);
+  font-weight: 600;
+  letter-spacing: 0.08em;
 }
 
 .cta {
@@ -456,44 +526,18 @@ main section {
   box-shadow: 0 40px 120px rgba(0, 0, 0, 0.55);
 }
 
-.cta-form {
+.cta-actions {
   margin-top: 48px;
-  display: grid;
-  gap: 28px;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-}
-
-.cta-form label {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 0.85rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
+  justify-content: center;
 }
 
-.cta-form input,
-.cta-form textarea {
-  background: var(--soft);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 16px 18px;
-  font-size: 0.95rem;
-  color: var(--white);
-  outline: none;
-}
-
-.cta-form textarea {
-  min-height: 56px;
-  height: 56px;
-  resize: none;
-}
-
-.cta-form button {
-  grid-column: 1 / -1;
-  justify-self: flex-start;
-  padding: 16px 32px;
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 40px;
+  gap: 12px;
   border-radius: 999px;
   border: 1px solid var(--white);
   background: var(--white);
@@ -502,13 +546,17 @@ main section {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   font-weight: 600;
-  cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.cta-form button:hover {
+.cta-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.12);
+}
+
+.button-icon {
+  width: 18px;
+  height: 18px;
 }
 
 @keyframes metric-typing {
@@ -551,19 +599,46 @@ main section {
   .brand-pill {
     top: 16px;
     left: 16px;
-    padding: 10px 18px;
-    letter-spacing: 0.2em;
+    padding: 8px 14px;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
   }
 
   .demo-pill {
     top: 16px;
     right: 16px;
-    padding: 10px 20px;
-    letter-spacing: 0.2em;
+  }
+
+  .demo-pill.hero-button {
+    padding: 10px 18px;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  }
+
+  .hero {
+    padding: 120px 0 80px;
+  }
+
+  .hero h1 {
+    font-size: 2.6rem;
+    line-height: 1.05;
   }
 
   .hero-sub {
-    font-size: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .hero-cta {
+    width: 100%;
+  }
+
+  .hero-cta .hero-button {
+    width: auto;
+    padding: 14px 28px;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    align-self: center;
   }
 
   main section {
@@ -575,8 +650,8 @@ main section {
     gap: 24px;
   }
 
-  .testimonial-carousel {
-    flex-direction: column;
+  .panel-card {
+    max-width: 100%;
   }
 
   .testimonial-track {
@@ -584,10 +659,64 @@ main section {
   }
 
   .testimonial-card {
-    flex-basis: 300px;
+    max-width: 100%;
+    flex-basis: auto;
+  }
+
+  .site-footer {
+    padding: 48px 24px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .footer-grid {
+    flex-direction: column;
+    gap: 32px;
   }
 
   .cta-card {
     padding: 48px 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .hero-cta .hero-button {
+    padding: 12px 22px;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+  }
+
+  .demo-pill.hero-button {
+    padding: 8px 16px;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-card {
+    padding: 24px;
+  }
+
+  .performance-track {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-card {
+    padding: 28px;
+  }
+
+  .cta-button {
+    width: 100%;
   }
 }

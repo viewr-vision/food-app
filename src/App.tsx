@@ -1,10 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
-import type { CSSProperties, FormEvent } from 'react';
+import type { CSSProperties } from 'react';
 import type { LucideIcon } from 'lucide-react';
-import { Clock3, Coins, Network } from 'lucide-react';
+import { ArrowRight, Clock3, DollarSign, Network } from 'lucide-react';
 import heroImage from '../assets/Gemini_Generated_Image_gee2dggee2dggee2.png';
-import sopImage from '../assets/SOP_adherence.png';
-import roboticsImage from '../assets/Robotics_adherence.png';
+import fallbackImage from './assets/dashboard_full.jpg';
+import packagingImage from '../assets/packaging_image.jpg';
+import humanInLoopImage from '../assets/human_in_the_loop.jpg';
+import curefoodsLogo from '../assets/curefoods.png';
+import rebelFoodsLogo from '../assets/rebel_foods.png';
+import saladDaysLogo from '../assets/salad_days.jpg';
 import './App.css';
 
 const metrics: Array<{ label: string; description?: string; icon: LucideIcon }> = [
@@ -14,7 +18,7 @@ const metrics: Array<{ label: string; description?: string; icon: LucideIcon }> 
     },
     {
         label: '45% lower cost',
-        icon: Coins
+        icon: DollarSign
     },
     {
         label: 'Consistent reliability & scalability',
@@ -24,22 +28,29 @@ const metrics: Array<{ label: string; description?: string; icon: LucideIcon }> 
 
 const offerings = [
     {
-        title: 'SOP Adherence',
-        summary: 'Real-time AI monitoring ensures your kitchen meets every USDA–FSIS compliance metric, 24/7.',
-        highlights: [],
-        image: sopImage
-    },
-    {
         title: 'Robotic Food Preparation',
-        summary: 'Precision cooking and assembly for consistent quality and faster throughput.',
+        summary:
+            'Autonomous food preparation (cutting, cooking, plating) for your kitchen, your recipes, and your ingredients.',
         highlights: [],
-        image: roboticsImage
+        image: heroImage
     },
     {
         title: 'Automated Packaging',
         summary: 'Secure, tamper-proof, and labeled packaging ready for delivery.',
         highlights: [],
-        image: heroImage
+        image: packagingImage
+    },
+    {
+        title: 'Operational Monitoring',
+        summary: 'Real-time visibility into output, uptime, and performance across shifts and locations.',
+        highlights: [],
+        image: fallbackImage
+    },
+    {
+        title: 'Human-in-the-Loop Fallback',
+        summary: 'Built-in human supervision for edge cases, ensuring uninterrupted service and consistent output.',
+        highlights: [],
+        image: humanInLoopImage
     }
 ];
 
@@ -50,7 +61,7 @@ const performanceSignals = [
     },
     {
         title: 'Reliability',
-        detail: 'Built-in monitoring locks in SOP adherence to keep every service predictable.'
+        detail: 'Unified analytics watch every line, so uptime, quality, and compliance stay on pace.'
     },
     {
         title: 'Scalability',
@@ -64,28 +75,22 @@ const performanceSignals = [
 
 const testimonials = [
     {
-        brand: 'Pure Foods',
-        quote: '“Every site runs like it is staffed by the same disciplined crew, regardless of shift.”',
-        role: 'Operations Director, Pure Foods',
-        initials: 'PF'
+        brand: 'Curefoods',
+        quote: '“New menu launches now sync across sites automatically.”',
+        role: 'Director of Automation',
+        logo: curefoodsLogo
     },
     {
-        brand: 'Revel Food',
-        quote: '“The automation scales with our concepts and protects quality when volumes spike.”',
-        role: 'Head of Culinary Systems, Revel Food',
-        initials: 'RF'
+        brand: 'Rebel Foods',
+        quote: '“Cloud kitchens hit service marks faster without losing control.”',
+        role: 'Head of Culinary Systems',
+        logo: rebelFoodsLogo
     },
     {
-        brand: 'Kitchen One',
-        quote: '“AI oversight closed our compliance gaps in under a week and keeps every audit simple.”',
-        role: 'Compliance Lead, Kitchen One',
-        initials: 'KO'
-    },
-    {
-        brand: 'Urban Provisions',
-        quote: '“Prep throughput jumped without adding labor, and packaging errors dropped to zero.”',
-        role: 'VP Operations, Urban Provisions',
-        initials: 'UP'
+        brand: 'Salad Days',
+        quote: '“Prep-to-dispatch flows stay tight thanks to realtime alerts.”',
+        role: 'Operations Lead',
+        logo: saladDaysLogo
     }
 ];
 
@@ -117,15 +122,15 @@ function App() {
 
         return () => observer.disconnect();
     }, []);
-    const handleDemoSubmit = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        window.location.href = 'mailto:help@mrfood.ai?subject=Demo%20request&body=I%27d%20like%20to%20schedule%20a%20demo%20with%20Mr.%20Food.';
-    };
-
     return (
         <div className="page">
             <div className="brand-pill">Mr. Food</div>
-            <a className="demo-pill" href="#contact">
+            <a
+                className="demo-pill hero-button"
+                href="https://calendly.com/deepanshu-mrfood/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
                 Request Demo
             </a>
             <header className="hero">
@@ -140,10 +145,47 @@ function App() {
                     <p className="hero-sub">
                         AI-Enabled precision robotics and smart automation, built for modern kitchens.
                     </p>
+                    <div className="hero-cta">
+                        <a
+                            className="hero-button hero-button--primary"
+                            href="https://calendly.com/deepanshu-mrfood/30min"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Request Demo
+                            <ArrowRight className="button-icon" aria-hidden="true" />
+                        </a>
+                    </div>
                 </div>
             </header>
 
             <main>
+                <section className="panels" aria-label="Offerings">
+                    <div className="section-heading">
+                        <h2>Automation that spans prep, cook, and pack.</h2>
+                    </div>
+                    <div className="panel-track" role="list">
+                        {offerings.map((offering) => (
+                            <article key={offering.title} className="panel-card" role="listitem">
+                                <div className="panel-media" aria-hidden="true">
+                                    <img src={offering.image} alt={`${offering.title} visual`} />
+                                </div>
+                                <div className="panel-body">
+                                    <h3>{offering.title}</h3>
+                                    <p>{offering.summary}</p>
+                                    {offering.highlights.length > 0 && (
+                                        <ul>
+                                            {offering.highlights.map((item) => (
+                                                <li key={item}>{item}</li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+                </section>
+
                 <section className="metrics" aria-label="Key metrics">
                     <div className="section-heading centered">
                         <h2>Operational guarantees</h2>
@@ -171,32 +213,6 @@ function App() {
                                 </article>
                             );
                         })}
-                    </div>
-                </section>
-
-                <section className="panels" aria-label="Offerings">
-                    <div className="section-heading">
-                        <h2>Automation that spans prep, cook, and pack.</h2>
-                    </div>
-                    <div className="panel-track" role="list">
-                        {offerings.map((offering) => (
-                            <article key={offering.title} className="panel-card" role="listitem">
-                                <div className="panel-media" aria-hidden="true">
-                                    <img src={offering.image} alt={`${offering.title} visual`} />
-                                </div>
-                                <div className="panel-body">
-                                    <h3>{offering.title}</h3>
-                                    <p>{offering.summary}</p>
-                                    {offering.highlights.length > 0 && (
-                                        <ul>
-                                            {offering.highlights.map((item) => (
-                                                <li key={item}>{item}</li>
-                                            ))}
-                                        </ul>
-                                    )}
-                                </div>
-                            </article>
-                        ))}
                     </div>
                 </section>
 
@@ -232,7 +248,11 @@ function App() {
                             {testimonials.map((testimonial) => (
                                 <article key={testimonial.brand} className="testimonial-card" role="listitem">
                                     <div className="testimonial-media" aria-hidden="true">
-                                        <span>{testimonial.initials}</span>
+                                        {testimonial.logo ? (
+                                            <img src={testimonial.logo} alt={`${testimonial.brand} logo`} />
+                                        ) : (
+                                            <span>{testimonial.brand.slice(0, 2).toUpperCase()}</span>
+                                        )}
                                     </div>
                                     <blockquote>{testimonial.quote}</blockquote>
                                     <p className="testimonial-role">{testimonial.role}</p>
@@ -259,28 +279,47 @@ function App() {
                                 Share your kitchen footprint and we will align a session focused on compliance, prep, and packaging workflows.
                             </p>
                         </div>
-                        <form className="cta-form" onSubmit={handleDemoSubmit}>
-                            <label>
-                                <span>Full name</span>
-                                <input type="text" name="name" placeholder="Jamie Garcia" required />
-                            </label>
-                            <label>
-                                <span>Work email</span>
-                                <input type="email" name="email" placeholder="chef@yourbrand.com" required />
-                            </label>
-                            <label>
-                                <span>Kitchen count</span>
-                                <input type="text" name="kitchenCount" placeholder="Multi-site, single site, or virtual" />
-                            </label>
-                            <label>
-                                <span>Focus areas</span>
-                                <textarea name="focus" placeholder="SOP adherence, prep automation, packaging..."></textarea>
-                            </label>
-                            <button type="submit">Request a demo</button>
-                        </form>
+                        <div className="cta-actions">
+                            <a
+                                className="cta-button"
+                                href="https://calendly.com/deepanshu-mrfood/30min"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Request Demo
+                                <ArrowRight className="button-icon" aria-hidden="true" />
+                            </a>
+                        </div>
                     </div>
                 </section>
             </main>
+            <footer className="site-footer">
+                <div className="footer-inner">
+                    <div className="footer-brand">Mr. Food</div>
+                    <div className="footer-grid">
+                        <div className="footer-block">
+                            <span className="footer-label">Address</span>
+                            <p>
+                                Floors 1&amp;2
+                                <br />
+                                501 Folsom St
+                                <br />
+                                San Francisco, CA 94105
+                                <br />
+                                USA
+                            </p>
+                        </div>
+                        <div className="footer-block">
+                            <span className="footer-label">Phone</span>
+                            <a href="tel:+12518108030">+1 (251) 810-8030</a>
+                        </div>
+                        <div className="footer-block">
+                            <span className="footer-label">Email</span>
+                            <a href="mailto:help@mrfood.ai">help@mrfood.ai</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 }
