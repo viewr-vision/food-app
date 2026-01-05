@@ -108,6 +108,8 @@ img {
   color: var(--muted);
   font-size: 1.2rem;
   line-height: 1.6;
+  max-width: 48ch;
+  margin: 0 auto;
 }
 
 .hero-cta {
@@ -595,6 +597,15 @@ main section {
   }
 }
 
+@keyframes hero-typing-mobile {
+  0% {
+    max-width: 0;
+  }
+  100% {
+    max-width: 100%;
+  }
+}
+
 @media (max-width: 768px) {
   .brand-pill {
     top: 16px;
@@ -625,8 +636,15 @@ main section {
     line-height: 1.05;
   }
 
+  .hero-type > span {
+    white-space: normal;
+    animation: hero-typing-mobile 1.1s steps(24, end) 0.25s forwards;
+    max-width: 100%;
+  }
+
   .hero-sub {
     font-size: 0.95rem;
+    max-width: 34ch;
   }
 
   .hero-cta {
@@ -686,6 +704,10 @@ main section {
 @media (max-width: 480px) {
   .hero h1 {
     font-size: 2.25rem;
+  }
+
+  .hero-type > span {
+    animation-duration: 0.9s;
   }
 
   .hero-cta .hero-button {
