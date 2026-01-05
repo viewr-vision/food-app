@@ -652,6 +652,12 @@ main section {
     font-size: 2.25rem;
   }
 
+  .brand-pill {
+    padding: 6px 10px;
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+  }
+
   .hero-cta .hero-button {
     padding: 12px 22px;
     font-size: 0.7rem;
