@@ -110,7 +110,7 @@ img {
   white-space: nowrap;
   overflow: hidden;
   max-width: 0;
-  animation: hero-typing 2.8s steps(24, end) 0.5s forwards;
+  animation: hero-typing 1.4s steps(24, end) 0.25s forwards;
 }
 
 .hero-type > span::after {
@@ -261,15 +261,14 @@ main section {
 .metric-type > span {
   display: inline-block;
   white-space: nowrap;
-  overflow: hidden;
-  max-width: 0;
+  overflow: visible;
+  max-width: none;
   color: inherit;
 }
 
 .metrics-grid.metrics-visible .metric-type > span {
-  animation: metric-typing 1.8s steps(32, end) var(--type-delay) forwards;
+  animation: none;
 }
-
 .panels {
   background: var(--black);
 }
