@@ -137,11 +137,7 @@ function App() {
                 <img className="hero-media" src={heroImage} alt="Automation system background" />
                 <div className="hero-overlay" />
                 <div className="hero-content">
-                    <h1 className="hero-title">
-                        <span className="hero-type" role="text" aria-label="Your kitchen. Automated">
-                            <span>Your kitchen. Automated</span>
-                        </span>
-                    </h1>
+                    <h1 className="hero-title">Your kitchen. Automated</h1>
                     <p className="hero-sub">
                         AI-Enabled precision robotics and smart automation, built for modern kitchens.
                     </p>

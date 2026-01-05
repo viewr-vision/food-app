@@ -76,32 +76,7 @@ img {
 
 .hero-title {
   margin: 0;
-}
-
-.hero-type {
-  display: inline-flex;
-  align-items: center;
-}
-
-.hero-type > span {
-  position: relative;
-  display: inline-block;
-  padding-right: 12px;
   white-space: nowrap;
-  overflow: hidden;
-  max-width: 0;
-  animation: hero-typing 1.4s steps(24, end) 0.25s forwards;
-}
-
-.hero-type > span::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 2px;
-  height: 100%;
-  background: var(--white);
-  animation: hero-caret 0.7s steps(2, start) infinite;
 }
 
 .hero-sub {
@@ -420,7 +395,6 @@ main section {
   scroll-snap-align: start;
   align-items: center;
   text-align: center;
-  margin-inline: auto;
 }
 
 .testimonial-media {
@@ -579,33 +553,6 @@ main section {
   }
 }
 
-@keyframes hero-typing {
-  0% {
-    max-width: 0;
-  }
-  100% {
-    max-width: 24ch;
-  }
-}
-
-@keyframes hero-caret {
-  0%, 50% {
-    opacity: 1;
-  }
-  50.01%, 100% {
-    opacity: 0;
-  }
-}
-
-@keyframes hero-typing-mobile {
-  0% {
-    max-width: 0;
-  }
-  100% {
-    max-width: 100%;
-  }
-}
-
 @media (max-width: 768px) {
   .brand-pill {
     top: 16px;
@@ -636,10 +583,8 @@ main section {
     line-height: 1.05;
   }
 
-  .hero-type > span {
+  .hero-title {
     white-space: normal;
-    animation: hero-typing-mobile 1.1s steps(24, end) 0.25s forwards;
-    max-width: 100%;
   }
 
   .hero-sub {
@@ -674,11 +619,13 @@ main section {
 
   .testimonial-track {
     width: 100%;
+    justify-content: flex-start;
   }
 
   .testimonial-card {
     max-width: 100%;
     flex-basis: auto;
+    margin-inline: 0;
   }
 
   .site-footer {
@@ -704,10 +651,6 @@ main section {
 @media (max-width: 480px) {
   .hero h1 {
     font-size: 2.25rem;
-  }
-
-  .hero-type > span {
-    animation-duration: 0.9s;
   }
 
   .hero-cta .hero-button {
