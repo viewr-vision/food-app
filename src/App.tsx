@@ -3,7 +3,6 @@ import type { CSSProperties } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import { ArrowRight, Clock3, DollarSign, Network } from 'lucide-react';
 import heroImage from '../assets/Gemini_Generated_Image_gee2dggee2dggee2.png';
-import fallbackImage from './assets/dashboard_full.jpg';
 import packagingImage from '../assets/packaging_image.jpg';
 import humanInLoopImage from '../assets/human_in_the_loop.jpg';
 import curefoodsLogo from '../assets/curefoods.png';
@@ -39,12 +38,6 @@ const offerings = [
         summary: 'Secure, tamper-proof, and labeled packaging ready for delivery.',
         highlights: [],
         image: packagingImage
-    },
-    {
-        title: 'Operational Monitoring',
-        summary: 'Real-time visibility into output, uptime, and performance across shifts and locations.',
-        highlights: [],
-        image: fallbackImage
     },
     {
         title: 'Human-in-the-Loop Fallback',
