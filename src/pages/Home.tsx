@@ -1,7 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
-import type { CSSProperties } from 'react';
-import type { LucideIcon } from 'lucide-react';
-import { ArrowRight, Clock3, DollarSign, Network } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import heroImage from '../../assets/Gemini_Generated_Image_gee2dggee2dggee2.png';
 import curefoodsLogo from '../../assets/curefoods.png';
 import rebelFoodsLogo from '../../assets/rebel_foods.png';
@@ -11,21 +8,6 @@ import sink1Video from '../assets/sink-1.mp4';
 import sink2Video from '../assets/sink-2.mp4';
 import '../App.css';
 import '../components/Carousel.css';
-
-const metrics: Array<{ label: string; description?: string; icon: LucideIcon }> = [
-    {
-        label: '24/7 uptime',
-        icon: Clock3
-    },
-    {
-        label: '45% lower cost',
-        icon: DollarSign
-    },
-    {
-        label: 'Consistent reliability & scalability',
-        icon: Network
-    }
-];
 
 const offerings = [
     {
@@ -46,25 +28,6 @@ const offerings = [
         summary: 'Automated sanitation cycles ensure tools are washed, sterilized, and returned to service instantly, maintaining hygiene without manual labor.',
         highlights: [],
         video: sink2Video
-    }
-];
-
-const performanceSignals = [
-    {
-        title: 'Speed',
-        detail: 'Coordinated robotics compress prep, cook, and pack-out windows without sacrificing control.'
-    },
-    {
-        title: 'Reliability',
-        detail: 'Unified analytics watch every line, so uptime, quality, and compliance stay on pace.'
-    },
-    {
-        title: 'Scalability',
-        detail: 'The system expands as you add kitchens, maintaining output across formats.'
-    },
-    {
-        title: 'Learns your kitchen',
-        detail: 'Feedback loops refine cycles as the platform adapts to your menus and cadence.'
     }
 ];
 
@@ -114,34 +77,6 @@ const testimonials = [
 ];
 
 export function Home() {
-    const [metricsVisible, setMetricsVisible] = useState(false);
-    const metricsRef = useRef<HTMLDivElement | null>(null);
-
-    useEffect(() => {
-        const node = metricsRef.current;
-        if (!node) {
-            return;
-        }
-
-        const observer = new IntersectionObserver(
-            (entries, metricsObserver) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setMetricsVisible(true);
-                        metricsObserver.disconnect();
-                    }
-                });
-            },
-            {
-                threshold: 0.35
-            }
-        );
-
-        observer.observe(node);
-
-        return () => observer.disconnect();
-    }, []);
-
     return (
         <div className="page">
             <a
