@@ -1,0 +1,85 @@
+.offerings-carousel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  position: relative;
+}
+
+.offerings-track {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 16px 8px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  flex: 1 1 0%;
+  min-width: 0;
+  justify-content: flex-start; /* Changed from center to allow scrolling */
+}
+
+.offerings-track::-webkit-scrollbar {
+  display: none;
+}
+
+.panel-card {
+  flex: 0 0 360px; /* Fixed width for carousel */
+  width: 360px;
+  scroll-snap-align: center;
+  /* Keep existing styles */
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--panel);
+}
+
+.panel-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-nav {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--border);
+  color: var(--white);
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  z-index: 10;
+}
+
+.carousel-nav:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 768px) {
+  .panel-card {
+    flex: 0 0 300px;
+    width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .panel-card {
+    flex: 0 0 85vw;
+    width: 85vw;
+  }
+  
+  .offerings-track {
+    padding: 16px 24px; /* Add padding for scroll snap */
+  }
+}

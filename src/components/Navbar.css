@@ -1,0 +1,157 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px min(8vw, 140px);
+  background: linear-gradient(180deg, rgba(5, 5, 5, 0.95), rgba(5, 5, 5, 0.85));
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(16px) saturate(140%);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.navbar-brand:hover {
+  opacity: 0.9;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navbar-link {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.navbar-link:hover {
+  color: var(--white);
+}
+
+.navbar-link.active {
+  color: var(--white);
+}
+
+.navbar-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--white);
+}
+
+.navbar-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--black);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.navbar-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 18px min(6vw, 60px);
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 16px 24px;
+  }
+
+  .navbar-links {
+    gap: 20px;
+  }
+
+  .navbar-link {
+    font-size: 0.75rem;
+  }
+
+  .navbar-button {
+    padding: 8px 16px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar-links {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 14px 16px;
+  }
+
+  .navbar-brand {
+    padding: 10px 18px;
+    font-size: 0.7rem;
+  }
+
+  .navbar-links {
+    gap: 12px;
+  }
+
+  .navbar-link {
+    font-size: 0.7rem;
+  }
+
+  .navbar-button {
+    padding: 8px 14px;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+  }
+}
+
+@media (min-width: 1400px) {
+  .navbar {
+    padding: 20px min(10vw, 180px);
+  }
+}
