@@ -3,9 +3,11 @@ import heroImage from '../../assets/Gemini_Generated_Image_gee2dggee2dggee2.png'
 import curefoodsLogo from '../../assets/curefoods.png';
 import rebelFoodsLogo from '../../assets/rebel_foods.png';
 import saladDaysLogo from '../../assets/salad_days.jpg';
+import saffronLogo from '../../assets/saffron.png';
 import sandwichVideo from '../assets/sandwich.mp4';
 import sink1Video from '../assets/sink-1.mp4';
 import sink2Video from '../assets/sink-2.mp4';
+import areaCleanVideo from '../assets/area-clean.mp4';
 import '../App.css';
 import '../components/Carousel.css';
 
@@ -28,6 +30,12 @@ const offerings = [
         summary: 'Automated sanitation cycles ensure tools are washed, sterilized, and returned to service instantly, maintaining hygiene without manual labor.',
         highlights: [],
         video: sink2Video
+    },
+    {
+        title: 'Process Area Cleaning',
+        summary: 'Automated cleaning of work surfaces, preparation areas, and equipment ensures consistent hygiene standards and compliance with food safety regulations throughout your kitchen operations.',
+        highlights: [],
+        video: areaCleanVideo
     }
 ];
 
@@ -73,6 +81,12 @@ const testimonials = [
         quote: '"I use the robot arm to prepare food during day time and cleaning and maintenance during night time"',
         role: 'Operations Lead',
         logo: saladDaysLogo
+    },
+    {
+        brand: 'Saffron',
+        quote: '"I am able to run my factory outlet 24/7 with these robots doing late night shifts with the store operator"',
+        role: 'Regional Manager',
+        logo: saffronLogo
     }
 ];
 
@@ -93,7 +107,7 @@ export function Home() {
                 <div className="hero-content">
                     <h1 className="hero-title">
                         Designed for real<br />
-                        kitchen workflows.
+                        kitchen workflows
                     </h1>
                     <p className="hero-sub">
                         AI-Enabled precision robotics and smart automation, built for modern kitchens.
@@ -142,6 +156,7 @@ export function Home() {
                                             loop
                                             muted
                                             playsInline
+                                            preload="metadata"
                                         />
                                     </div>
                                     <div className="panel-body">
@@ -218,7 +233,7 @@ export function Home() {
 
                 <section className="testimonials" aria-label="Testimonials">
                     <div className="section-heading">
-                        <h2>Reliability proven inside active kitchens.</h2>
+                        <h2>Reliability proven inside active kitchens</h2>
                     </div>
                     <div className="testimonial-carousel">
                         <button
@@ -260,7 +275,7 @@ export function Home() {
                 <section className="cta" id="contact" aria-label="Request a demo">
                     <div className="cta-card">
                         <div className="section-heading">
-                            <h2>Book an automation briefing.</h2>
+                            <h2>Book an automation briefing</h2>
                             <p className="section-copy">
                                 Share your kitchen footprint and we will align a session focused on compliance, prep, and packaging workflows.
                             </p>

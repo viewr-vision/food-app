@@ -13,6 +13,9 @@ export function Navbar() {
                 <Link to="/blog" className={`navbar-link ${location.pathname === '/blog' ? 'active' : ''}`}>
                     Blogs
                 </Link>
+                <Link to="/faq" className={`navbar-link ${location.pathname === '/faq' ? 'active' : ''}`}>
+                    FAQ
+                </Link>
                 <Link to="/careers" className={`navbar-link ${location.pathname === '/careers' ? 'active' : ''}`}>
                     Careers
                 </Link>

@@ -7,7 +7,7 @@ export function Careers() {
             <div className="page-content">
                 <section className="careers" aria-label="Careers">
                     <div className="section-heading">
-                        <h1>Join our team.</h1>
+                        <h1>Join our team</h1>
                         <p className="section-copy">
                             Help us build the future of automated food preparation.
                         </p>

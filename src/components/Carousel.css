@@ -4,6 +4,9 @@
   gap: 16px;
   justify-content: center;
   position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .offerings-track {
@@ -11,12 +14,14 @@
   gap: 32px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scroll-padding: 0 calc(50% - 180px);
   padding: 16px 8px;
   scrollbar-width: none;
   -ms-overflow-style: none;
   flex: 1 1 0%;
   min-width: 0;
-  justify-content: flex-start; /* Changed from center to allow scrolling */
+  justify-content: flex-start;
 }
 
 .offerings-track::-webkit-scrollbar {
@@ -27,6 +32,7 @@
   flex: 0 0 360px; /* Fixed width for carousel */
   width: 360px;
   scroll-snap-align: center;
+  scroll-snap-stop: always;
   /* Keep existing styles */
   display: flex;
   flex-direction: column;
@@ -67,19 +73,48 @@
 }
 
 @media (max-width: 768px) {
+  .offerings-carousel {
+    gap: 12px;
+  }
+
+  .carousel-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+
   .panel-card {
-    flex: 0 0 300px;
-    width: 300px;
+    flex: 0 0 320px;
+    width: 320px;
+  }
+
+  .offerings-track {
+    gap: 24px;
+    scroll-padding: 0 calc(50% - 160px);
+    padding: 16px 12px;
   }
 }
 
 @media (max-width: 480px) {
+  .offerings-carousel {
+    gap: 8px;
+  }
+
+  .carousel-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+
   .panel-card {
     flex: 0 0 85vw;
     width: 85vw;
+    min-width: 280px;
   }
   
   .offerings-track {
-    padding: 16px 24px; /* Add padding for scroll snap */
+    gap: 16px;
+    scroll-padding: 0 calc(50% - 42.5vw);
+    padding: 16px 20px;
   }
 }

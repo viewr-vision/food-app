@@ -448,6 +448,9 @@ main section {
   align-items: center;
   gap: 16px;
   justify-content: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .research-nav {
@@ -475,7 +478,9 @@ main section {
   gap: 32px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding: 16px 24px;
+  scroll-behavior: smooth;
+  scroll-padding: 0 calc(50% - 190px);
+  padding: 16px 8px;
   scrollbar-width: none;
   -ms-overflow-style: none;
   flex: 1 1 0%;
@@ -492,7 +497,8 @@ main section {
   border: 1px solid var(--border);
   border-radius: 22px;
   background: var(--panel);
-  scroll-snap-align: start;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -575,6 +581,9 @@ main section {
   align-items: center;
   gap: 16px;
   justify-content: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .testimonial-nav {
@@ -602,12 +611,14 @@ main section {
   gap: 32px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scroll-padding: 0 calc(50% - 160px);
   padding: 16px 8px;
   scrollbar-width: none;
   -ms-overflow-style: none;
   flex: 1 1 0%;
   min-width: 0;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .testimonial-track::-webkit-scrollbar {
@@ -623,7 +634,8 @@ main section {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
   align-items: center;
   text-align: center;
 }
@@ -1006,6 +1018,91 @@ main section {
   box-shadow: 0 12px 32px rgba(255, 255, 255, 0.15);
 }
 
+.faq {
+  background: var(--black);
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.faq-item:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  gap: 20px;
+  transition: background-color 0.2s ease;
+}
+
+.faq-question:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.faq-question-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  color: var(--white);
+  flex: 1;
+}
+
+.faq-chevron {
+  width: 24px;
+  height: 24px;
+  color: var(--muted);
+  transition: transform 0.3s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.faq-chevron-open {
+  transform: rotate(180deg);
+  color: var(--white);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 32px;
+}
+
+.faq-answer-open {
+  max-height: 500px;
+  padding: 0 32px 24px 32px;
+}
+
+.faq-answer p {
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 1rem;
+  margin: 0;
+  padding-top: 8px;
+}
+
 @keyframes metric-typing {
   0% {
     max-width: 0;
@@ -1104,25 +1201,54 @@ main section {
     max-width: 100%;
   }
 
+  .testimonial-carousel {
+    gap: 12px;
+  }
+
+  .testimonial-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+
   .testimonial-track {
     width: 100%;
+    gap: 24px;
+    scroll-padding: 0 calc(50% - 160px);
+    padding: 16px 12px;
     justify-content: flex-start;
   }
 
   .testimonial-card {
-    max-width: 100%;
+    flex: 0 0 320px;
+    max-width: calc(100vw - 80px);
+    min-width: 280px;
     flex-basis: auto;
     margin-inline: 0;
   }
 
+  .research-carousel {
+    gap: 12px;
+  }
+
+  .research-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+
   .research-track {
     width: 100%;
+    gap: 24px;
+    scroll-padding: 0 calc(50% - 160px);
+    padding: 16px 12px;
     justify-content: flex-start;
   }
 
   .research-card {
     flex: 0 0 320px;
-    max-width: 100%;
+    max-width: calc(100vw - 80px);
+    min-width: 280px;
   }
 
   .research-link {
@@ -1135,6 +1261,26 @@ main section {
 
   .career-item {
     padding: 24px;
+  }
+
+  .faq-list {
+    gap: 14px;
+  }
+
+  .faq-question {
+    padding: 20px 24px;
+  }
+
+  .faq-question-text {
+    font-size: 1.1rem;
+  }
+
+  .faq-answer {
+    padding: 0 24px;
+  }
+
+  .faq-answer-open {
+    padding: 0 24px 20px 24px;
   }
 
   .site-footer {
@@ -1196,8 +1342,26 @@ main section {
     padding: 28px;
   }
 
+  .research-carousel {
+    gap: 8px;
+  }
+
+  .research-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+
+  .research-track {
+    gap: 16px;
+    scroll-padding: 0 calc(50% - 42.5vw);
+    padding: 16px 20px;
+  }
+
   .research-card {
-    flex: 0 0 280px;
+    flex: 0 0 85vw;
+    min-width: 280px;
+    max-width: 85vw;
   }
 
   .research-link {
@@ -1210,6 +1374,29 @@ main section {
 
   .research-abstract {
     font-size: 0.85rem;
+  }
+
+  .testimonial-carousel {
+    gap: 8px;
+  }
+
+  .testimonial-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+
+  .testimonial-track {
+    gap: 16px;
+    scroll-padding: 0 calc(50% - 42.5vw);
+    padding: 16px 20px;
+  }
+
+  .testimonial-card {
+    flex: 0 0 85vw;
+    min-width: 280px;
+    max-width: 85vw;
+    padding: 24px;
   }
 
   .blog-grid {
@@ -1241,6 +1428,22 @@ main section {
 
   .career-card {
     padding: 24px;
+  }
+
+  .faq-list {
+    gap: 16px;
+  }
+
+  .faq-question {
+    padding: 22px 28px;
+  }
+
+  .faq-answer {
+    padding: 0 28px;
+  }
+
+  .faq-answer-open {
+    padding: 0 28px 22px 28px;
   }
 
   .career-footer {

@@ -249,3 +249,46 @@ export const careerOpenings = [
         description: 'Maintain and scale our cloud infrastructure to support 24/7 kitchen operations across multiple locations.'
     }
 ];
+
+export const faqs = [
+    {
+        id: 1,
+        question: 'What types of kitchens can MrFood automate?',
+        answer: 'MrFood robotic arms are designed to work with virtually any kitchen infrastructure. Since we deploy modular robotic arms that adapt to your existing setup, our system is compatible with cloud kitchens, traditional restaurants, food production facilities, and any commercial kitchen environment. The arms adjust to your current layout, equipment, and workflow, making our solution flexible across different kitchen types and sizes.'
+    },
+    {
+        id: 2,
+        question: 'How long does it take to deploy the automation system?',
+        answer: 'Deployment timelines are significantly shorter than traditional automation solutions. Because our robotic arms integrate with your existing infrastructure with minimal modifications required, most deployments are completed efficiently. The exact timeline depends on your specific kitchen setup and requirements, but our streamlined installation process minimizes disruption to your operations.'
+    },
+    {
+        id: 3,
+        question: 'What is the ROI for kitchen automation?',
+        answer: 'Our customers typically see a return on investment within approximately 15 days. Labor costs can be reduced to half, one-third, or even one-fourth of your current expenses, depending on your operational scale and automation level. This rapid ROI comes from replacing variable labor costs—including wages, benefits, training, and turnover—with a consistent, reliable system that operates 24/7 without breaks, overtime, or scheduling challenges.'
+    },
+    {
+        id: 4,
+        question: 'Does the system require extensive kitchen modifications?',
+        answer: 'No. Our system requires minimal to no kitchen modifications. The robotic arms are designed to adapt to your existing infrastructure, working with your current layout, equipment, and workflow. This eliminates the need for costly renovations, major retrofitting, or significant downtime during installation. We work with what you already have.'
+    },
+    {
+        id: 5,
+        question: 'How does the system handle food safety and compliance?',
+        answer: 'Food safety and compliance are built into our system from the ground up. During the initial setup, we train our models based on your specific food safety protocols, compliance requirements, and preparation standards. The system then consistently follows these protocols for every preparation, ensuring uniform compliance. Our AI models can adapt to different menu items and preparation methods while maintaining strict adherence to your safety and regulatory requirements.'
+    },
+    {
+        id: 6,
+        question: 'Can the system adapt to different recipes and menu items?',
+        answer: 'Yes. Our system is designed to adapt to different recipes and menu items with minimal training. During the initial setup, we train the models on your specific recipes and preparation methods. Once trained, the system can handle variations and new menu items efficiently. The AI continuously learns and adapts, making it easy to incorporate menu changes or seasonal items without extensive retraining.'
+    },
+    {
+        id: 7,
+        question: 'What kind of support and maintenance is provided?',
+        answer: 'We provide dedicated on-site support with a team member always available at your location. This ensures immediate response to any issues, continuous system optimization, and proactive maintenance. Additionally, our system seamlessly integrates with your existing kitchen management software through API access. Once connected, we handle the meal preparation workflow, allowing you to focus on your core business operations while we manage the automation.'
+    },
+    {
+        id: 8,
+        question: 'How does the system integrate with existing kitchen management software?',
+        answer: 'Integration is straightforward and requires only API access to your existing kitchen management software. Once connected, orders flow directly from your management system to our robotic arms, maintaining your current workflow and processes. This seamless integration means no disruption to your existing operations—your team continues using the same software they are familiar with, while our system handles the physical meal preparation automatically.'
+    }
+];

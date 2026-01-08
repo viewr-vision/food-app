@@ -9,7 +9,7 @@ export function Blog() {
             <div className="page-content">
                 <section className="blog" aria-label="Blog">
                     <div className="section-heading">
-                        <h1>Insights and updates from our team.</h1>
+                        <h1>Insights and updates from our team</h1>
                     </div>
                     <div className="blog-list">
                         {blogPosts.map((post) => (

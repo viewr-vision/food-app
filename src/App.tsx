@@ -4,9 +4,11 @@ import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
+import { FAQ } from './pages/FAQ';
 import { Careers } from './pages/Careers';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { TermsOfService } from './pages/TermsOfService';
+import { NotFound } from './pages/NotFound';
 import './App.css';
 
 function App() {
@@ -17,9 +19,11 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:id" element={<BlogPost />} />
+                <Route path="/faq" element={<FAQ />} />
                 <Route path="/careers" element={<Careers />} />
                 <Route path="/privacy" element={<PrivacyPolicy />} />
                 <Route path="/terms" element={<TermsOfService />} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />
         </>
