@@ -124,14 +124,6 @@ export function Home() {
 
     return (
         <div className="page">
-            <a
-                className="demo-pill hero-button"
-                href="https://calendly.com/deepanshu-mrfood/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Request Demo
-            </a>
             <header className="hero">
                 <video className="hero-media" autoPlay loop muted playsInline preload="auto">
                     <source src={sink2Video} type="video/mp4" />
