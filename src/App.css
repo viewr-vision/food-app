@@ -448,6 +448,7 @@ main section {
   align-items: center;
   gap: 16px;
   justify-content: center;
+  position: relative;
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
@@ -466,6 +467,18 @@ main section {
   display: grid;
   place-items: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+.research-nav:first-of-type {
+  left: 8px;
+}
+
+.research-nav:last-of-type {
+  right: 8px;
 }
 
 .research-nav:hover {
@@ -587,6 +600,7 @@ main section {
   align-items: center;
   gap: 16px;
   justify-content: center;
+  position: relative;
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
@@ -605,6 +619,17 @@ main section {
   display: grid;
   place-items: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.testimonial-nav:first-of-type {
+  left: 6px;
+}
+
+.testimonial-nav:last-of-type {
+  right: 6px;
 }
 
 .testimonial-nav:hover {
@@ -792,6 +817,18 @@ main section {
   text-transform: uppercase;
   font-weight: 600;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+.testimonial-nav:first-of-type {
+  left: 8px;
+}
+
+.testimonial-nav:last-of-type {
+  right: 8px;
 }
 
 .cta-button:hover {
@@ -1236,20 +1273,34 @@ main section {
     width: 40px;
     height: 40px;
     font-size: 1.3rem;
+    left: 8px;
+    right: auto;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .testimonial-nav:first-of-type {
+    left: 8px;
+    right: auto;
+  }
+
+  .testimonial-nav:last-of-type {
+    right: 8px;
+    left: auto;
   }
 
   .testimonial-track {
     width: 100%;
-    gap: 24px;
-    scroll-padding: 0 calc(50% - 160px);
-    padding: 16px 12px;
+    gap: 16px;
+    scroll-padding: 16px;
+    padding: 12px 16px;
     justify-content: flex-start;
   }
 
   .testimonial-card {
-    flex: 0 0 320px;
-    width: 320px;
-    flex-basis: auto;
+    flex: 0 0 88vw;
+    width: 88vw;
+    min-width: 260px;
     margin-inline: 0;
   }
 
@@ -1261,19 +1312,34 @@ main section {
     width: 40px;
     height: 40px;
     font-size: 1.3rem;
+    left: 8px;
+    right: auto;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .research-nav:first-of-type {
+    left: 8px;
+    right: auto;
+  }
+
+  .research-nav:last-of-type {
+    right: 8px;
+    left: auto;
   }
 
   .research-track {
     width: 100%;
-    gap: 24px;
-    scroll-padding: 0 calc(50% - 160px);
-    padding: 16px 12px;
+    gap: 16px;
+    scroll-padding: 16px;
+    padding: 12px 16px;
     justify-content: flex-start;
   }
 
   .research-card {
-    flex: 0 0 320px;
-    width: 320px;
+    flex: 0 0 88vw;
+    width: 88vw;
+    min-width: 260px;
   }
 
   .research-link {
@@ -1375,18 +1441,30 @@ main section {
     width: 36px;
     height: 36px;
     font-size: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .research-nav:first-of-type {
+    left: 8px;
+    right: auto;
+  }
+
+  .research-nav:last-of-type {
+    right: 8px;
+    left: auto;
   }
 
   .research-track {
-    gap: 16px;
-    scroll-padding: 0 calc(50% - 42.5vw);
-    padding: 16px 20px;
+    gap: 12px;
+    scroll-padding: 14px;
+    padding: 12px 14px 20px;
   }
 
   .research-card {
-    flex: 0 0 85vw;
-    width: 85vw;
-    min-width: 280px;
+    flex: 0 0 80vw;
+    width: 80vw;
+    min-width: 240px;
   }
 
   .research-link {
@@ -1409,19 +1487,31 @@ main section {
     width: 36px;
     height: 36px;
     font-size: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .testimonial-nav:first-of-type {
+    left: 8px;
+    right: auto;
+  }
+
+  .testimonial-nav:last-of-type {
+    right: 8px;
+    left: auto;
   }
 
   .testimonial-track {
-    gap: 16px;
-    scroll-padding: 0 calc(50% - 42.5vw);
-    padding: 16px 20px;
+    gap: 12px;
+    scroll-padding: 14px;
+    padding: 12px 14px 20px;
   }
 
   .testimonial-card {
-    flex: 0 0 85vw;
-    width: 85vw;
-    min-width: 280px;
-    padding: 24px;
+    flex: 0 0 80vw;
+    width: 80vw;
+    min-width: 240px;
+    padding: 22px;
   }
 
   .blog-grid {

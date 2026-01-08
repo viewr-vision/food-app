@@ -26,8 +26,8 @@ const offerings = [
         video: sink1Video
     },
     {
-        title: 'Cleaning Utensils after use',
-        summary: 'Automated sanitation cycles ensure tools are washed, sterilized, and returned to service instantly, maintaining hygiene without manual labor.',
+        title: 'Cleaning Dishes after use',
+        summary: 'Automated sanitation cycles ensure dishes are washed, sanitized, and returned to service instantly, maintaining hygiene without manual labor.',
         highlights: [],
         video: sink2Video
     },
