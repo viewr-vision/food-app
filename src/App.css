@@ -106,13 +106,13 @@ img {
 .backed-by-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
+  gap: 4px;
+  padding: 5px 9px;
   border: 1px solid rgba(100, 116, 139, 0.3);
   border-radius: 999px;
   background: rgba(15, 23, 42, 0.4);
   backdrop-filter: blur(8px);
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   font-weight: 500;
   color: #cbd5e1;
   position: relative;
@@ -145,8 +145,8 @@ img {
 }
 
 .backed-by-dot {
-  width: 6px;
-  height: 6px;
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
   background: #9333ea;
   flex-shrink: 0;
@@ -165,17 +165,17 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   background: #9333ea;
-  border-radius: 4px;
-  margin: 0 2px;
+  border-radius: 2px;
+  margin: 0 1px;
 }
 
 .backed-by-letter {
   color: #ffffff;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   line-height: 1;
 }
 
@@ -494,6 +494,7 @@ main section {
 
 .research-card {
   flex: 0 0 380px;
+  width: 380px;
   border: 1px solid var(--border);
   border-radius: 22px;
   background: var(--panel);
@@ -537,6 +538,8 @@ main section {
   line-height: 1.5;
   margin: 0;
   font-style: italic;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .research-abstract {
@@ -545,6 +548,9 @@ main section {
   margin: 0;
   flex-grow: 1;
   font-size: 0.95rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .research-footer {
@@ -627,6 +633,7 @@ main section {
 
 .testimonial-card {
   flex: 0 0 320px;
+  width: 320px;
   border: 1px solid var(--border);
   border-radius: 22px;
   background: var(--panel);
@@ -641,8 +648,8 @@ main section {
 }
 
 .testimonial-media {
-  width: 64px;
-  height: 64px;
+  width: 96px;
+  height: 96px;
   border-radius: 12px;
   border: 1px solid var(--border);
   background: var(--soft);
@@ -651,7 +658,7 @@ main section {
   place-items: center;
   font-weight: 600;
   letter-spacing: 0.12em;
-  padding: 8px;
+  padding: 12px;
 }
 
 .testimonial-media img {
@@ -666,15 +673,35 @@ main section {
   line-height: 1.7;
   color: var(--white);
   text-align: center;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .testimonial-role {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+}
+
+.testimonial-role-text {
   color: var(--muted);
   font-size: 0.9rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-align: center;
   margin: 0;
+}
+
+.testimonial-brand {
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+  margin: 0;
+  text-transform: none;
+  letter-spacing: normal;
 }
 
 .site-footer {
@@ -1174,18 +1201,18 @@ main section {
   }
 
   .backed-by-pill {
-    font-size: 0.75rem;
-    padding: 8px 16px;
-    gap: 6px;
+    font-size: 0.6rem;
+    padding: 4px 8px;
+    gap: 3px;
   }
 
   .backed-by-logo {
-    width: 18px;
-    height: 18px;
+    width: 9px;
+    height: 9px;
   }
 
   .backed-by-letter {
-    font-size: 0.85rem;
+    font-size: 0.7rem;
   }
 
   main section {
@@ -1221,8 +1248,7 @@ main section {
 
   .testimonial-card {
     flex: 0 0 320px;
-    max-width: calc(100vw - 80px);
-    min-width: 280px;
+    width: 320px;
     flex-basis: auto;
     margin-inline: 0;
   }
@@ -1247,8 +1273,7 @@ main section {
 
   .research-card {
     flex: 0 0 320px;
-    max-width: calc(100vw - 80px);
-    min-width: 280px;
+    width: 320px;
   }
 
   .research-link {
@@ -1360,8 +1385,8 @@ main section {
 
   .research-card {
     flex: 0 0 85vw;
+    width: 85vw;
     min-width: 280px;
-    max-width: 85vw;
   }
 
   .research-link {
@@ -1394,8 +1419,8 @@ main section {
 
   .testimonial-card {
     flex: 0 0 85vw;
+    width: 85vw;
     min-width: 280px;
-    max-width: 85vw;
     padding: 24px;
   }
 
