@@ -7,18 +7,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px min(8vw, 140px);
-  background: linear-gradient(180deg, rgba(5, 5, 5, 0.95), rgba(5, 5, 5, 0.85));
+  padding: 12px min(8vw, 140px);
+  background: linear-gradient(180deg, rgba(5, 5, 5, 0.5), rgba(5, 5, 5, 0.5));
   backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--border);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
-  min-height: 60px;
+  min-height: 48px;
 }
 
 .navbar-brand {
   display: inline-flex;
   align-items: center;
-  padding: 12px 22px;
+  padding: 8px 18px;
   border-radius: 999px;
   font-size: 0.75rem;
   letter-spacing: 0.24em;
@@ -79,7 +79,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 22px;
+  padding: 8px 18px;
   border-radius: 999px;
   background: var(--white);
   color: var(--black);
@@ -98,13 +98,15 @@
 
 @media (max-width: 1024px) {
   .navbar {
-    padding: 18px min(6vw, 60px);
+    padding: 10px min(6vw, 60px);
+    min-height: 44px;
   }
 }
 
 @media (max-width: 768px) {
   .navbar {
-    padding: 16px 20px;
+    padding: 10px 20px;
+    min-height: 44px;
   }
 
   .navbar-brand {
@@ -130,7 +132,8 @@
 
 @media (max-width: 600px) {
   .navbar {
-    padding: 14px 16px;
+    padding: 8px 16px;
+    min-height: 40px;
   }
 
   .navbar-links {
@@ -149,13 +152,14 @@
 
 @media (max-width: 480px) {
   .navbar {
-    padding: 12px 12px;
+    padding: 8px 12px;
     flex-wrap: wrap;
     gap: 8px;
+    min-height: 40px;
   }
 
   .navbar-brand {
-    padding: 8px 14px;
+    padding: 6px 12px;
     font-size: 0.65rem;
     letter-spacing: 0.2em;
     flex-shrink: 0;
@@ -186,6 +190,7 @@
 
 @media (min-width: 1400px) {
   .navbar {
-    padding: 20px min(10vw, 180px);
+    padding: 12px min(10vw, 180px);
+    min-height: 48px;
   }
 }
