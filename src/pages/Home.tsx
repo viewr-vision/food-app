@@ -159,7 +159,7 @@ export function Home() {
             <main>
                 <section className="panels" aria-label="Offerings">
                     <div className="section-heading">
-                        <h2>Kitchens Powered by Physical Intelligence Models</h2>
+                        <h2>Kitchens Powered by Physical Intelligence (π) Models</h2>
                     </div>
                     <div className="offerings-carousel">
                         <button
@@ -208,7 +208,7 @@ export function Home() {
 
                 <section className="testimonials" aria-label="Testimonials">
                     <div className="section-heading">
-                        <h2>Hear from our <span style={{ color: '#C6FE1E' }}>customers</span></h2>
+                        <h2>Hear from our <span style={{ color: '#C6FE1E' }}>partners</span></h2>
                     </div>
                     <div className="testimonial-carousel">
                         <button
@@ -248,7 +248,7 @@ export function Home() {
 
                 <section className="research" aria-label="Key AI Research">
                     <div className="section-heading">
-                        <h2>Key AI <span style={{ color: '#C6FE1E' }}>Research</span></h2>
+                        <h2>Key Industry <span style={{ color: '#C6FE1E' }}>Research</span></h2>
                     </div>
                     <div className="research-carousel">
                         <button
