@@ -1,8 +1,8 @@
 export const blogPosts = [
     {
         id: 0,
-        title: 'Why Speed and Reliability Decide Whether Robotics Actually Scales',
-        excerpt: 'Robotics has crossed the demo stage. Computer vision models can detect objects with high accuracy. Motion planners can execute complex trajectories. AI stacks look impressive on paper. Yet most robotics deployments still fail to scale in production.',
+        title: 'Throughput and Reliability: What Makes Robotics Scale',
+        excerpt: 'Benchmarks don’t win production. Consistent units per hour and predictable uptime do. Here’s how to design for throughput and reliability that operators trust.',
         date: 'January 7, 2026',
         category: 'Engineering',
         readTime: '6 min read',
@@ -53,8 +53,8 @@ export const blogPosts = [
     },
     {
         id: 1,
-        title: 'The Future of Automated Food Preparation',
-        excerpt: 'Exploring how AI-powered robotics are revolutionizing kitchen operations and transforming the food service industry.',
+        title: 'Inside the Automated Kitchen: From Gimmicks to Real Ops',
+        excerpt: 'Automation that ships focuses on orchestration, not party tricks. What modern AI-driven kitchens actually automate, and why it matters for margins.',
         date: 'January 3, 2026',
         category: 'Technology',
         readTime: '5 min read',
@@ -81,8 +81,8 @@ export const blogPosts = [
     },
     {
         id: 2,
-        title: 'Reducing Food Waste Through Smart Automation',
-        excerpt: 'How precision robotics and data analytics help kitchens minimize waste while maintaining quality and consistency.',
+        title: 'Cut Waste, Raise Yield: Automation That Pays for Itself',
+        excerpt: 'Precision portioning and consistent execution reduce over-portioning and scraps. Practical ways automation improves food cost by a few points.',
         date: 'December 30, 2025',
         category: 'Sustainability',
         readTime: '4 min read',
@@ -106,8 +106,8 @@ export const blogPosts = [
     },
     {
         id: 3,
-        title: 'Scaling Cloud Kitchens with Robotic Systems',
-        excerpt: 'Case studies from leading food brands on how automation enables rapid expansion without compromising quality.',
+        title: 'Scaling Cloud Kitchens with Predictable Throughput',
+        excerpt: 'Volume spikes break manual lines. Automation evens the curve: standard cycle times, faster turns, and consistent ticket times across sites.',
         date: 'December 26, 2025',
         category: 'Operations',
         readTime: '6 min read',
@@ -125,15 +125,15 @@ export const blogPosts = [
             { type: 'paragraph', text: 'Automation systems are designed for high throughput. They can process multiple orders in parallel, optimizing cooking times to ensure all items in an order are ready simultaneously. This reduces the "dwell time" where food sits under a heat lamp waiting for a driver.' },
             { type: 'paragraph', text: 'Faster throughput leads to lower delivery times, fresher food, and higher customer satisfaction scores on delivery platforms.' },
             { type: 'heading', text: 'Case Study: The Hybrid Model' },
-            { type: 'paragraph', text: 'Leading brands are adopting a hub-and-spoke model. Centralized automated commissaries handle the heavy lifting—chopping, marinating, and sous-vide cooking. These prepped components are then sent to satellite kitchens where smaller robotic units finish and assemble the dishes.' },
+            { type: 'paragraph', text: 'Leading brands are adopting a hub-and-spoke model. Centralized automated commissaries handle the heavy lifting: chopping, marinating, and sous-vide cooking. These prepped components are then sent to satellite kitchens where smaller robotic units finish and assemble the dishes.' },
             { type: 'paragraph', text: 'This architecture minimizes the footprint and equipment needs of the satellite kitchens, drastically reducing real estate costs and enabling hyper-local distribution.' },
             { type: 'paragraph', text: 'For cloud kitchens, automation is not just an efficiency hack. It is the infrastructure that makes the business model viable at scale.' }
         ]
     },
     {
         id: 4,
-        title: 'Human-in-the-Loop: Balancing Automation and Expertise',
-        excerpt: 'Why the best automated systems still rely on human oversight and how to design effective fallback mechanisms.',
+        title: 'Human-in-the-Loop: Where People Add the Most Value',
+        excerpt: 'Use automation for repeatable execution and people for edge cases, QA, and customer experience. A pragmatic split that raises both quality and output.',
         date: 'December 20, 2025',
         category: 'Best Practices',
         readTime: '5 min read',
@@ -141,10 +141,10 @@ export const blogPosts = [
             { type: 'paragraph', text: 'There is a misconception that automation is a binary choice: either a process is manual, or it is fully autonomous. In reality, the most robust and effective systems are those that design for "Human-in-the-Loop" (HITL) interaction.' },
             { type: 'paragraph', text: 'In the chaotic environment of a kitchen, 100 percent autonomy is a fool\'s errand. Ingredients vary in shape and size. Lighting conditions change. Unexpected spills happen. A system designed to handle 100 percent of edge cases is infinitely expensive and complex.' },
             { type: 'heading', text: 'The 80/20 Rule of Automation' },
-            { type: 'paragraph', text: 'Smart engineering focuses on automating the 80 percent of tasks that are repetitive, dangerous, or dull. The remaining 20 percent—the tasks requiring dexterity, judgment, and adaptability—are left to humans.' },
+            { type: 'paragraph', text: 'Smart engineering focuses on automating the 80 percent of tasks that are repetitive, dangerous, or dull. The remaining 20 percent (tasks requiring dexterity, judgment, and adaptability) are left to humans.' },
             { type: 'paragraph', text: 'For example, a robot might be excellent at frying fries to the perfect crispness, but terrible at judging if a potato has a blemish that needs to be cut out. A HITL workflow has the human inspect and prep the potatoes, while the robot handles the dangerous hot oil immersion and timing.' },
             { type: 'heading', text: 'Designing for Interventions' },
-            { type: 'paragraph', text: 'A critical aspect of HITL design is how the system handles failure. When a robot encounters a situation it cannot resolve—like a dropped utensil or an unrecognized object—it should not crash. It should pause and signal for help.' },
+            { type: 'paragraph', text: 'A critical aspect of HITL design is how the system handles failure. When a robot encounters a situation it cannot resolve, like a dropped utensil or an unrecognized object, it should not crash. It should pause and signal for help.' },
             { type: 'paragraph', text: 'Effective systems have intuitive interfaces that allow a human operator to quickly assess the issue, correct it, and restart the process. This "graceful degradation" ensures that a minor error does not become a major downtime event.' },
             { type: 'paragraph', text: 'This requires designing robots that are safe to work around. Cobots (collaborative robots) with force-limiting sensors allow humans and machines to share the same workspace safely, enabling seamless hand-offs.' },
             { type: 'heading', text: 'Remote Supervision' },
@@ -155,8 +155,8 @@ export const blogPosts = [
     },
     {
         id: 5,
-        title: 'Compliance and Safety in Automated Kitchens',
-        excerpt: 'Ensuring food safety standards and regulatory compliance when implementing robotic food preparation systems.',
+        title: 'Food Safety by Design: Automating Compliance',
+        excerpt: 'Deterministic steps, temperature logs, and allergen protocols built into the workflow. Turn compliance from a burden into a byproduct.',
         date: 'December 16, 2025',
         category: 'Compliance',
         readTime: '7 min read',
@@ -169,7 +169,7 @@ export const blogPosts = [
             { type: 'paragraph', text: 'Leading manufacturers are using food-grade stainless steel and IP69K-rated enclosures to ensure their systems can be sanitized as easily as a prep table.' },
             { type: 'heading', text: 'The Digital Paper Trail' },
             { type: 'paragraph', text: 'One of the biggest headaches in food safety is documentation. HACCP logs for temperature and holding times are often manually recorded, prone to error and falsification.' },
-            { type: 'paragraph', text: 'Automated systems automate compliance. Sensors continuously monitor critical control points—fridge temperatures, internal cooking temperatures, cooling times—and log them to an immutable digital ledger.' },
+            { type: 'paragraph', text: 'Automated systems automate compliance. Sensors continuously monitor critical control points: fridge temperatures, internal cooking temperatures, cooling times, and log them to an immutable digital ledger.' },
             { type: 'paragraph', text: 'This provides a verifiable audit trail. If a health inspector asks for temperature logs from last Tuesday, the system can generate a report instantly. This level of transparency protects the brand and ensures public safety.' },
             { type: 'heading', text: 'Cross-Contamination Control' },
             { type: 'paragraph', text: 'Robotic systems can be programmed with strict protocols to prevent cross-contamination, a major risk for allergen management.' },
@@ -181,8 +181,8 @@ export const blogPosts = [
     },
     {
         id: 6,
-        title: 'ROI Analysis: Investing in Kitchen Automation',
-        excerpt: 'Breaking down the costs, savings, and long-term benefits of implementing automated food preparation systems.',
+        title: 'The ROI of Kitchen Automation: What Actually Moves the P&L',
+        excerpt: 'Labor reallocation, higher yield, and peak-hour capacity: how the economics stack up and what payback windows operators actually see.',
         date: 'December 11, 2025',
         category: 'Business',
         readTime: '6 min read',
@@ -194,7 +194,7 @@ export const blogPosts = [
             { type: 'paragraph', text: 'However, the goal is often labor reallocation rather than replacement. By automating low-value tasks, operators can run a shift with fewer people, or redirect staff to higher-value customer service roles that drive revenue.' },
             { type: 'heading', text: 'Food Waste and Yield' },
             { type: 'paragraph', text: 'Often overlooked in ROI calculations is food cost. As discussed in previous articles, precise portioning and waste reduction can improve gross margins by 2 to 3 percent. In the low-margin restaurant business, this is massive.' },
-            { type: 'paragraph', text: 'Improving yield—getting more sellable product out of raw ingredients—is a hidden value driver. A robotic cutter that optimizes cuts to minimize scraps creates value with every slice.' },
+            { type: 'paragraph', text: 'Improving yield (getting more sellable product out of raw ingredients) is a hidden value driver. A robotic cutter that optimizes cuts to minimize scraps creates value with every slice.' },
             { type: 'heading', text: 'Throughput and Capacity' },
             { type: 'paragraph', text: 'The biggest ROI driver is often top-line growth. Manual kitchens have a hard speed limit. During peak hours, ticket times increase, customers leave, and delivery apps throttle orders.' },
             { type: 'paragraph', text: 'Automated systems can surge capacity without degrading quality. They enable a kitchen to handle 20 percent more orders during the lunch rush. This incremental revenue flows almost entirely to the bottom line, as fixed costs are already covered.' },
@@ -254,41 +254,41 @@ export const faqs = [
     {
         id: 1,
         question: 'What types of kitchens can MrFood automate?',
-        answer: 'MrFood robotic arms are designed to work with virtually any kitchen infrastructure. Since we deploy modular robotic arms that adapt to your existing setup, our system is compatible with cloud kitchens, traditional restaurants, food production facilities, and any commercial kitchen environment. The arms adjust to your current layout, equipment, and workflow, making our solution flexible across different kitchen types and sizes.'
+        answer: 'Our modular robotic arms fit most commercial kitchens, including cloud, QSR, and production facilities. We adapt to your layout, equipment, and workflow rather than forcing a redesign.'
     },
     {
         id: 2,
         question: 'How long does it take to deploy the automation system?',
-        answer: 'Deployment timelines are significantly shorter than traditional automation solutions. Because our robotic arms integrate with your existing infrastructure with minimal modifications required, most deployments are completed efficiently. The exact timeline depends on your specific kitchen setup and requirements, but our streamlined installation process minimizes disruption to your operations.'
+        answer: 'Most sites go live in weeks, not months. We scope on-site, configure to your workflow, and install with minimal downtime.'
     },
     {
         id: 3,
         question: 'What is the ROI for kitchen automation?',
-        answer: 'Our customers typically see a return on investment within approximately 15 days. Labor costs can be reduced to half, one-third, or even one-fourth of your current expenses, depending on your operational scale and automation level. This rapid ROI comes from replacing variable labor costs—including wages, benefits, training, and turnover—with a consistent, reliable system that operates 24/7 without breaks, overtime, or scheduling challenges.'
+        answer: 'Operators typically see value through labor reallocation, yield improvements, and peak-hour capacity. Payback depends on volume and menu mix; we model this with your data before deployment.'
     },
     {
         id: 4,
         question: 'Does the system require extensive kitchen modifications?',
-        answer: 'No. Our system requires minimal to no kitchen modifications. The robotic arms are designed to adapt to your existing infrastructure, working with your current layout, equipment, and workflow. This eliminates the need for costly renovations, major retrofitting, or significant downtime during installation. We work with what you already have.'
+        answer: 'Usually no. The system mounts to existing stations and equipment. Any changes are minimal and planned during scoping.'
     },
     {
         id: 5,
         question: 'How does the system handle food safety and compliance?',
-        answer: 'Food safety and compliance are built into our system from the ground up. During the initial setup, we train our models based on your specific food safety protocols, compliance requirements, and preparation standards. The system then consistently follows these protocols for every preparation, ensuring uniform compliance. Our AI models can adapt to different menu items and preparation methods while maintaining strict adherence to your safety and regulatory requirements.'
+        answer: 'Safety is built in: deterministic steps, temperature/time logging, and allergen protocols. We provide exportable logs for audits and align with your HACCP requirements.'
     },
     {
         id: 6,
         question: 'Can the system adapt to different recipes and menu items?',
-        answer: 'Yes. Our system is designed to adapt to different recipes and menu items with minimal training. During the initial setup, we train the models on your specific recipes and preparation methods. Once trained, the system can handle variations and new menu items efficiently. The AI continuously learns and adapts, making it easy to incorporate menu changes or seasonal items without extensive retraining.'
+        answer: 'Yes. We train on your recipes and add new ones quickly. Once a flow is validated, it runs consistently across shifts and sites.'
     },
     {
         id: 7,
         question: 'What kind of support and maintenance is provided?',
-        answer: 'We provide dedicated on-site support with a team member always available at your location. This ensures immediate response to any issues, continuous system optimization, and proactive maintenance. Additionally, our system seamlessly integrates with your existing kitchen management software through API access. Once connected, we handle the meal preparation workflow, allowing you to focus on your core business operations while we manage the automation.'
+        answer: 'Proactive monitoring, on-site or rapid-response support, and scheduled maintenance. We aim for predictable uptime and fast recovery.'
     },
     {
         id: 8,
         question: 'How does the system integrate with existing kitchen management software?',
-        answer: 'Integration is straightforward and requires only API access to your existing kitchen management software. Once connected, orders flow directly from your management system to our robotic arms, maintaining your current workflow and processes. This seamless integration means no disruption to your existing operations—your team continues using the same software they are familiar with, while our system handles the physical meal preparation automatically.'
+        answer: 'Orders flow via API into the automation workflow. We keep your FOH and KDS tools unchanged and handle physical prep end-to-end.'
     }
 ];

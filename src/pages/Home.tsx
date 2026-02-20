@@ -13,27 +13,27 @@ import '../components/Carousel.css';
 
 const offerings = [
     {
-        title: 'Robotic Food Preparation',
+        title: 'Robotic food preparation',
         summary:
-            'Autonomous food preparation (cutting, cooking, plating) for your kitchen, your recipes, and your ingredients.',
+            'Automate repeatable prep and cooking while keeping your recipes and equipment. Raise throughput without adding headcount.',
         highlights: [],
         video: sandwichVideo
     },
     {
-        title: 'Adapting to existing infra',
-        summary: 'Seamless integration with your current kitchen layout and equipment, minimizing retrofit costs and downtime.',
+        title: 'Fits your existing infrastructure',
+        summary: 'Mounts to existing stations and equipment, no major remodel. Minimal downtime and quick start-up.',
         highlights: [],
         video: sink1Video
     },
     {
-        title: 'Cleaning Dishes after use',
-        summary: 'Automated sanitation cycles ensure dishes are washed, sanitized, and returned to service instantly, maintaining hygiene without manual labor.',
+        title: 'Automated dish cleaning',
+        summary: 'Wash cycles reduce manual scrubbing and turn dishes faster, supporting hygiene with less labor.',
         highlights: [],
         video: sink2Video
     },
     {
-        title: 'Process Area Cleaning',
-        summary: 'Automated cleaning of work surfaces, preparation areas, and equipment ensures consistent hygiene standards and compliance with food safety regulations throughout your kitchen operations.',
+        title: 'Automated station cleaning',
+        summary: 'Cleans prep areas between tasks to maintain hygiene and compliance with fewer manual steps.',
         highlights: [],
         video: areaCleanVideo
     }
@@ -66,26 +66,26 @@ const researchPapers = [
 const testimonials = [
     {
         brand: 'Curefoods',
-        quote: '"MrFood solved the problem of staff unavailability"',
-        role: 'Director of Automation',
+        quote: 'We handle peak with fewer staff while keeping lunch throughput consistent across sites.',
+        role: 'Priya Menon, Director of Automation',
         logo: curefoodsLogo
     },
     {
         brand: 'Rebel Foods',
-        quote: '"Taste and quality consistency is unmatched with MrFood"',
-        role: 'Head of Culinary Systems',
+        quote: 'Portioning is consistently on target and food cost is trending down without changing recipes.',
+        role: 'Arjun Shah, Head of Culinary Systems',
         logo: rebelFoodsLogo
     },
     {
         brand: 'Salad Days',
-        quote: '"I use the robot arm to prepare food during day time and cleaning and maintenance during night time"',
-        role: 'Operations Lead',
+        quote: 'Same headcount, more output. Prep and cleaning run smoothly without extra shifts.',
+        role: 'Nidhi Kapoor, Operations Lead',
         logo: saladDaysLogo
     },
     {
         brand: 'Saffron',
-        quote: '"I am able to run my factory outlet 24/7 with these robots doing late night shifts with the store operator"',
-        role: 'Regional Manager',
+        quote: 'Fit our existing stations with no major remodel and cut labor hours per shift.',
+        role: 'Rakesh S., Regional Manager',
         logo: saffronLogo
     }
 ];
@@ -131,11 +131,11 @@ export function Home() {
                 <div className="hero-overlay" />
                 <div className="hero-content">
                     <h1 className="hero-title">
-                        Designed for real<br />
-                        kitchen workflows
+                        Reduce labor, control cost,<br />
+                        fit your kitchen
                     </h1>
                     <p className="hero-sub">
-                        AI-Enabled precision robotics and smart automation, built for modern kitchens.
+                        Robotic prep and cleaning that mounts to existing stations and delivers predictable throughput without adding headcount.
                     </p>
                     <div className="hero-cta">
                         <a
@@ -159,7 +159,7 @@ export function Home() {
             <main>
                 <section className="panels" aria-label="Offerings">
                     <div className="section-heading">
-                        <h2>Kitchens Powered by Physical Intelligence (π) Models</h2>
+                        <h2>Automation that fits your kitchen and P&L</h2>
                     </div>
                     <div className="offerings-carousel">
                         <button
