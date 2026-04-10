@@ -1,6 +1,5 @@
 import { ArrowRight } from 'lucide-react';
 import { useRef, useCallback } from 'react';
-import sink2Video from '../assets/sink-2.mp4';
 import platformVideo from '../assets/platform.mp4';
 import dishwasherVideo from '../assets/dishwasher.mp4';
 import refrigeratorVideo from '../assets/refrigerator.mp4';
