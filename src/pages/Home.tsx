@@ -77,7 +77,7 @@ export function Home() {
                 <div className="hero-content">
                     <h1 className="hero-title">
                         Reduce labor, control cost,<br />
-                        fit your kitchen
+                        fits your kitchen
                     </h1>
                     <p className="hero-sub">
                         Robotic prep and cleaning that mounts to existing stations and delivers predictable throughput without adding headcount.
