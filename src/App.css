@@ -999,15 +999,6 @@ main section {
   text-align: left;
 }
 
-.cta-eyebrow {
-  display: inline-block;
-  font-size: 0.72rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 14px;
-}
-
 .cta-title {
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-weight: 600;

@@ -11,10 +11,6 @@ export function Footer() {
                 <div className="footer-top">
                     <div className="footer-brand-col">
                         <div className="footer-brand">Mr. Food</div>
-                        <p className="footer-tagline">
-                            Robotic prep and cleaning that mounts to existing stations and
-                            delivers predictable throughput without adding headcount.
-                        </p>
                         <a
                             className="footer-cta"
                             href={CALENDLY_URL}
@@ -61,16 +57,6 @@ export function Footer() {
                             <div className="footer-links">
                                 <Link to="/">Home</Link>
                                 <Link to="/blog">Blog</Link>
-                            </div>
-                        </div>
-                        <div className="footer-block">
-                            <span className="footer-label">Get started</span>
-                            <div className="footer-links">
-                                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                                    Request Demo
-                                </a>
-                                <Link to="/#contact">Book a demo</Link>
-                                <a href="mailto:help@mrfood.ai">Contact sales</a>
                             </div>
                         </div>
                         <div className="footer-block">

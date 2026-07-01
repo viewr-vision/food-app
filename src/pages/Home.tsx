@@ -9,12 +9,11 @@ const MEDIA_URL =
 const media = (file: string) => `${MEDIA_URL}/${file}`;
 
 const offerings = [
-    {
+     {
         category: 'Cleaning',
-        title: 'Unloading dish racks',
-        summary:
-            'The robot uses its arms to unload dish racks piece by piece, clearing the washer and resetting the station without extra hands.',
-        video: media('one.mp4')
+        title: 'Loading the dishwasher',
+        summary: 'Sorts and loads items back into dish racks, keeping the wash cycle flowing and racks ready for the next load.',
+        video: media('three.mp4')
     },
       {
         category: 'Dexterity',
@@ -22,11 +21,12 @@ const offerings = [
         summary: 'Grips and places tableware of every shape, from spoons and forks to bowls, with the precision to handle varied items reliably.',
         video: media('two.mp4')
     },
-    {
+      {
         category: 'Cleaning',
-        title: 'Loading the dishwasher',
-        summary: 'Sorts and loads items back into dish racks, keeping the wash cycle flowing and racks ready for the next load.',
-        video: media('three.mp4')
+        title: 'Unloading dish racks',
+        summary:
+            'The robot uses its arms to unload dish racks piece by piece, clearing the washer and resetting the station without extra hands.',
+        video: media('one.mp4')
     },
     {
         category: 'Service',
@@ -34,12 +34,12 @@ const offerings = [
         summary: 'Picks finished items and hands them directly to kitchen staff, keeping the pass moving during a busy service.',
         video: media('dishwasher.mp4')
     },
-    {
-        category: 'Cold storage',
-        title: 'Refrigerator handling',
-        summary: 'Reaches into cold storage to retrieve and place items, bringing chilled ingredients into the prep workflow.',
-        video: media('fridge.mp4')
-    },
+    // {
+    //     category: 'Cold storage',
+    //     title: 'Refrigerator handling',
+    //     summary: 'Reaches into cold storage to retrieve and place items, bringing chilled ingredients into the prep workflow.',
+    //     video: media('fridge.mp4')
+    // },
 ];
 
 export function Home() {
@@ -96,15 +96,15 @@ export function Home() {
             <main>
                 <section className="panels" aria-label="Offerings">
                     <div className="section-heading">
-                        <span className="eyebrow">What it does</span>
+                        {/* <span className="eyebrow">What it does</span> */}
                         <h2>
-                            Built to fit your kitchen<br />
-                            and your <span className="accent-word">P&amp;L</span>
+                            See our robots in action.<br />
+                 {/* <span className="accent-word">P&amp;L</span> */}
                         </h2>
-                        <p className="section-copy">
+                        {/* <p className="section-copy">
                             A closer look at the tasks our robots handle day to day. Pick one to
                             watch it in action.
-                        </p>
+                        </p> */}
                     </div>
 
                     <div className="showcase">
@@ -175,7 +175,6 @@ export function Home() {
                 <section className="cta" id="contact" aria-label="Request a demo">
                     <div className="cta-card">
                         <div className="cta-text">
-                            <span className="cta-eyebrow">Get started</span>
                             <h2 className="cta-title">
                                 Book a free <span className="accent-text">demo</span>
                             </h2>
