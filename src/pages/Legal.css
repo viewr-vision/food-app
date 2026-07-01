@@ -44,3 +44,14 @@
   margin-bottom: 32px;
   display: block;
 }
+
+.legal-content a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--ease);
+}
+
+.legal-content a:hover {
+  color: var(--accent-strong);
+  text-decoration: underline;
+}

@@ -72,7 +72,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--white);
+  background: var(--accent);
 }
 
 .navbar-button {
@@ -80,20 +80,19 @@
   align-items: center;
   justify-content: center;
   padding: 8px 18px;
-  border-radius: 999px;
-  background: var(--white);
-  color: var(--black);
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: var(--accent-contrast);
   font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .navbar-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  background: var(--accent-strong);
 }
 
 @media (max-width: 1024px) {

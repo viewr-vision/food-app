@@ -52,7 +52,7 @@
 }
 
 .blog-post-back:hover {
-  color: var(--white);
+  color: var(--accent);
 }
 
 .back-icon {
@@ -73,11 +73,11 @@
   font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--white);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  color: var(--accent);
+  background: var(--accent-soft);
   padding: 6px 12px;
   border-radius: 6px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(217, 154, 78, 0.25);
   margin-bottom: 24px;
 }
 
