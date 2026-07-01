@@ -5,8 +5,6 @@ import './Footer.css';
 const CALENDLY_URL = 'https://calendly.com/deepanshu-mrfood/30min';
 
 export function Footer() {
-    const year = new Date().getFullYear();
-
     return (
         <footer className="site-footer">
             <div className="footer-inner">
@@ -63,7 +61,6 @@ export function Footer() {
                             <div className="footer-links">
                                 <Link to="/">Home</Link>
                                 <Link to="/blog">Blog</Link>
-                                <Link to="/faq">FAQ</Link>
                             </div>
                         </div>
                         <div className="footer-block">
@@ -110,15 +107,6 @@ export function Footer() {
                             </div>
                         </div>
                     </nav>
-                </div>
-
-                <div className="footer-bottom">
-                    <p className="footer-copy">© {year} Mr. Food, Inc. All rights reserved.</p>
-                    <div className="footer-backed">
-                        <span className="footer-backed-dot" aria-hidden="true" />
-                        <span className="footer-backed-text">Backed by</span>
-                        <span className="footer-backed-name">Entrepreneurs First</span>
-                    </div>
                 </div>
             </div>
         </footer>

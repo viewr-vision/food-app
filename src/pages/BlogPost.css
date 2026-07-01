@@ -93,6 +93,7 @@
 .blog-post-meta {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 12px;
   font-size: 0.9rem;
   color: var(--muted);
@@ -100,6 +101,11 @@
 
 .blog-post-separator {
   color: var(--muted);
+}
+
+.blog-post-author {
+  color: var(--white);
+  font-weight: 600;
 }
 
 .blog-post-content {

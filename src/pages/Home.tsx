@@ -1,5 +1,5 @@
-import { ArrowRight, Check, Play } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { ArrowRight, Play } from 'lucide-react';
+import { useState, useRef } from 'react';
 import '../App.css';
 
 // Videos are served from a CDN/bucket (set VITE_MEDIA_URL), not bundled into the
@@ -16,61 +16,63 @@ const offerings = [
             'The robot uses its arms to unload dish racks piece by piece, clearing the washer and resetting the station without extra hands.',
         video: media('one.mp4')
     },
-    {
-        category: 'Service',
-        title: 'Handing over items',
-        summary: 'Picks finished items and hands them directly to kitchen staff, keeping the pass moving during a busy service.',
-        video: media('dishwasher.mp4')
-    },
-    {
+      {
         category: 'Dexterity',
         title: 'Dexterous manipulation',
         summary: 'Grips and places tableware of every shape, from spoons and forks to bowls, with the precision to handle varied items reliably.',
         video: media('two.mp4')
     },
     {
+        category: 'Cleaning',
+        title: 'Loading the dishwasher',
+        summary: 'Sorts and loads items back into dish racks, keeping the wash cycle flowing and racks ready for the next load.',
+        video: media('three.mp4')
+    },
+    {
+        category: 'Service',
+        title: 'Item Handover',
+        summary: 'Picks finished items and hands them directly to kitchen staff, keeping the pass moving during a busy service.',
+        video: media('dishwasher.mp4')
+    },
+    {
         category: 'Cold storage',
         title: 'Refrigerator handling',
         summary: 'Reaches into cold storage to retrieve and place items, bringing chilled ingredients into the prep workflow.',
-        video: media('coke.mp4')
+        video: media('fridge.mp4')
     },
-    {
-        category: 'Cleaning',
-        title: 'Reracking',
-        summary: 'Sorts and loads items back into dish racks, keeping the wash cycle flowing and racks ready for the next load.',
-        video: media('three.mp4')
-    }
 ];
-
-const DWELL_MS = 6000;
 
 export function Home() {
     const [active, setActive] = useState(0);
-    const [paused, setPaused] = useState(false);
+    const [progress, setProgress] = useState(0);
+    const videoRef = useRef<HTMLVideoElement>(null);
 
-    // Auto-advance through the offerings; pause while the user is interacting.
-    useEffect(() => {
-        if (paused) return;
-        const id = window.setTimeout(() => {
-            setActive((current) => (current + 1) % offerings.length);
-        }, DWELL_MS);
-        return () => window.clearTimeout(id);
-    }, [active, paused]);
+    const goTo = (index: number) => {
+        setActive(index);
+        setProgress(0);
+    };
+
+    // The progress line is driven by the actual clip playback, so it matches the
+    // video length and keeps moving on hover. Advance when the clip finishes.
+    const handleTimeUpdate = () => {
+        const v = videoRef.current;
+        if (!v || !v.duration) return;
+        setProgress((v.currentTime / v.duration) * 100);
+    };
+
+    const handleEnded = () => goTo((active + 1) % offerings.length);
 
     return (
         <div className="page">
             <header className="hero">
                 <video className="hero-media" autoPlay loop muted playsInline preload="auto">
-                    <source src={media('dishwasher.mp4')} type="video/mp4" />
+                    <source src={media('hero.mp4')} type="video/mp4" />
                 </video>
                 <div className="hero-overlay" />
                 <div className="hero-content">
-                    <h1 className="hero-title">
-                        Reduce labor, control cost,<br />
-                        fits your kitchen
-                    </h1>
+                    <h1 className="hero-title">Kitchens were built for hands</h1>
                     <p className="hero-sub">
-                        Robotic prep and cleaning that mounts to existing stations and delivers predictable throughput without adding headcount.
+                        Get the ones that don't quit.
                     </p>
                     <div className="hero-cta">
                         <a
@@ -105,11 +107,7 @@ export function Home() {
                         </p>
                     </div>
 
-                    <div
-                        className={`showcase ${paused ? 'is-paused' : ''}`}
-                        onMouseEnter={() => setPaused(true)}
-                        onMouseLeave={() => setPaused(false)}
-                    >
+                    <div className="showcase">
                         <div className="showcase-list" role="tablist" aria-label="Capabilities">
                             {offerings.map((offering, index) => (
                                 <button
@@ -118,7 +116,7 @@ export function Home() {
                                     role="tab"
                                     aria-selected={index === active}
                                     className={`showcase-item ${index === active ? 'is-active' : ''}`}
-                                    onClick={() => setActive(index)}
+                                    onClick={() => goTo(index)}
                                 >
                                     <span className="showcase-index">
                                         {String(index + 1).padStart(2, '0')}
@@ -126,44 +124,49 @@ export function Home() {
                                     <span className="showcase-item-body">
                                         <span className="showcase-item-tag">{offering.category}</span>
                                         <span className="showcase-item-title">{offering.title}</span>
-                                        <span className="showcase-item-summary">{offering.summary}</span>
-                                        <span className="showcase-progress" aria-hidden="true">
-                                            <span className="showcase-progress-bar" />
-                                        </span>
                                     </span>
                                 </button>
                             ))}
                         </div>
 
                         <div className="showcase-stage">
-                            <video
-                                key={active}
-                                className="showcase-video"
-                                src={offerings[active].video}
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                preload="auto"
-                            />
-                            <div className="showcase-stage-scrim" aria-hidden="true" />
-                            <div className="showcase-stage-caption">
+                            <div className="showcase-frame">
+                                <video
+                                    key={active}
+                                    ref={videoRef}
+                                    className="showcase-video"
+                                    src={offerings[active].video}
+                                    autoPlay
+                                    muted
+                                    playsInline
+                                    preload="auto"
+                                    onTimeUpdate={handleTimeUpdate}
+                                    onEnded={handleEnded}
+                                />
+                                <div className="showcase-dots">
+                                    {offerings.map((_, index) => (
+                                        <button
+                                            key={index}
+                                            type="button"
+                                            className={`showcase-dot ${index === active ? 'is-active' : ''}`}
+                                            onClick={() => goTo(index)}
+                                            aria-label={`Show ${offerings[index].title}`}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="showcase-progress" aria-hidden="true">
+                                <span
+                                    className="showcase-progress-bar"
+                                    style={{ transform: `scaleX(${progress / 100})` }}
+                                />
+                            </div>
+                            <div className="showcase-caption">
                                 <span className="showcase-stage-tag">
                                     <Play className="showcase-stage-tag-icon" aria-hidden="true" />
                                     {offerings[active].category}
                                 </span>
                                 <h3>{offerings[active].title}</h3>
-                            </div>
-                            <div className="showcase-dots" aria-hidden="true">
-                                {offerings.map((_, index) => (
-                                    <button
-                                        key={index}
-                                        type="button"
-                                        className={`showcase-dot ${index === active ? 'is-active' : ''}`}
-                                        onClick={() => setActive(index)}
-                                        aria-label={`Show ${offerings[index].title}`}
-                                    />
-                                ))}
                             </div>
                         </div>
                     </div>
@@ -178,22 +181,8 @@ export function Home() {
                             </h2>
                             <p className="cta-copy">
                                 We deploy our robots in your environment so you can see the
-                                results for yourself, at no cost and with no commitment.
+                                results for yourself.
                             </p>
-                            <ul className="cta-features">
-                                <li>
-                                    <Check aria-hidden="true" />
-                                    Deployed in your own kitchen
-                                </li>
-                                <li>
-                                    <Check aria-hidden="true" />
-                                    Real throughput, measured on site
-                                </li>
-                                <li>
-                                    <Check aria-hidden="true" />
-                                    No upfront cost or commitment
-                                </li>
-                            </ul>
                         </div>
                         <div className="cta-aside">
                             <a
@@ -208,9 +197,6 @@ export function Home() {
                             <a className="cta-button cta-button--ghost" href="mailto:help@mrfood.ai">
                                 Talk to sales
                             </a>
-                            <p className="cta-note">
-                                Typically a 30-minute call. We reply within one business day.
-                            </p>
                         </div>
                     </div>
                 </section>

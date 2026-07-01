@@ -292,3 +292,8 @@ export const faqs = [
         answer: 'Orders flow via API into the automation workflow. We keep your FOH and KDS tools unchanged and handle physical prep end-to-end.'
     }
 ];
+
+// Blog authors, allotted to each post by id (see authorForPost).
+export const blogAuthors = ['Yash Goyal', 'Pranay Gupta', 'Deepanshu Rohilla'];
+
+export const authorForPost = (id: number) => blogAuthors[id % blogAuthors.length];

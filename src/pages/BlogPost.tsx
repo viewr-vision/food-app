@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import { blogPosts } from '../data';
+import { blogPosts, authorForPost } from '../data';
 import '../App.css';
 import './BlogPost.css';
 
@@ -35,6 +35,10 @@ export function BlogPost() {
                             <span className="blog-post-category">{post.category}</span>
                             <h1 className="blog-post-title">{post.title}</h1>
                             <div className="blog-post-meta">
+                                <span className="blog-post-author">
+                                    Written by {authorForPost(post.id)}
+                                </span>
+                                <span className="blog-post-separator">•</span>
                                 <span className="blog-post-date">{post.date}</span>
                                 <span className="blog-post-separator">•</span>
                                 <span className="blog-post-read-time">{post.readTime}</span>
