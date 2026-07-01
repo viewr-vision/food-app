@@ -5,18 +5,12 @@ import './Footer.css';
 const CALENDLY_URL = 'https://calendly.com/deepanshu-mrfood/30min';
 
 export function Footer() {
-    const year = new Date().getFullYear();
-
     return (
         <footer className="site-footer">
             <div className="footer-inner">
                 <div className="footer-top">
                     <div className="footer-brand-col">
                         <div className="footer-brand">Mr. Food</div>
-                        <p className="footer-tagline">
-                            Robotic prep and cleaning that mounts to existing stations and
-                            delivers predictable throughput without adding headcount.
-                        </p>
                         <a
                             className="footer-cta"
                             href={CALENDLY_URL}
@@ -63,17 +57,6 @@ export function Footer() {
                             <div className="footer-links">
                                 <Link to="/">Home</Link>
                                 <Link to="/blog">Blog</Link>
-                                <Link to="/faq">FAQ</Link>
-                            </div>
-                        </div>
-                        <div className="footer-block">
-                            <span className="footer-label">Get started</span>
-                            <div className="footer-links">
-                                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-                                    Request Demo
-                                </a>
-                                <Link to="/#contact">Book a demo</Link>
-                                <a href="mailto:help@mrfood.ai">Contact sales</a>
                             </div>
                         </div>
                         <div className="footer-block">
@@ -110,15 +93,6 @@ export function Footer() {
                             </div>
                         </div>
                     </nav>
-                </div>
-
-                <div className="footer-bottom">
-                    <p className="footer-copy">© {year} Mr. Food, Inc. All rights reserved.</p>
-                    <div className="footer-backed">
-                        <span className="footer-backed-dot" aria-hidden="true" />
-                        <span className="footer-backed-text">Backed by</span>
-                        <span className="footer-backed-name">Entrepreneurs First</span>
-                    </div>
                 </div>
             </div>
         </footer>

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { blogPosts } from '../data';
+import { blogPosts, authorForPost } from '../data';
 import '../App.css';
 
 export function Blog() {
@@ -24,7 +24,11 @@ export function Blog() {
                                         <p className="blog-excerpt">{post.excerpt}</p>
                                     </div>
                                     <div className="blog-item-footer">
-                                        <span className="blog-read-time">{post.readTime}</span>
+                                        <span className="blog-byline">
+                                            Written by <span className="blog-author">{authorForPost(post.id)}</span>
+                                            <span className="blog-dot">•</span>
+                                            {post.readTime}
+                                        </span>
                                         <ArrowRight className="blog-arrow" aria-hidden="true" />
                                     </div>
                                 </article>

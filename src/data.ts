@@ -3,7 +3,7 @@ export const blogPosts = [
         id: 0,
         title: 'Throughput and Reliability: What Makes Robotics Scale',
         excerpt: 'Benchmarks don’t win production. Consistent units per hour and predictable uptime do. Here’s how to design for throughput and reliability that operators trust.',
-        date: 'January 7, 2026',
+        date: 'June 18, 2026',
         category: 'Engineering',
         readTime: '6 min read',
         content: [
@@ -55,7 +55,7 @@ export const blogPosts = [
         id: 1,
         title: 'Inside the Automated Kitchen: From Gimmicks to Real Ops',
         excerpt: 'Automation that ships focuses on orchestration, not party tricks. What modern AI-driven kitchens actually automate, and why it matters for margins.',
-        date: 'January 3, 2026',
+        date: 'May 29, 2026',
         category: 'Technology',
         readTime: '5 min read',
         content: [
@@ -83,7 +83,7 @@ export const blogPosts = [
         id: 2,
         title: 'Cut Waste, Raise Yield: Automation That Pays for Itself',
         excerpt: 'Precision portioning and consistent execution reduce over-portioning and scraps. Practical ways automation improves food cost by a few points.',
-        date: 'December 30, 2025',
+        date: 'May 12, 2026',
         category: 'Sustainability',
         readTime: '4 min read',
         content: [
@@ -108,7 +108,7 @@ export const blogPosts = [
         id: 3,
         title: 'Scaling Cloud Kitchens with Predictable Throughput',
         excerpt: 'Volume spikes break manual lines. Automation evens the curve: standard cycle times, faster turns, and consistent ticket times across sites.',
-        date: 'December 26, 2025',
+        date: 'April 24, 2026',
         category: 'Operations',
         readTime: '6 min read',
         content: [
@@ -134,7 +134,7 @@ export const blogPosts = [
         id: 4,
         title: 'Human-in-the-Loop: Where People Add the Most Value',
         excerpt: 'Use automation for repeatable execution and people for edge cases, QA, and customer experience. A pragmatic split that raises both quality and output.',
-        date: 'December 20, 2025',
+        date: 'April 3, 2026',
         category: 'Best Practices',
         readTime: '5 min read',
         content: [
@@ -157,7 +157,7 @@ export const blogPosts = [
         id: 5,
         title: 'Food Safety by Design: Automating Compliance',
         excerpt: 'Deterministic steps, temperature logs, and allergen protocols built into the workflow. Turn compliance from a burden into a byproduct.',
-        date: 'December 16, 2025',
+        date: 'March 15, 2026',
         category: 'Compliance',
         readTime: '7 min read',
         content: [
@@ -183,7 +183,7 @@ export const blogPosts = [
         id: 6,
         title: 'The ROI of Kitchen Automation: What Actually Moves the P&L',
         excerpt: 'Labor reallocation, higher yield, and peak-hour capacity: how the economics stack up and what payback windows operators actually see.',
-        date: 'December 11, 2025',
+        date: 'February 20, 2026',
         category: 'Business',
         readTime: '6 min read',
         content: [
@@ -292,3 +292,8 @@ export const faqs = [
         answer: 'Orders flow via API into the automation workflow. We keep your FOH and KDS tools unchanged and handle physical prep end-to-end.'
     }
 ];
+
+// Blog authors, allotted to each post by id (see authorForPost).
+export const blogAuthors = ['Yash Goyal', 'Pranay Gupta', 'Deepanshu Rohilla'];
+
+export const authorForPost = (id: number) => blogAuthors[id % blogAuthors.length];

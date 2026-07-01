@@ -13,9 +13,6 @@ export function Navbar() {
                 <Link to="/blog" className={`navbar-link ${location.pathname === '/blog' ? 'active' : ''}`}>
                     Blogs
                 </Link>
-                <Link to="/faq" className={`navbar-link ${location.pathname === '/faq' ? 'active' : ''}`}>
-                    FAQ
-                </Link>
                 <a
                     className="navbar-button"
                     href="https://calendly.com/deepanshu-mrfood/30min"
