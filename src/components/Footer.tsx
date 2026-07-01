@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import './Footer.css';
-
-const CALENDLY_URL = 'https://calendly.com/deepanshu-mrfood/30min';
 
 export function Footer() {
     return (
@@ -11,15 +9,6 @@ export function Footer() {
                 <div className="footer-top">
                     <div className="footer-brand-col">
                         <div className="footer-brand">Mr. Food</div>
-                        <a
-                            className="footer-cta"
-                            href={CALENDLY_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Book a free demo
-                            <ArrowUpRight className="footer-cta-icon" aria-hidden="true" />
-                        </a>
                         <div className="footer-socials" aria-label="Social links">
                             <a
                                 href="https://www.linkedin.com/company/mrfood-ai/posts/?feedView=all"
