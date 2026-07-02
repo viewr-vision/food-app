@@ -73,7 +73,7 @@ export function Footer() {
                                 </a>
                                 <a href="tel:+12518108030" className="footer-contact-item">
                                     <Phone aria-hidden="true" />
-                                    <span>+1 (251) 810-8030</span>
+                                    <span>+1 (415) 416‑8790</span>
                                 </a>
                                 <a href="mailto:help@mrfood.ai" className="footer-contact-item">
                                     <Mail aria-hidden="true" />
