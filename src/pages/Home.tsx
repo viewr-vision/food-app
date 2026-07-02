@@ -66,7 +66,7 @@ export function Home() {
         <div className="page">
             <header className="hero">
                 <video className="hero-media" autoPlay loop muted playsInline preload="auto">
-                    <source src={media('hero.mp4')} type="video/mp4" />
+                    <source src={media('one.mp4')} type="video/mp4" />
                 </video>
                 <div className="hero-overlay" />
                 <div className="hero-content">
