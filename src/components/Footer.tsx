@@ -59,21 +59,21 @@ export function Footer() {
                             <span className="footer-label">Contact</span>
                             <div className="footer-contact">
                                 <a
-                                    href="https://maps.app.goo.gl/hMK6E7spHsCqUzpA9"
+                                    href="https://www.google.com/maps/search/?api=1&query=Urban+Vault+65%2C+11th+Main+Road%2C+Bengaluru%2C+Karnataka+560102"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="footer-contact-item"
                                 >
                                     <MapPin aria-hidden="true" />
                                     <span>
-                                        Floors 1&amp;2, 501 Folsom St
+                                        11th Main Road, 4th Floor, Urban Vault 65
                                         <br />
-                                        San Francisco, CA 94105
+                                        Bengaluru, Karnataka 560102, India
                                     </span>
                                 </a>
-                                <a href="tel:+12518108030" className="footer-contact-item">
+                                <a href="tel:+919013651651" className="footer-contact-item">
                                     <Phone aria-hidden="true" />
-                                    <span>+1 (415) 416‑8790</span>
+                                    <span>+91 90136 51651</span>
                                 </a>
                                 <a href="mailto:help@mrfood.ai" className="footer-contact-item">
                                     <Mail aria-hidden="true" />
