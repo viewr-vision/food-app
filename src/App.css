@@ -268,9 +268,10 @@ main section {
 }
 
 .section-heading h2 {
+  font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 600;
-  letter-spacing: -0.03em;
+  font-weight: 400;
+  letter-spacing: -0.02em;
   margin-bottom: 16px;
   text-wrap: balance;
   line-height: 1.12;
@@ -1098,7 +1099,7 @@ main section {
   transform: translateX(6px);
   border-color: var(--border-strong);
   border-left-color: var(--accent);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(22, 19, 13, 0.1);
 }
 
 .blog-item-link:hover .blog-title {
@@ -1236,7 +1237,7 @@ main section {
   transform: translateX(6px);
   border-color: var(--border-strong);
   border-left-color: var(--accent);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(22, 19, 13, 0.1);
 }
 
 .career-item-header {
@@ -1350,7 +1351,7 @@ main section {
 
 .faq-item:hover {
   border-color: rgba(217, 154, 78, 0.35);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(22, 19, 13, 0.1);
 }
 
 .faq-question {
@@ -1368,7 +1369,7 @@ main section {
 }
 
 .faq-question:hover {
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: rgba(22, 19, 13, 0.02);
 }
 
 .faq-question-text {

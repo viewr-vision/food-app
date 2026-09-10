@@ -1,0 +1,511 @@
+/* ===== Home — warm editorial design =====
+   Sections live inside .home-main, which resets the global
+   `main section` chrome (borders, backgrounds) from App.css.
+   Padding is NOT reset here — each section's own class rule sets it
+   (a padding reset at this specificity would override those rules). */
+
+.home-main section {
+  border-top: none;
+  background: transparent;
+}
+
+/* ---- Buttons (shared across hero + CTA) ---- */
+.home-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 17px 36px;
+  border-radius: var(--radius-pill);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+}
+
+.home-button:hover {
+  transform: translateY(-2px);
+}
+
+.home-button--accent {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  box-shadow: 0 12px 30px rgba(217, 154, 78, 0.35);
+}
+
+.home-button--accent:hover {
+  background: var(--accent-strong);
+}
+
+.home-button--ink {
+  background: var(--white);
+  color: var(--black);
+}
+
+.home-button--ink:hover {
+  opacity: 0.88;
+}
+
+.home-button--ghost {
+  border: 1px solid var(--border-strong);
+  color: var(--white);
+}
+
+.home-button--ghost:hover {
+  border-color: var(--white);
+}
+
+.home-button-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ---- Hero ---- */
+.home-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding: 170px 24px 56px;
+  text-align: center;
+}
+
+.home-hero-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 6vw, 5.5rem);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  max-width: 1000px;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.home-hero-title em {
+  font-style: italic;
+  color: var(--accent-deep);
+}
+
+.home-hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.home-hero-backed {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.home-hero-backed span {
+  font-weight: 600;
+  color: var(--white);
+}
+
+/* ---- Hero video frame ---- */
+.home-frame-section {
+  display: flex;
+  justify-content: center;
+  padding: 0 24px;
+}
+
+.home-frame {
+  position: relative;
+  width: min(1120px, 100%);
+  aspect-ratio: 16 / 9;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.home-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.home-frame-chip {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px 10px 14px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 253, 246, 0.92);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.home-frame-chip svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--white);
+  stroke: none;
+}
+
+/* ---- Early adopters ---- */
+.adopters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 100px 24px 0;
+}
+
+.adopters-intro {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--muted);
+}
+
+.adopters-logos {
+  display: flex;
+  align-items: center;
+  gap: clamp(36px, 6vw, 90px);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.adopters-logos img {
+  height: 42px;
+  display: block;
+  filter: brightness(0);
+  opacity: 0.55;
+}
+
+/* Solid-shape marks (e.g. Denny's filled diamond) go flat black under
+   brightness(0); grayscale keeps the wordmark inside readable. */
+.adopters-logos img.adopters-logo--solid {
+  filter: grayscale(1) contrast(1.1);
+  opacity: 0.75;
+}
+
+.adopters-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  opacity: 0.55;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.adopters-wordmark svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* ---- Flowing wave divider ---- */
+.wave-divider {
+  height: 70px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 40px;
+}
+
+.wave-divider-track {
+  position: absolute;
+  left: 0;
+  top: 24px;
+  width: 2880px;
+  animation: wave-drift 14s linear infinite;
+}
+
+@keyframes wave-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-1440px);
+  }
+}
+
+/* ---- Ticker ribbon ---- */
+.ticker {
+  position: relative;
+  height: 170px;
+  overflow: hidden;
+  margin-top: 16px;
+}
+
+.ticker-track {
+  position: absolute;
+  left: -60px;
+  right: -60px;
+  top: 48px;
+  transform: rotate(-2deg);
+  display: flex;
+  background: var(--white);
+  color: var(--black);
+  padding: 18px 0;
+  overflow: hidden;
+}
+
+.ticker-track span {
+  display: block;
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding-right: 40px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.5rem;
+  letter-spacing: 0.01em;
+  animation: ticker-scroll 40s linear infinite;
+}
+
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* ---- Green showcase block ---- */
+.showcase-section {
+  padding: 0 24px;
+}
+
+.showcase-block {
+  background: var(--green);
+  border-radius: 40px;
+  padding: clamp(48px, 6.5vw, 96px) clamp(24px, 7vw, 100px);
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  max-width: 1392px;
+  margin: 0 auto;
+}
+
+.showcase-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.showcase-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--green-muted);
+}
+
+.showcase-heading h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 4.2vw, 3.75rem);
+  line-height: 1.08;
+  color: var(--on-green);
+  margin: 0;
+}
+
+.showcase-heading em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.showcase-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(246, 241, 228, 0.07);
+  border: 1px solid rgba(246, 241, 228, 0.14);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.showcase-card-media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+}
+
+.showcase-card-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.showcase-card-chip {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(246, 241, 228, 0.92);
+  display: grid;
+  place-items: center;
+}
+
+.showcase-card-chip svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--green);
+  stroke: none;
+}
+
+.showcase-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px 28px 26px;
+}
+
+.showcase-card-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.showcase-card-body h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1.15;
+  color: var(--on-green);
+  margin: 0;
+}
+
+/* ---- CTA ---- */
+.home-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 110px 24px 90px;
+  text-align: center;
+}
+
+.home-cta-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 4.4vw, 4rem);
+  line-height: 1.08;
+  margin: 0;
+}
+
+.home-cta-title em {
+  font-style: italic;
+  color: var(--accent-deep);
+}
+
+.home-cta-buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ---- Motion preferences ---- */
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track span,
+  .wave-divider-track {
+    animation: none;
+  }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .showcase-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-hero {
+    padding: 140px 20px 44px;
+    gap: 22px;
+  }
+
+  .home-frame {
+    border-radius: 20px;
+  }
+
+  .home-frame-chip {
+    left: 14px;
+    bottom: 14px;
+    font-size: 0.78rem;
+    padding: 8px 16px 8px 11px;
+  }
+
+  .adopters {
+    padding-top: 68px;
+    gap: 22px;
+  }
+
+  .adopters-intro {
+    font-size: 1.25rem;
+  }
+
+  .adopters-logos img {
+    height: 32px;
+  }
+
+  .adopters-wordmark {
+    font-size: 1.1rem;
+  }
+
+  .ticker {
+    height: 130px;
+  }
+
+  .ticker-track {
+    top: 36px;
+    padding: 13px 0;
+  }
+
+  .ticker-track span {
+    font-size: 1.2rem;
+  }
+
+  .showcase-section {
+    padding: 0 16px;
+  }
+
+  .showcase-block {
+    border-radius: 26px;
+    gap: 40px;
+  }
+
+  .showcase-card-body {
+    padding: 20px 22px 24px;
+  }
+
+  .showcase-card-body h3 {
+    font-size: 1.5rem;
+  }
+
+  .home-cta {
+    padding: 80px 20px 70px;
+  }
+
+  .home-button {
+    padding: 14px 28px;
+    font-size: 0.92rem;
+  }
+}
