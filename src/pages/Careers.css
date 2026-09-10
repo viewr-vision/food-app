@@ -1,0 +1,66 @@
+.careers {
+  padding: clamp(56px, 6vw, 96px) var(--gutter) var(--section-y);
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 64px 96px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.careers__head {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.careers__title {
+  font-size: clamp(56px, 8vw, 112px);
+  line-height: 0.9;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+
+.careers__intro {
+  font-size: clamp(18px, 1.7vw, 24px);
+  line-height: 1.35;
+  color: var(--fg-78);
+  max-width: 640px;
+  text-wrap: pretty;
+}
+
+.careers__bar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-self: start;
+  position: sticky;
+  top: 32px;
+}
+
+.careers__bar-title {
+  font-size: clamp(28px, 2.6vw, 36px);
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.careers__text {
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--fg-72);
+  text-wrap: pretty;
+  max-width: 440px;
+}
+
+@media (max-width: 900px) {
+  .careers {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .careers__bar {
+    position: static;
+  }
+}

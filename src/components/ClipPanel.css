@@ -1,0 +1,120 @@
+.clip {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  --clip-ink: var(--fg-60);
+}
+
+.clip--accent {
+  --clip-ink: var(--accent);
+}
+
+.clip__frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background-color: var(--bg-panel);
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.045) 0,
+    rgba(255, 255, 255, 0.045) 1px,
+    transparent 1px,
+    transparent 14px
+  );
+}
+
+.clip--accent .clip__frame {
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.clip__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.clip__corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: rgba(242, 241, 238, 0.7);
+  border-style: solid;
+  z-index: 2;
+}
+
+.clip__corner--tl { top: 14px; left: 14px; border-width: 1px 0 0 1px; }
+.clip__corner--tr { top: 14px; right: 14px; border-width: 1px 1px 0 0; }
+.clip__corner--bl { bottom: 14px; left: 14px; border-width: 0 0 1px 1px; }
+.clip__corner--br { bottom: 14px; right: 14px; border-width: 0 1px 1px 0; }
+
+.clip__tags {
+  position: absolute;
+  top: 16px;
+  left: 44px;
+  right: 44px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.clip__tag {
+  padding: 6px 10px;
+  background: rgba(10, 10, 11, 0.72);
+  border-radius: 2px;
+  backdrop-filter: blur(6px);
+  color: var(--clip-ink);
+}
+
+.clip:not(.clip--accent) .clip__tag {
+  color: rgba(242, 241, 238, 0.85);
+}
+
+.clip__tag--accent {
+  color: var(--accent);
+  background: rgba(10, 10, 11, 0.85);
+}
+
+.clip__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.clip__track {
+  height: 2px;
+  background: rgba(242, 241, 238, 0.12);
+  position: relative;
+}
+
+.clip__bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 2px;
+  background: var(--clip-ink);
+  transition: width 0.25s linear;
+}
+
+.clip__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--clip-ink);
+}
+
+@media (max-width: 720px) {
+  .clip__corner { width: 14px; height: 14px; }
+  .clip__corner--tl { top: 10px; left: 10px; }
+  .clip__corner--tr { top: 10px; right: 10px; }
+  .clip__corner--bl { bottom: 10px; left: 10px; }
+  .clip__corner--br { bottom: 10px; right: 10px; }
+  .clip__tags { top: 12px; left: 32px; right: 32px; }
+  .clip__tag { padding: 5px 8px; }
+}

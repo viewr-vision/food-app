@@ -1,0 +1,25 @@
+:root {
+  --bg: #0a0a0b;
+  --bg-raised: #141416;
+  --bg-panel: #131315;
+  --fg: #f2f1ee;
+  --fg-78: rgba(242, 241, 238, 0.78);
+  --fg-72: rgba(242, 241, 238, 0.72);
+  --fg-60: rgba(242, 241, 238, 0.6);
+  --fg-55: rgba(242, 241, 238, 0.55);
+  --fg-45: rgba(242, 241, 238, 0.45);
+  --line: rgba(242, 241, 238, 0.08);
+  --line-strong: rgba(242, 241, 238, 0.16);
+  --line-rule: rgba(242, 241, 238, 0.2);
+  --accent: #c8f542;
+  --accent-glow: rgba(200, 245, 66, 0.07);
+  --accent-pulse: rgba(200, 245, 66, 0.6);
+
+  --font-display: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SF Mono', Menlo, monospace;
+
+  --gutter: clamp(20px, 4.4vw, 64px);
+  --section-y: clamp(64px, 8.3vw, 120px);
+  --radius: 4px;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}

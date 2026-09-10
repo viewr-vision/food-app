@@ -1,0 +1,17 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--logo-size) * 0.2);
+  line-height: 1;
+}
+
+.logo svg {
+  display: block;
+}
+
+.logo__word {
+  font-weight: 600;
+  font-size: calc(var(--logo-size) * 0.8);
+  letter-spacing: -0.035em;
+  margin-top: 1px;
+}
