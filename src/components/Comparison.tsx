@@ -9,7 +9,7 @@ export function Comparison() {
         <h2 className="section-title">
           Same robot. Same task.
           <br />
-          Human hands vs. our model.
+          Human controlled vs. our model.
         </h2>
       </div>
       <div className="comparison__grid">
