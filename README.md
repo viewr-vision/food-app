@@ -10,9 +10,7 @@ npm run build    # outputs dist/
 
 ## Deploying
 
-The site is hosted on Vercel from this repo: every push to `main` deploys, and pull requests get preview URLs. `vercel.json` rewrites all paths to `index.html` (so `/careers` loads directly) and sets long cache headers on `/media`. The default build base is `/`, for the root domain.
-
-`.github/workflows/pages.yml` still publishes a copy to GitHub Pages at https://codnay.github.io/novum/ with `VITE_BASE=/novum/`; delete the workflow if that mirror is not wanted.
+The site is hosted on Vercel from this repo at https://argonrobotics.ai: every push to `main` deploys, and pull requests get preview URLs. `vercel.json` rewrites all paths to `index.html` (so `/careers` loads directly) and sets long cache headers on `/media`. The default build base is `/`, for the root domain.
 
 ## Where things live
 
@@ -37,10 +35,10 @@ Clip `t = 0` is one second before the run start, so `completeAt` values in `site
 
 ## "Get notified" form
 
-The button on the paper card opens a modal that collects an email. It POSTs `{ email, source }` as JSON to `VITE_NOTIFY_ENDPOINT` (copy `.env.example` to `.env` and set it; Formspree, Buttondown, a Worker or an Apps Script URL all work). With no endpoint configured it falls back to opening a pre-filled email to hello@novum.build, so no address is lost.
+The button on the paper card opens a modal that collects an email. It POSTs `{ email, source }` as JSON to `VITE_NOTIFY_ENDPOINT` (copy `.env.example` to `.env` and set it; Formspree, Buttondown, a Worker or an Apps Script URL all work). With no endpoint configured it falls back to opening a pre-filled email to hello@argonrobotics.ai, so no address is lost.
 
 ## Contact addresses
 
-`hello@novum.build` (general, "Get notified") and `careers@novum.build` (roles) are set in `src/content/site.ts`. Locations: San Francisco for the research and robotics roles, Bengaluru for Member of Technical Staff.
+`hello@argonrobotics.ai` (general, "Get notified") and `careers@argonrobotics.ai` (roles) are set in `src/content/site.ts`. Locations: San Francisco for the research and robotics roles, Bengaluru for Member of Technical Staff.
 
 Clips are rotated 90° clockwise (`-vf transpose=1`, the top camera is mounted sideways) and encoded at a constant 30 fps (`-fps_mode cfr -r 30`) so the browser plays them without timing jitter. Both play at 1× real time; the tags say the autonomous policy was trained on data at the speed shown in the teleop panel.

@@ -19,7 +19,7 @@ export async function subscribe(email: string): Promise<SubscribeResult> {
   const response = await fetch(endpoint, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({ email, source: 'novum.build/research' }),
+    body: JSON.stringify({ email, source: 'argonrobotics.ai/research' }),
   })
   if (!response.ok) {
     throw new Error(`Notify endpoint responded ${response.status}`)

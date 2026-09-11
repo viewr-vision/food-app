@@ -20,8 +20,8 @@ export const site = {
   tagline: 'Robots, at superhuman speed.',
   visionLead:
     'The world should run at the speed of its machines, not the speed of the hands that taught them.',
-  email: 'hello@novum.build',
-  careersEmail: 'careers@novum.build',
+  email: 'hello@argonrobotics.ai',
+  careersEmail: 'careers@argonrobotics.ai',
   location: 'Bengaluru',
   year: new Date().getFullYear(),
 }
@@ -43,7 +43,7 @@ export const paper = {
     done: 'You are on the list.',
     doneBody: 'We will write once, when it is out.',
     invalid: 'That does not look like an email address.',
-    error: 'That did not go through. Try again, or write to hello@novum.build.',
+    error: 'That did not go through. Try again, or write to hello@argonrobotics.ai.',
   },
 }
 
@@ -79,18 +79,18 @@ export const roles: Role[] = [
     title: 'Research Scientist, Policy Learning',
     blurb: 'Train the policies that run 10× past their demonstrations.',
     meta: 'San Francisco · On-site · Full-time',
-    href: 'mailto:careers@novum.build?subject=Research%20Scientist%2C%20Policy%20Learning',
+    href: 'mailto:careers@argonrobotics.ai?subject=Research%20Scientist%2C%20Policy%20Learning',
   },
   {
     title: 'Robotics Engineer, Real-Time Control',
     blurb: 'Close the loop from model output to motor, at kilohertz.',
     meta: 'San Francisco · On-site · Full-time',
-    href: 'mailto:careers@novum.build?subject=Robotics%20Engineer%2C%20Real-Time%20Control',
+    href: 'mailto:careers@argonrobotics.ai?subject=Robotics%20Engineer%2C%20Real-Time%20Control',
   },
   {
     title: 'Member of Technical Staff, Data & Evals',
     blurb: 'Own the data engine, from capture on the robot to the eval that decides what ships.',
     meta: 'Bengaluru · On-site · Full-time',
-    href: 'mailto:careers@novum.build?subject=Member%20of%20Technical%20Staff%2C%20Data%20%26%20Evals',
+    href: 'mailto:careers@argonrobotics.ai?subject=Member%20of%20Technical%20Staff%2C%20Data%20%26%20Evals',
   },
 ]
