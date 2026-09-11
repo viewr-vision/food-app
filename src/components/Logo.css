@@ -1,7 +1,7 @@
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: calc(var(--logo-size) * 0.2);
+  gap: calc(var(--logo-size) * 0.12);
   line-height: 1;
 }
 
