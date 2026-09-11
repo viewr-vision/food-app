@@ -5,7 +5,7 @@ import './Nav.css'
 export function Nav() {
   return (
     <header className="nav">
-      <Link to="/" className="nav__brand" aria-label="Novum home">
+      <Link to="/" className="nav__brand" aria-label="Argon Robotics home">
         <Logo />
       </Link>
       <nav className="nav__links" aria-label="Primary">

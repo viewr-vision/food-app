@@ -1,4 +1,4 @@
-# Novum — landing page
+# Argon Robotics — landing page
 
 Vite + React + TypeScript. Static site, no backend.
 
