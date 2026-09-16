@@ -13,6 +13,9 @@
   --line-rule: rgba(242, 241, 238, 0.2);
   --accent: #c8f542;
   --accent-glow: rgba(200, 245, 66, 0.07);
+  /* Vertical reach of the accent glow. The hero paints the half above the
+     seam and the premise the half below, so both must use this value. */
+  --glow-reach: 340px;
   --accent-pulse: rgba(200, 245, 66, 0.6);
 
   --font-display: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;

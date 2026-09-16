@@ -28,11 +28,6 @@
   animation: pulse 2s ease-out infinite;
 }
 
-.floater__status {
-  color: var(--accent);
-  white-space: nowrap;
-}
-
 .floater__text {
   font-size: 15px;
   font-weight: 500;

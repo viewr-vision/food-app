@@ -8,8 +8,6 @@ export interface Role {
 export const site = {
   name: 'Argon Robotics',
   tagline: 'Robots, at superhuman speed.',
-  visionLead:
-    'The world should run at the speed of its machines, not the speed of the hands that taught them.',
   email: 'hello@argonrobotics.ai',
   careersEmail: 'careers@argonrobotics.ai',
   location: 'Bengaluru',

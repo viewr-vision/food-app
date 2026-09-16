@@ -1,4 +1,11 @@
 .premise {
+  /* Continues the hero's glow across the boundary, so no rule divides them. */
+  border-top: 0;
+  background-image: radial-gradient(
+    ellipse 60% var(--glow-reach) at 50% 0%,
+    var(--accent-glow),
+    transparent 70%
+  );
   display: flex;
   justify-content: center;
   padding-top: clamp(80px, 11vw, 160px);
