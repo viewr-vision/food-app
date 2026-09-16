@@ -16,7 +16,7 @@ The site is hosted on Vercel from this repo at https://argonrobotics.ai: every p
 
 - `src/content/site.ts` — every piece of copy and the open roles. Edit here first.
 - `src/pages/` — `Home` (front page) and `Careers` (`/careers`, the open roles). Routing is `react-router-dom`; the host must serve `index.html` for unknown paths (SPA fallback).
-- `src/components/` — one component per section (`Hero`, `Premise`, `Research`, `NotifyModal`, `JoinUs`, `RoleList`, `Footer`), each with its own CSS file.
+- `src/components/` — one component per section (`Hero`, `Research`, `NotifyModal`, `JoinUs`, `RoleList`, `Footer`), each with its own CSS file.
 
 ## "Get notified" form
 
