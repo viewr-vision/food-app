@@ -4,8 +4,7 @@
   padding: 40px var(--gutter) 80px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 64px;
+  justify-content: flex-end;
   background-image: radial-gradient(
     ellipse 60% var(--glow-reach) at 50% 100%,
     var(--accent-glow),
@@ -26,6 +25,5 @@
   .hero {
     min-height: 0;
     padding: 20px var(--gutter) 56px;
-    gap: 40px;
   }
 }

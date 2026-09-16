@@ -15,16 +15,16 @@ export const site = {
 }
 
 export const premise = {
-  body:
-    'For three hundred years we have built machines that outrun us: the loom, the engine, the press. Work still moves at the speed of a hand, because only a hand knew what to do next.',
-  close: 'That is not the world we were meant to get, and not the one we are building.',
+  headline: 'Work moves at the speed of a hand.',
+  paragraphs: [
+    'For three hundred years we have built machines that outrun us: the loom, the engine, the press. But only a hand knew what to do next, so we built the fast parts and throttled them to our own wrists.',
+    'That is not the world we were meant to get, and not the one we are building.',
+  ],
 }
 
 export const paper = {
   status: 'Coming soon',
   meta: 'Paper · code · eval logs',
-  floater:
-    'How we train policies that run 10× faster than the demonstrations they learned from',
   title:
     'Training robot policies that execute 10× faster than the demonstrations they were trained on.',
   body:
