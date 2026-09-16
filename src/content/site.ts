@@ -1,13 +1,3 @@
-export interface Clip {
-  src: string
-  poster: string
-  /** Seconds after clip start at which the hand-over completes. */
-  completeAt: number
-  label: string
-  /** Second tag on the panel, e.g. how the clip relates to training. */
-  tag?: string
-}
-
 export interface Role {
   title: string
   blurb: string
@@ -24,6 +14,12 @@ export const site = {
   careersEmail: 'careers@argonrobotics.ai',
   location: 'Bengaluru',
   year: new Date().getFullYear(),
+}
+
+export const premise = {
+  body:
+    'Work has always moved at the speed of a human hand. Not because the machines were slow — we have had engines and looms that outrun us for three hundred years — but because a hand was the only thing that knew what to do next. So we built the fast parts, then throttled them to our own wrists. ',
+  close: 'That is not the world we were supposed to get, and it is not the one we are building.',
 }
 
 export const paper = {
@@ -44,23 +40,6 @@ export const paper = {
     doneBody: 'We will write once, when it is out.',
     invalid: 'That does not look like an email address.',
     error: 'That did not go through. Try again, or write to hello@argonrobotics.ai.',
-  },
-}
-
-const media = (file: string) => `${import.meta.env.BASE_URL}media/${file}`
-
-export const clips: { teleop: Clip; autonomous: Clip } = {
-  teleop: {
-    src: media('teleop-standin-1x.mp4'),
-    poster: media('teleop-standin-1x.jpg'),
-    completeAt: 40.6,
-    label: 'Human teleop · 1×',
-  },
-  autonomous: {
-    src: media('autonomous-6x.mp4'),
-    poster: media('autonomous-6x.jpg'),
-    completeAt: 9.9,
-    label: 'Autonomous · 1×',
   },
 }
 

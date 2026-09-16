@@ -1,5 +1,5 @@
 import { Hero } from '../components/Hero'
-import { Comparison } from '../components/Comparison'
+import { Premise } from '../components/Premise'
 import { Research } from '../components/Research'
 import { JoinUs } from '../components/JoinUs'
 
@@ -7,7 +7,7 @@ export function Home() {
   return (
     <>
       <Hero />
-      <Comparison />
+      <Premise />
       <Research />
       <JoinUs />
     </>
