@@ -18,8 +18,8 @@ export const site = {
 
 export const premise = {
   body:
-    'Work has always moved at the speed of a human hand. Not because the machines were slow — we have had engines and looms that outrun us for three hundred years — but because a hand was the only thing that knew what to do next. So we built the fast parts, then throttled them to our own wrists. ',
-  close: 'That is not the world we were supposed to get, and it is not the one we are building.',
+    'For three hundred years we have built machines that outrun us: the loom, the engine, the press. Work still moves at the speed of a hand, because only a hand knew what to do next.',
+  close: 'That is not the world we were meant to get, and not the one we are building.',
 }
 
 export const paper = {
