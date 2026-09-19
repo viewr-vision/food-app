@@ -16,13 +16,10 @@ The site is hosted on Vercel from this repo at https://argonrobotics.ai: every p
 
 ## Where things live
 
-- `src/content/site.ts` — every piece of copy and the open roles. Edit here first.
+- `src/content/site.ts` — site copy and the open roles. Edit here first.
+- `src/content/post.ts` and `src/pages/Post.tsx` — the research post. Its prose is transcribed verbatim from the source document; do not reword it. Tables live in `post.ts` and render through `DataTable`.
 - `src/pages/` — `Home` (front page) and `Careers` (`/careers`, the open roles). Routing is `react-router-dom`; the host must serve `index.html` for unknown paths (SPA fallback).
 - `src/components/` — one component per section (`Hero`, `Research`, `NotifyModal`, `JoinUs`, `RoleList`, `Footer`), each with its own CSS file.
-
-## "Get notified" form
-
-The button on the paper card opens a modal that collects an email. It POSTs `{ email, source }` as JSON to `VITE_NOTIFY_ENDPOINT` (copy `.env.example` to `.env` and set it; Formspree, Buttondown, a Worker or an Apps Script URL all work). With no endpoint configured it falls back to opening a pre-filled email to hello@argonrobotics.ai, so no address is lost.
 
 ## Contact addresses
 

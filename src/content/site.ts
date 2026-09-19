@@ -16,25 +16,6 @@ export const site = {
   year: new Date().getFullYear(),
 }
 
-export const paper = {
-  status: 'Coming soon',
-  meta: 'Paper · code · eval logs',
-  title:
-    'Training robot policies that execute 10× faster than the demonstrations they were trained on.',
-  body:
-    'The full write-up, the code and the evaluation logs are on their way.',
-  notify: {
-    headline: 'Be the first to know how the world will run.',
-    body: 'One email when the paper, the code and the logs are out. Nothing else, ever.',
-    placeholder: 'you@yourlab.com',
-    button: 'Notify me',
-    done: 'You are on the list.',
-    doneBody: 'We will write once, when it is out.',
-    invalid: 'That does not look like an email address.',
-    error: 'That did not go through. Try again, or write to hello@argonrobotics.ai.',
-  },
-}
-
 export const hiring = {
   headline: 'The bar is high, and it does not move.',
   careersHeadline: 'Open roles',

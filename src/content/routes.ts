@@ -15,6 +15,12 @@ export const routeMeta: RouteMeta[] = [
       'Argon Robotics trains and deploys models that operate robots at superhuman speeds for a diverse set of tasks.',
   },
   {
+    path: '/research/scaling-and-speeding-up-robots-in-the-real-world',
+    title: 'Scaling and speeding up robots in the real world — Argon Robotics',
+    description:
+      'Speed is the final frontier that needs to be unlocked before we can see robots assisting humans in the real world.',
+  },
+  {
     path: '/careers',
     title: 'Open roles — Argon Robotics',
     description:
