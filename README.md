@@ -10,7 +10,9 @@ npm run build    # outputs dist/
 
 ## Deploying
 
-The site is hosted on Vercel from this repo at https://argonrobotics.ai: every push to `main` deploys, and pull requests get preview URLs. `vercel.json` rewrites all paths to `index.html`, so `/careers` loads directly. The default build base is `/`, for the root domain.
+The site is hosted on Vercel from this repo at https://argonrobotics.ai: every push to `main` deploys, and pull requests get preview URLs. `vercel.json` rewrites unknown paths to `index.html`; real routes are prerendered files and win the filesystem check first.
+
+`npm run build` runs three steps: the client bundle, an SSR bundle into `.prerender/`, then `scripts/prerender.mjs`, which renders every route in `src/content/routes.ts` to static HTML and writes `sitemap.xml`. That is what makes the site readable to crawlers and link unfurlers, which do not run JavaScript. Adding a route means adding it to `routeMeta` and to `App.tsx`; the prerender and sitemap follow automatically. `public/robots.txt` points at the sitemap.
 
 ## Where things live
 
