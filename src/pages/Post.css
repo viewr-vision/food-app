@@ -1,11 +1,19 @@
 .post {
   padding: clamp(56px, 6vw, 96px) var(--gutter) var(--section-y);
-  max-width: 1440px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Head and body share one measure so they sit on the same left edge
+   while the column as a whole is centred in the page. */
+.post__head,
+.post__body {
+  width: 100%;
+  max-width: 760px;
 }
 
 .post__head {
-  max-width: 900px;
   margin-bottom: clamp(40px, 5vw, 64px);
 }
 
@@ -23,7 +31,6 @@
   display: flex;
   flex-direction: column;
   gap: 28px;
-  max-width: 760px;
 }
 
 .post__body p {
