@@ -10,7 +10,7 @@ export const origin = 'https://www.argonrobotics.ai'
 export const routeMeta: RouteMeta[] = [
   {
     path: '/',
-    title: 'Argon Robotics — Robots, at superhuman speed.',
+    title: 'Argon Robotics — Fastest autonomous robots in the world.',
     description:
       'Argon Robotics trains and deploys models that operate robots at superhuman speeds for a diverse set of tasks.',
   },
