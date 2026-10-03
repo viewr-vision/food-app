@@ -10,14 +10,14 @@ export const site = {
   tagline: 'Fastest autonomous robots in the world.',
   subhead:
     'For three hundred years we have built machines that outrun us: the loom, the engine, the press. But only a hand knew what to do next, so we built the fast parts and throttled them to our own wrists. That changes now.',
-  email: 'hello@argonrobotics.ai',
+  email: 'pranay@argonrobotics.ai',
   careersEmail: 'careers@argonrobotics.ai',
   location: 'Bengaluru',
   year: new Date().getFullYear(),
 }
 
 export const hiring = {
-  headline: 'The bar is high, and it does not move.',
+  headline: 'We obsess over who we hire.',
   careersHeadline: 'Open roles',
   careersIntro:
     'Three seats. Each one goes to someone who makes the rest of the team faster.',

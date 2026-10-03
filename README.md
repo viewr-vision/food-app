@@ -23,4 +23,4 @@ The site is hosted on Vercel from this repo at https://argonrobotics.ai: every p
 
 ## Contact addresses
 
-`hello@argonrobotics.ai` (general, "Get notified") and `careers@argonrobotics.ai` (roles) are set in `src/content/site.ts`. Locations: San Francisco for the research and robotics roles, Bengaluru for Member of Technical Staff.
+`pranay@argonrobotics.ai` (general, footer) and `careers@argonrobotics.ai` (roles) are set in `src/content/site.ts`. Locations: San Francisco for the research and robotics roles, Bengaluru for Member of Technical Staff.
