@@ -1,26 +1,19 @@
-# Argon Robotics — landing page
+# Argon Robotics — website
 
-Vite + React + TypeScript. Static site, no backend.
+A single static page: `index.html` holds the markup, styles and scripts. There are no dependencies; the build copies `index.html` and `public/` into `dist/`.
 
 ```bash
-npm install
-npm run dev      # http://localhost:5173
 npm run build    # outputs dist/
+npm run dev      # builds, then serves dist/ at http://localhost:3000
 ```
 
 ## Deploying
 
-The site is hosted on Vercel from this repo at https://argonrobotics.ai: every push to `main` deploys, and pull requests get preview URLs. `vercel.json` rewrites unknown paths to `index.html`; real routes are prerendered files and win the filesystem check first.
-
-`npm run build` runs three steps: the client bundle, an SSR bundle into `.prerender/`, then `scripts/prerender.mjs`, which renders every route in `src/content/routes.ts` to static HTML and writes `sitemap.xml`. That is what makes the site readable to crawlers and link unfurlers, which do not run JavaScript. Adding a route means adding it to `routeMeta` and to `App.tsx`; the prerender and sitemap follow automatically. `public/robots.txt` points at the sitemap.
+Hosted on Vercel from this repo at https://argonrobotics.ai. Every push to `main` deploys; pull requests get preview URLs.
 
 ## Where things live
 
-- `src/content/site.ts` — site copy and the open roles. Edit here first.
-- `src/content/post.ts` and `src/pages/Post.tsx` — the research post. Its prose is transcribed verbatim from the source document; do not reword it. Tables live in `post.ts` and render through `DataTable`.
-- `src/pages/` — `Home` (front page) and `Careers` (`/careers`, the open roles). Routing is `react-router-dom`; the host must serve `index.html` for unknown paths (SPA fallback).
-- `src/components/` — one component per section (`Hero`, `Research`, `NotifyModal`, `JoinUs`, `RoleList`, `Footer`), each with its own CSS file.
-
-## Contact addresses
-
-`pranay@argonrobotics.ai` (general, footer) and `careers@argonrobotics.ai` (roles) are set in `src/content/site.ts`. Locations: San Francisco for the research and robotics roles, Bengaluru for Member of Technical Staff.
+- `index.html` — the home page and every post. Posts are `<article data-view="…">` blocks, opened by `#id` links (`#discovery`, `#simreal`).
+- The post list on the home page is the `posts` array in the first `<script>` at the bottom of `index.html`. Add an entry there when you add a post.
+- `public/img/` — Discovery-0 figures (`d0-*.jpg`).
+- `public/img/pool/` — the 98 frames for "The Turing test for virtual worlds". Answers are the `POOL` array in the game script (`1` = real, `0` = sim); file names are shuffled so they don't give the answer away.

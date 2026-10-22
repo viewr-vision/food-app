@@ -2,17 +2,517 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="dark" />
-    <meta name="description" content="Argon Robotics trains and deploys models that operate robots at superhuman speeds for a diverse set of tasks." />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=IBM+Plex+Mono:wght@400;500&display=swap" />
-    <title>Argon Robotics — Fastest autonomous robots in the world.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="light" />
+    <title>Argon Robotics</title>
+    <meta name="description" content="Argon Robotics builds RL environments for robotics: simulated worlds where robotics labs train their models." />
+    <meta property="og:title" content="Argon Robotics" />
+    <meta property="og:description" content="Argon Robotics builds RL environments for robotics: simulated worlds where robotics labs train their models." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.argonrobotics.ai/" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,600&family=Geist+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: one narrow centered column. Top bar (name / Home · Research), short intro, a dated timeline of posts; each post opens with a title and a metadata table. Single light (paper) look, by choice. */
+:root {
+  --bg: #f3f2ed;
+  --panel: #fbfaf6;
+  --line: rgba(22,25,26,.10);
+  --line-strong: rgba(22,25,26,.22);
+  --grid: rgba(40,60,20,.045);
+  --fg: #16191a;
+  --fg-2: #2e3230;
+  --muted: #6b6f6c;
+  --faint: #9a9d98;
+  --accent: #c8f542;      /* Argon green, used as fill */
+  --accent-ink: #4f7000;  /* same hue, dark enough for text and hairlines on paper */
+  --accent-soft: rgba(200,245,66,.22);
+  --on-accent: #16191a;
+  --bad: #b3261e;
+  --f-serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --f-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --col: 720px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+body {
+  background-color: var(--bg); color: var(--fg);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 32px 32px; background-attachment: fixed;
+  font-family: var(--f-mono); font-size: 13.5px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: inherit; }
+::selection { background: var(--accent); color: var(--on-accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 1px; }
+.wrap { max-width: var(--col); margin: 0 auto; }
+
+/* ---------- top bar ---------- */
+header.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; padding-block: 40px 44px; }
+.brand { display: inline-flex; align-items: center; gap: 3.6px; text-decoration: none; color: var(--fg); }
+.brand svg { width: 30px; height: 30px; flex: none; display: block; }
+.brand svg path { stroke: var(--accent-ink); }
+.logo-word { font: 600 24px/1 "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif; letter-spacing: -.035em; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+nav.main { display: flex; gap: 18px; }
+nav.main a { font-size: 12.5px; text-decoration: none; color: var(--muted); padding-bottom: 3px; border-bottom: 1px solid var(--line-strong); transition: color .15s, border-color .15s; }
+nav.main a:hover { color: var(--fg); }
+nav.main a[aria-current="page"] { color: var(--fg); border-bottom: 2px solid var(--accent-ink); }
+
+main { padding-bottom: 96px; }
+.view { animation: rise .3s ease both; }
+@keyframes rise { from { opacity: .5; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+/* ---------- intro ---------- */
+.intro { max-width: 560px; color: var(--fg-2); font-size: 13.5px; line-height: 1.65; }
+.intro p { margin: 0 0 14px; }
+.intro .cta { color: var(--muted); }
+.intro .cta a { color: var(--fg); text-decoration: underline; text-decoration-color: var(--accent-ink); text-underline-offset: 4px; }
+
+/* ---------- timeline of posts ---------- */
+.feed { list-style: none; margin: 40px 0 0; padding: 0 0 0 26px; position: relative; }
+.feed::before { content: ""; position: absolute; left: 4px; top: 10px; bottom: 10px; width: 1px; background: var(--line-strong); }
+.feed li { position: relative; margin-bottom: 10px; }
+.feed li::before { content: ""; position: absolute; left: -26px; top: 15px; width: 9px; height: 9px; background: var(--fg); }
+.feed li.boxed::before { background: var(--accent-ink); }
+.post { display: block; text-decoration: none; padding: 10px 0; }
+.boxed .post { padding: 12px 14px; border: 1px solid var(--line-strong); background: var(--panel); border-radius: 2px; transition: border-color .15s; }
+.boxed .post:hover { border-color: var(--accent-ink); }
+.prow { display: flex; justify-content: space-between; align-items: baseline; gap: 6px 16px; flex-wrap: wrap; }
+.ptitle { font-weight: 600; font-size: 13px; color: var(--fg); }
+.post:hover .ptitle { color: var(--accent-ink); }
+.pdate { font-size: 12px; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.pdesc { font-size: 12.5px; color: var(--muted); margin-top: 4px; max-width: 560px; }
+.new { background: var(--accent); color: var(--on-accent); font: 600 10px/1 var(--f-mono); padding: 3px 5px; border-radius: 1px; margin-right: 8px; vertical-align: 1px; }
+.ext::after { content: " ↗"; color: var(--faint); font-weight: 400; }
+.year { font-size: 11.5px; color: var(--faint); margin: 30px 0 14px -26px; padding-left: 26px; position: relative; }
+.year::before { content: ""; position: absolute; left: 0; top: 7px; width: 9px; height: 1px; background: var(--faint); }
+
+/* ---------- post page ---------- */
+.ph1 { font: 400 clamp(40px, 6vw, 60px)/1.02 var(--f-serif); letter-spacing: -.015em; margin: 8px 0 26px; text-wrap: balance; }
+.ph1 em { color: var(--accent-ink); }
+.meta { display: grid; grid-template-columns: 110px 1fr; gap: 4px 16px; font-size: 12px; margin: 0 0 40px; }
+.meta dt { color: var(--muted); }
+.meta dd { margin: 0; color: var(--fg); min-width: 0; }
+.meta a { text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
+.meta .tag { background: var(--accent); color: var(--on-accent); font: 500 10px/1.3 var(--f-mono); padding: 1px 5px; border-radius: 1px; }
+
+.prose { font-family: var(--f-serif); font-size: 21px; line-height: 1.5; color: var(--fg-2); }
+.prose p { margin: 0 0 .95em; }
+.prose .lede { font-size: 26px; line-height: 1.3; color: var(--fg); }
+.prose strong { color: var(--fg); font-weight: 400; }
+.prose em { color: var(--accent-ink); }
+.prose a { color: var(--accent-ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.prose ol, .prose ul { padding-left: 1.4em; margin: 0 0 1.1em; }
+.prose li { margin-bottom: .4em; }
+.prose li::marker { color: var(--accent-ink); font-family: var(--f-mono); font-size: .62em; }
+.prose h2 { font: 400 32px/1.12 var(--f-serif); color: var(--fg); margin: 56px 0 14px; text-wrap: balance; }
+.prose h3 { font: 500 12px/1.4 var(--f-mono); color: var(--accent-ink); margin: 32px 0 6px; }
+.callout { border-left: 2px solid var(--accent); padding: 2px 0 2px 22px; margin: 30px 0; font-style: italic; font-size: 25px; line-height: 1.3; color: var(--fg); }
+
+/* figures with detection boxes */
+.fig { margin: 32px 0; }
+.figrow { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.frame {
+  position: relative; aspect-ratio: 4 / 3; max-width: 100%;
+  background: repeating-linear-gradient(135deg, transparent 0 9px, rgba(40,60,20,.04) 9px 10px), var(--panel);
+  border: 1px solid var(--line); border-radius: 2px;
+  display: grid; place-items: center; text-align: center; padding: 18px;
+  font: 400 11.5px/1.5 var(--f-mono); color: var(--faint);
+}
+.frame.wide { aspect-ratio: 16 / 7; }
+.frame::before { content: ""; position: absolute; inset: 14px; border: 1.5px solid var(--accent-ink); border-radius: 1px; }
+.det { position: absolute; top: 3px; left: 14px; background: var(--accent); color: var(--on-accent); font: 500 10px/1 var(--f-mono); padding: 3px 5px; border-radius: 1px; z-index: 1; }
+figcaption { font: 400 11.5px/1.5 var(--f-mono); color: var(--muted); margin-top: 10px; }
+
+/* precedent table */
+.tablewrap { overflow-x: auto; margin: 24px 0 8px; border: 1px solid var(--line); border-radius: 2px; background: var(--bg); }
+table { border-collapse: collapse; width: 100%; min-width: 620px; font: 400 12px/1.5 var(--f-mono); }
+th { text-align: left; font: 500 11px/1.2 var(--f-mono); color: var(--faint); padding: 12px 14px; border-bottom: 1px solid var(--line); background: var(--panel); }
+td { padding: 14px; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--fg-2); }
+tr:last-child td { border-bottom: 0; }
+td.yr { font: 400 24px/1 var(--f-serif); color: var(--fg); white-space: nowrap; }
+td small { display: block; color: var(--faint); margin-top: 4px; }
+tr.now td { background: var(--accent-soft); }
+tr.now td.yr, tr.now .q { color: var(--accent-ink); }
+.q { font: 400 28px/1 var(--f-serif); }
+.here { display: block; font: 400 10.5px/1.4 var(--f-mono); color: var(--accent-ink); margin-top: 8px; white-space: nowrap; }
+
+/* timeline inside the story */
+.steps { list-style: none; padding: 0; margin: 28px 0; position: relative; }
+.steps::before { content: ""; position: absolute; left: 4px; top: 8px; bottom: 8px; width: 1px; background: var(--line-strong); }
+.steps li { position: relative; padding: 0 0 24px 28px; }
+.steps li::before { content: ""; position: absolute; left: 0; top: 6px; width: 9px; height: 9px; border: 1.5px solid var(--accent-ink); background: var(--bg); }
+.steps li.key::before { background: var(--accent-ink); }
+.sdate { font: 500 11.5px/1.4 var(--f-mono); color: var(--accent-ink); }
+.stext { font: 400 19px/1.45 var(--f-serif); color: var(--fg-2); margin-top: 3px; }
+.stext a { color: var(--accent-ink); }
+
+/* team + roles: PI-style rows */
+.rows { border-top: 1px solid var(--line); margin-top: 8px; }
+.group { font-size: 11.5px; color: var(--faint); margin: 44px 0 10px; }
+.member { display: grid; grid-template-columns: 200px 1fr; gap: 6px 24px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.mname { font: 400 24px/1.1 var(--f-serif); color: var(--fg); }
+.mrole { font-size: 11.5px; color: var(--accent); margin-top: 6px; }
+.mbio { font-size: 12.5px; line-height: 1.65; color: var(--fg-2); min-width: 0; }
+.mbio p { margin: 0 0 8px; }
+.mbio .now { color: var(--muted); }
+.mbio a { color: var(--fg); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+
+details { border-bottom: 1px solid var(--line); }
+summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; font-weight: 600; font-size: 13px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--muted); font-weight: 400; }
+details[open] summary::after { content: "−"; color: var(--accent); }
+summary:hover { color: var(--accent); }
+.role-body { padding: 0 0 18px; font-size: 12.5px; color: var(--fg-2); max-width: 560px; }
+.role-body p { margin: 0 0 8px; }
+.role-body a { color: var(--fg); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+
+/* references */
+.refgroup { margin-top: 32px; }
+.refgroup h3 { margin: 0 0 10px; }
+.refgroup ol { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); counter-reset: r; }
+.refgroup li { counter-increment: r; display: grid; grid-template-columns: 28px 1fr; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); font: 400 12.5px/1.55 var(--f-mono); color: var(--muted); margin: 0; }
+.refgroup li::before { content: counter(r, decimal-leading-zero); color: var(--faint); }
+.refgroup li b { font: 400 18px/1.3 var(--f-serif); color: var(--fg); }
+.note { font: 400 12px/1.6 var(--f-mono); color: var(--muted); border: 1px dashed var(--line-strong); padding: 12px 14px; border-radius: 2px; margin-top: 12px; }
+
+.copyrow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 26px 0 0; }
+.addr { font: 500 13px/1 var(--f-mono); background: var(--panel); border: 1px solid var(--line-strong); padding: 12px 14px; border-radius: 2px; user-select: all; }
+.btn { font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--on-accent); background: var(--accent); border: 0; padding: 13px 15px; border-radius: 2px; cursor: pointer; text-decoration: none; }
+
+.backlink { display: inline-block; font-size: 12px; color: var(--muted); text-decoration: none; margin-bottom: 20px; }
+.backlink:hover { color: var(--accent-ink); }
+.nextpost { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 12px; color: var(--faint); }
+.nextpost a { color: var(--fg); text-decoration: none; }
+.nextpost a:hover { color: var(--accent-ink); }
+
+footer.foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; padding-block: 24px 40px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--faint); }
+
+@media (max-width: 640px) {
+  header.top { padding-block: 24px 30px; }
+  nav.main { gap: 14px; }
+  .prose { font-size: 19.5px; }
+  .prose .lede { font-size: 23px; }
+  .meta { grid-template-columns: 84px 1fr; }
+  .member { grid-template-columns: 1fr; }
+}
+
+/* photo figures with a detection-box overlay */
+.shots { display: grid; gap: 10px; }
+.shots.g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.shots.g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.shot { position: relative; margin: 0; border-radius: 2px; overflow: hidden; background: var(--panel); border: 1px solid var(--line); }
+.shot img { display: block; width: 100%; height: auto; max-width: 100%; }
+.shot .det { top: 8px; left: 8px; }
+.shot.boxed::before { content: ""; position: absolute; inset: 8px; border: 1.5px solid var(--accent); pointer-events: none; }
+.shot .step { position: absolute; left: 8px; bottom: 8px; right: 8px; font: 500 11px/1.35 var(--f-mono); color: var(--fg); background: rgba(243,242,237,.92); padding: 5px 7px; border-radius: 1px; }
+.fig.hero { margin: 0 0 30px; }
+.watch { display: inline-block; margin-top: 8px; font: 500 11.5px/1 var(--f-mono); color: var(--fg); text-decoration: underline; text-decoration-color: var(--accent-ink); text-underline-offset: 3px; }
+.watch:hover { color: var(--accent-ink); }
+.summary { font: 400 13px/1.7 var(--f-mono); color: var(--fg); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding-block: 18px; margin: 0 0 34px; }
+.summary b { background: var(--accent); font-weight: 500; padding: 0 3px; }
+@media (max-width: 640px) { .shots.g3 { gap: 6px; } .shot .step { font-size: 10px; } }
+
+/* the loop diagram */
+.loop { margin: 30px 0 36px; }
+.loop-row { display: grid; grid-template-columns: minmax(0,1fr) 22px minmax(0,1fr) 22px minmax(0,1fr); align-items: stretch; }
+.stage { position: relative; border: 1px solid var(--line-strong); background: var(--panel); border-radius: 2px; padding: 26px 14px 14px; min-width: 0; }
+.stage .det { top: -1px; left: -1px; }
+.stage h4 { font: 400 22px/1.1 var(--f-serif); margin: 0 0 12px; color: var(--fg); text-wrap: balance; }
+.stage ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.stage li { font: 400 11.5px/1.45 var(--f-mono); color: var(--fg-2); padding-left: 14px; position: relative; }
+.stage li::before { content: ""; position: absolute; left: 0; top: 6px; width: 6px; height: 6px; border: 1.2px solid var(--accent-ink); }
+.arrow { display: grid; place-items: center; color: var(--accent-ink); font: 500 14px/1 var(--f-mono); }
+.loop-back { position: relative; margin: 0 calc((100% - 44px) / 6) 0; height: 34px; border: 1.5px dashed var(--accent-ink); border-top: 0; border-radius: 0 0 4px 4px; }
+.loop-back::before { content: "▲"; position: absolute; left: -6px; top: -9px; font-size: 9px; color: var(--accent-ink); }
+.loop-back span { position: absolute; left: 50%; bottom: -9px; transform: translateX(-50%); background: var(--bg); padding: 0 8px; font: 400 11px/1.4 var(--f-mono); color: var(--muted); white-space: nowrap; }
+@media (max-width: 640px) {
+  .loop-row { grid-template-columns: 1fr; }
+  .arrow { height: 26px; }
+  .arrow::after { content: "↓"; }
+  .arrow b { display: none; }
+  .loop-back { margin: 0; height: auto; border: 1.5px dashed var(--accent-ink); border-radius: 2px; padding: 10px; }
+  .loop-back::before { display: none; }
+  .loop-back span { position: static; transform: none; white-space: normal; background: none; padding: 0; display: block; }
+}
+.coming { list-style: none; padding: 0; margin: 18px 0 0; border-top: 1px solid var(--line); }
+.coming li { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font: 400 12.5px/1.4 var(--f-mono); color: var(--fg); }
+.coming li span { color: var(--muted); white-space: nowrap; }
+
+/* sim-or-real game */
+.tt { margin: 26px 0 44px; }
+.tt-bar { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; font: 400 12px/1.4 var(--f-mono); color: var(--muted); margin-bottom: 12px; }
+.tt-bar b { color: var(--fg); font-weight: 500; font-variant-numeric: tabular-nums; }
+.tt-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.tt-card { position: relative; border: 1px solid var(--line-strong); background: var(--panel); border-radius: 2px; overflow: hidden; }
+.tt-card img { display: block; width: 100%; height: auto; max-width: 100%; aspect-ratio: 4 / 3; }
+.tt-n { position: absolute; top: 8px; left: 8px; font: 500 10.5px/1 var(--f-mono); background: rgba(243,242,237,.92); color: var(--fg); padding: 4px 6px; border-radius: 1px; }
+.tt-btns { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line-strong); }
+.tt-btns button { font: 500 12px/1 var(--f-mono); color: var(--fg); background: transparent; border: 0; padding: 13px 8px; cursor: pointer; transition: background .12s; }
+.tt-btns button + button { border-left: 1px solid var(--line-strong); }
+.tt-btns button:hover:not(:disabled) { background: var(--accent-soft); }
+.tt-btns button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+.tt-btns button:disabled { cursor: default; }
+.tt-ans { position: absolute; inset: 10px 10px auto auto; font: 600 10.5px/1 var(--f-mono); padding: 4px 6px; border-radius: 1px; }
+.tt-card.revealed::before { content: ""; position: absolute; inset: 8px 8px calc(41px + 8px) 8px; border: 2px solid var(--accent-ink); pointer-events: none; }
+.tt-card.ok .tt-ans { background: var(--accent); color: var(--on-accent); }
+.tt-card.bad::before { border-color: var(--bad); }
+.tt-card.bad .tt-ans { background: var(--bad); color: #fff; }
+.tt-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 18px; }
+.tt-actions .hint { font: 400 12px/1.4 var(--f-mono); color: var(--muted); }
+.btn:disabled { opacity: .45; cursor: not-allowed; filter: none; }
+.btn.ghost { background: transparent; color: var(--fg); border: 1px solid var(--line-strong); }
+.tt-result { margin-top: 22px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding-block: 18px; display: flex; align-items: baseline; gap: 10px 20px; flex-wrap: wrap; }
+.tt-score { font: 400 54px/1 var(--f-serif); color: var(--fg); font-variant-numeric: tabular-nums; }
+.tt-score small { font-size: .45em; color: var(--muted); }
+.tt-msg { font: 400 21px/1.35 var(--f-serif); color: var(--fg-2); flex: 1; min-width: 200px; }
+@media (max-width: 520px) { .tt-grid { grid-template-columns: 1fr; } }
+.tt-new { font: 500 12px/1 var(--f-mono); color: var(--fg); background: transparent; border: 1px solid var(--line-strong); border-radius: 2px; padding: 8px 10px; cursor: pointer; }
+.tt-new:hover { border-color: var(--accent-ink); color: var(--accent-ink); }
+
+/* page base (was supplied by the artifact host) */
+html, body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="#home" aria-label="Argon Robotics home"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4.5 28L16 4l11.5 24" stroke-width="2.9" stroke-linejoin="miter" stroke-miterlimit="6"/><path d="M8.6 20.6h10.2" stroke-width="2.9"/></svg><span class="logo-word">rgon</span><span class="sr-only">Argon Robotics</span></a>
+</header>
+
+<main>
+
+<!-- ============ HOME ============ -->
+<section class="view" data-view="home" data-nav="home">
+  <div class="intro">
+    <p>Argon Robotics builds RL environments for robotics: simulated worlds where robotics labs train their models. A lab puts its robot model in our worlds and gets training data equal to millions of real-world deployments.</p>
+  </div>
+  <ol class="feed" data-feed></ol>
+</section>
+
+<!-- ============ POST: SIM OR REAL ============ -->
+<article class="view" data-view="simreal" hidden>
+  <a class="backlink" href="#home">← Home</a>
+  <h1 class="ph1">The Turing test for virtual worlds</h1>
+  <dl class="meta">
+    <dt>Published</dt><dd>October 14, 2026</dd>
+    <dt>Authors</dt><dd>Argon Robotics team</dd>
+    <dt>Type</dt><dd><span class="tag">game 0.99</span> · 2 min</dd>
+  </dl>
+  <div class="prose">
+    <p class="lede">Hey, can you tell which ones are real?</p>
+    <p>Here are ten frames from the same robot stations. Some come from the real robot, and some from our simulation of it. Mark each one sim or real, then check your score. Every round draws a new set of ten from a pool of 98.</p>
+  </div>
+
+  <section class="tt" id="tt" aria-label="Sim or real game">
+    <div class="tt-bar"><span><b id="ttCount">0</b> / 10 answered</span><button class="tt-new" id="ttNew" type="button">↻ New set</button></div>
+    <div class="tt-grid" id="ttGrid"></div>
+    <div class="tt-actions">
+      <button class="btn" id="ttCheck" type="button" disabled>Check my answers</button>
+      <button class="btn ghost" id="ttReset" type="button" hidden>Play again</button>
+      <span class="hint" id="ttHint">Answer all 10 to see your score.</span>
+    </div>
+    <div class="tt-result" id="ttResult" hidden>
+      <div class="tt-score"><span id="ttScore">0</span><small> / 10</small></div>
+      <div class="tt-msg" id="ttMsg"></div>
+    </div>
+    <figcaption style="margin-top:14px">Real frames come from published evaluation runs of the ABC model. Sim frames are the same tasks rebuilt in our simulation and path-traced.</figcaption>
+  </section>
+  <div class="nextpost"><a href="#home">← Home</a><a href="#discovery">Discovery-0 →</a></div>
+</article>
+
+<!-- ============ POST: DISCOVERY-0 ============ -->
+<article class="view" data-view="discovery" hidden>
+  <a class="backlink" href="#home">← Home</a>
+  <h1 class="ph1">Discovery-0</h1>
+  <dl class="meta">
+    <dt>Published</dt><dd>October 21, 2026</dd>
+    <dt>Authors</dt><dd>Argon Robotics team</dd>
+    <dt>Email</dt><dd>pranay@argonrobotics.ai</dd>
+    <dt>Video</dt><dd><a href="https://drive.google.com/file/d/1Iu5KKIDf0cJJ2xepBxaRJcNPaNuVrw6I/view?usp=sharing" target="_blank" rel="noopener">dishwasher closing</a> · <a href="https://drive.google.com/file/d/1dTEn4CBPbTnaCEi2OHCJcHeeNyk9xWVo/view?usp=sharing" target="_blank" rel="noopener">recursive learning</a></dd>
+  </dl>
+
+  <figure class="fig hero">
+    <div class="shots g3">
+      <div class="shot"><img src="/img/d0-dish-1.jpg" alt="Robot arms reaching for the open door of a commercial dishwasher" width="592" height="1048"></div>
+      <div class="shot"><img src="/img/d0-dish-2.jpg" alt="Robot arm pulling the dishwasher door down" width="594" height="1054"></div>
+      <div class="shot"><img src="/img/d0-dish-3.jpg" alt="Dishwasher door closed by the robot" width="594" height="1044"></div>
+    </div>
+    <figcaption>The robot closing a commercial dishwasher in a customer's kitchen, played at 2×. It had no real-world data for this task.</figcaption>
+    <a class="watch" href="https://drive.google.com/file/d/1Iu5KKIDf0cJJ2xepBxaRJcNPaNuVrw6I/view?usp=sharing" target="_blank" rel="noopener">Watch the video ↗</a>
+  </figure>
+
+  <p class="summary">Discovery-0 is our first demonstration that what a robot learns in our simulated worlds carries over to the real one. A model trained only on trajectories from simulation <b>closed a dishwasher zero-shot</b> in a live customer kitchen. We could not get this task working before, even with significant fine-tuning and teleoperated data collection.</p>
+
+  <div class="prose">
+    <h2>Virtual world from photographs</h2>
+    <p>With the advancements in the real2sim pipeline, our orchestrator agents improving the physics and texture and our team of 3d designers and physics engineers, we were able to create the environment where robots can learn and transfer the learnings in the real world.</p>
+
+
+    <h2>Learning only inside the worlds</h2>
+    <p>The robot then learned from trajectories it generated in those simulated worlds. For closing the dishwasher, we collected no real-world data at all: no demonstrations, no teleoperation, no fine-tuning on the customer's site.</p>
+    <div class="callout">Zero real-world data for this task.</div>
+
+    <p>Then we ran the model on the real robot in the real kitchen. It closed the dishwasher. The skill it had learned in our virtual kitchens transferred directly to the physical one.</p>
+
+    <h2>The robot learned to drop the plate</h2>
+    <p>The dishwasher was not the only thing the model figured out. In simulation, a plate got stuck at the edge of the rack, in a pose the gripper couldn't grasp well. Instead of retrying the same grasp, the model pushed the plate down, let it slide, and picked it up again from a better position.</p>
+  </div>
+
+  <figure class="fig">
+    <div class="shots g2">
+      <div class="shot"><img src="/img/d0-plate-1.jpg" alt="Simulated wrist camera: plate stuck at the edge of the rack" width="630" height="474" loading="lazy"><span class="step">1 · Plate stuck at the edge</span></div>
+      <div class="shot"><img src="/img/d0-plate-2.jpg" alt="Simulated wrist camera: arm pushes the plate down" width="636" height="482" loading="lazy"><span class="step">2 · Arm pushes the plate down</span></div>
+      <div class="shot"><img src="/img/d0-plate-3.jpg" alt="Simulated wrist camera: plate slides down" width="626" height="474" loading="lazy"><span class="step">3 · Plate slides down</span></div>
+      <div class="shot"><img src="/img/d0-plate-4.jpg" alt="Simulated wrist camera: plate in position for picking" width="628" height="478" loading="lazy"><span class="step">4 · Optimal pose for picking</span></div>
+    </div>
+    <figcaption>Wrist-camera view in simulation. Nobody showed the model this recovery; it found it while exploring.</figcaption>
+    <a class="watch" href="https://drive.google.com/file/d/1dTEn4CBPbTnaCEi2OHCJcHeeNyk9xWVo/view?usp=sharing" target="_blank" rel="noopener">Watch the video ↗</a>
+  </figure>
+
+  <div class="prose">
+    <p>Dropping something on purpose so you can pick it up better is the kind of move people make without thinking, and the kind nobody writes into a dataset.</p>
+
+    <h2>This discovery is not alone</h2>
+    <p>There were more than 300 techniques that we traced back to sim explorations. This behaviour was not present in any data.</p>
+    <p>This loop is super useful. The virtual world proposes endless possibilities on model finding techniques to navigate the real world. Each discovery becomes something the model can build on, which is what we mean by recursive learning.</p>
+
+    <h2>Technical breakdown</h2>
+    <p>We will be releasing the complete pipeline, with the technical details of each block, in the coming days.</p>
+  </div>
+  <div class="nextpost"><a href="#home">← Home</a><span>Argon Robotics · October 2026</span></div>
+</article>
+
+
+
+</main>
+
+<footer class="foot">
+  <span>Argon Robotics</span>
+  <span>San Francisco · © 2026</span>
+</footer>
+</div>
+
+<script>
+(function () {
+  var posts = [
+    { id: 'discovery', title: 'Discovery-0: Zero-Shot Sim-to-Real', date: 'October 21, 2026', boxed: true, isNew: true },
+    { id: 'simreal', title: 'The Turing Test for Virtual Worlds', date: 'October 14, 2026', boxed: true }
+  ];
+  function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+  var html = posts.map(function (p) {
+    return '<li class="' + (p.boxed ? 'boxed' : '') + '"><a class="post" href="#' + p.id + '">' +
+      '<div class="prow"><span class="ptitle">' + (p.isNew ? '<span class="new">New</span>' : '') + (p.badge ? '<span class="new">' + esc(p.badge) + '</span>' : '') + esc(p.title) + '</span>' +
+      '<span class="pdate">' + esc(p.date) + '</span></div></a></li>';
+  }).join('');
+  document.querySelectorAll('[data-feed]').forEach(function (el) { el.innerHTML = html; });
+
+  var views = Array.prototype.slice.call(document.querySelectorAll('[data-view]'));
+  var names = views.map(function (v) { return v.dataset.view; });
+  function show(name, keepScroll) {
+    if (names.indexOf(name) < 0) name = 'home';
+    views.forEach(function (v) { v.hidden = v.dataset.view !== name; });
+    if (!keepScroll) window.scrollTo(0, 0);
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var name = a.getAttribute('href').slice(1);
+    if (names.indexOf(name) < 0) return;
+    e.preventDefault();
+    try { history.replaceState(null, '', '#' + name); } catch (err) {}
+    show(name);
+  });
+  window.addEventListener('hashchange', function () { show(location.hash.slice(1)); });
+  show(location.hash.slice(1), true);
+})();
+</script>
+
+<script>
+(function () {
+  var POOL = [["p001",0],["p002",1],["p003",1],["p004",1],["p005",0],["p006",1],["p007",1],["p008",1],["p009",1],["p010",1],["p011",1],["p012",1],["p013",0],["p014",0],["p015",0],["p016",0],["p017",0],["p018",0],["p019",1],["p020",1],["p021",0],["p022",1],["p023",0],["p024",0],["p025",0],["p026",1],["p027",0],["p028",1],["p029",0],["p030",0],["p031",0],["p032",0],["p033",0],["p034",0],["p035",0],["p036",0],["p037",0],["p038",1],["p039",0],["p040",1],["p041",0],["p042",0],["p043",1],["p044",0],["p045",1],["p046",1],["p047",1],["p048",0],["p049",0],["p050",0],["p051",1],["p052",1],["p053",0],["p054",1],["p055",1],["p056",1],["p057",1],["p058",1],["p059",1],["p060",1],["p061",0],["p062",1],["p063",0],["p064",1],["p065",1],["p066",0],["p067",0],["p068",1],["p069",1],["p070",0],["p071",1],["p072",0],["p073",0],["p074",0],["p075",1],["p076",1],["p077",0],["p078",0],["p079",1],["p080",1],["p081",1],["p082",0],["p083",0],["p084",1],["p085",0],["p086",0],["p087",1],["p088",1],["p089",0],["p090",1],["p091",1],["p092",1],["p093",1],["p094",0],["p095",0],["p096",1],["p097",1],["p098",0]]; /* [file, 1 = real / 0 = sim] */
+  var N = 10, round = [], last = [], picks = [], revealed = false;
+  var grid = document.getElementById('ttGrid');
+  if (!grid) return;
+  var count = document.getElementById('ttCount'), check = document.getElementById('ttCheck'),
+      reset = document.getElementById('ttReset'), hint = document.getElementById('ttHint'),
+      result = document.getElementById('ttResult'), fresh = document.getElementById('ttNew');
+
+  function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function draw() {
+    var avail = POOL.filter(function (x) { return last.indexOf(x[0]) < 0; });
+    var set;
+    for (var tries = 0; tries < 30; tries++) {
+      set = shuffle(avail.slice()).slice(0, N);
+      var reals = set.filter(function (x) { return x[1]; }).length;
+      if (reals >= 3 && reals <= 7) break;
+    }
+    last = set.map(function (x) { return x[0]; });
+    return set;
+  }
+  function render() {
+    round = draw(); picks = new Array(N).fill(null); revealed = false;
+    grid.innerHTML = round.map(function (x, i) {
+      var n = String(i + 1).padStart(2, '0');
+      return '<div class="tt-card" data-i="' + i + '">' +
+        '<img src="/img/pool/' + x[0] + '.jpg" alt="Frame ' + (i + 1) + ': two robot arms at a test station, seen from above" width="400" height="300">' +
+        '<span class="tt-n">' + n + '</span><span class="tt-ans" hidden></span>' +
+        '<div class="tt-btns" role="group" aria-label="Frame ' + (i + 1) + '">' +
+        '<button type="button" data-v="sim" aria-pressed="false">Sim</button>' +
+        '<button type="button" data-v="real" aria-pressed="false">Real</button></div></div>';
+    }).join('');
+    result.hidden = true; check.hidden = false; hint.hidden = false; reset.hidden = true;
+    update();
+  }
+  function update() {
+    var done = picks.filter(Boolean).length;
+    count.textContent = done;
+    check.disabled = done < N;
+    hint.textContent = done < N ? (N - done) + ' left to answer.' : 'Ready.';
+  }
+  grid.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-v]');
+    if (!b || revealed) return;
+    var card = b.closest('.tt-card'), i = +card.dataset.i;
+    picks[i] = b.dataset.v;
+    card.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+    update();
+  });
+  check.addEventListener('click', function () {
+    revealed = true;
+    var score = 0;
+    grid.querySelectorAll('.tt-card').forEach(function (card) {
+      var i = +card.dataset.i, truth = round[i][1] ? 'real' : 'sim', ok = picks[i] === truth;
+      if (ok) score++;
+      card.classList.add('revealed', ok ? 'ok' : 'bad');
+      var tag = card.querySelector('.tt-ans');
+      tag.textContent = truth + (ok ? ' ✓' : ' ✗'); tag.hidden = false;
+      card.querySelectorAll('button').forEach(function (x) { x.disabled = true; });
+    });
+    document.getElementById('ttScore').textContent = score;
+    document.getElementById('ttMsg').textContent =
+      score === 10 ? 'All ten. Sharp eyes.' :
+      score >= 8 ? 'Good eye. A couple got past you.' :
+      score >= 6 ? 'Better than a coin flip, but not by much.' :
+      'No better than a coin flip. That is the point.';
+    result.hidden = false; check.hidden = true; hint.hidden = true; reset.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+  function again() { render(); document.getElementById('tt').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  reset.addEventListener('click', again);
+  fresh.addEventListener('click', again);
+  render();
+})();
+</script>
   </body>
 </html>
