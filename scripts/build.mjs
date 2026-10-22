@@ -17,7 +17,10 @@ for (const [, id, rawTitle] of views) {
   const page = html
     .replace(/<title>[^<]*<\/title>/, `<title>${esc(title)}</title>`)
     .replace(/(<meta property="og:title" content=")[^"]*/, `$1${esc(title)}`)
-    .replace(/(<meta property="og:url" content=")[^"]*/, `$1https://www.argonrobotics.ai/${id}`);
+    .replace(/(<meta property="og:url" content=")[^"]*/, `$1https://www.argonrobotics.ai/${id}`)
+    // show this post (not the home page) before any script runs
+    .replace('<section class="view" data-view="home" data-nav="home">', '<section class="view" data-view="home" data-nav="home" hidden>')
+    .replace(`<article class="view" data-view="${id}" hidden>`, `<article class="view" data-view="${id}">`);
   mkdirSync(`dist/${id}`, { recursive: true });
   writeFileSync(`dist/${id}/index.html`, page);
   console.log(`/${id} → ${title}`);
