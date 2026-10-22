@@ -282,6 +282,17 @@ footer.foot { display: flex; justify-content: space-between; flex-wrap: wrap; ga
 html, body { margin: 0; }
 img { max-width: 100%; }
 [hidden] { display: none !important; }
+
+/* home page groups */
+.group-label { font: 500 11.5px/1 var(--f-mono); text-transform: lowercase; letter-spacing: .04em; color: var(--muted); margin: 40px 0 12px; display: flex; align-items: center; gap: 10px; }
+.group-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.group-label + .feed { margin-top: 0; }
+/* photo column in the precedent table */
+td.pic { width: 112px; padding: 10px; }
+td.pic img { display: block; width: 92px; height: 92px; object-fit: cover; border-radius: 2px; }
+td.pic.you { font: 400 11px/1.4 var(--f-mono); color: var(--accent-ink); white-space: nowrap; vertical-align: middle; }
+th.pic-col { width: 112px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 </style>
   </head>
   <body>
@@ -297,8 +308,40 @@ img { max-width: 100%; }
   <div class="intro">
     <p>Everything that fits on a screen has now been learned. The physical world has not. Argon Robotics builds infinite worlds where robots learn to move everything else, until every atom around us can be moved at will.</p>
   </div>
-  <ol class="feed" data-feed></ol>
+  <div class="group-label">pinned</div>
+  <ol class="feed" data-feed="pinned"></ol>
+  <div class="group-label">articles</div>
+  <ol class="feed" data-feed="articles"></ol>
 </section>
+
+<!-- ============ POST: VISION MEMO ============ -->
+<article class="view" data-view="vision" hidden>
+  <a class="backlink" href="#home">← Home</a>
+  <h1 class="ph1">Recursive self-improvement for physical AI</h1>
+  <dl class="meta">
+    <dt>Published</dt><dd>October 2026</dd>
+    <dt>Author</dt><dd>Deepanshu Rohilla</dd>
+    <dt>Type</dt><dd><span class="tag">vision memo</span> · 2 min read</dd>
+  </dl>
+  <div class="prose">
+    <p class="lede">Everything that has been digitised has been learned. Text, code, images, speech: <strong>anything that fits on a screen now has a model that gets better at it every few months.</strong></p>
+    <p>But the digital world is a thin film over the physical one, and by our estimate it captures <strong>less than 0.001% of it</strong>. Under the film are the atoms. Every object that has to be lifted, turned, opened, stacked or carried is still moved by a hand.</p>
+    <p>If you can build something that improves itself in the physical world, you unlock realities humans can't yet imagine. It starts with a world where you don't have to lift a finger to move anything, and it ends with every atom around you being manipulated at will.</p>
+    <h2>Every leap forward has come from learning beyond the limits of reality</h2>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Year</th><th>Status quo</th><th>The simulation</th><th>What it unlocked</th><th class="pic-col"><span class="sr">Photo</span></th></tr></thead>
+      <tbody>
+        <tr><td class="yr">1969</td><td>Apollo landing procedures had to account for uncertain computer alarms.<small>An incorrect abort decision could jeopardize the mission.</small></td><td>Simulated lunar landings rehearsing alarms and abort decisions</td><td>Apollo 11 continued through the real 1201 and 1202 alarms and landed on the Moon</td><td class="pic"><img src="/img/apollo.jpg" alt="Neil Armstrong in the lunar module simulator before Apollo 11" width="300" height="300" loading="lazy"></td></tr>
+        <tr><td class="yr">2017</td><td>Go AI learned from expert human games.<small>Human knowledge limited the starting point for discovery.</small></td><td>AlphaGo Zero played millions of games against itself</td><td>Superhuman play without human game data</td><td class="pic"><img src="/img/go.jpg" alt="A Go board mid-game" width="300" height="200" loading="lazy"></td></tr>
+        <tr><td class="yr">2019</td><td>Robot dexterity depended heavily on real-world experimentation.<small>Physical data collection was slow and expensive.</small></td><td>OpenAI trained a robotic hand in simulation with increasingly randomized environments</td><td>A real robot hand manipulated a Rubik's Cube</td><td class="pic"><img src="/img/rubiks.jpg" alt="OpenAI's robot hand holding a Rubik's Cube" width="300" height="300" loading="lazy"></td></tr>
+        <tr class="now"><td class="yr">2026</td><td>Robots learn through demonstrations in the physical world.<small>Expensive, slow, and dangerous.</small></td><td>Infinite worlds for robots to learn</td><td><span class="q">???</span></td><td class="pic you">← You are here</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="nextpost"><a href="#home">← Home</a><a href="#discovery">Discovery-0 →</a></div>
+</article>
 
 <!-- ============ POST: SIM OR REAL ============ -->
 <article class="view" data-view="simreal" hidden>
@@ -406,16 +449,19 @@ img { max-width: 100%; }
 <script>
 (function () {
   var posts = [
-    { id: 'discovery', title: 'Discovery-0: Zero-Shot Sim-to-Real', date: 'October 21, 2026', boxed: true, isNew: true },
-    { id: 'simreal', title: 'The Turing Test for Virtual Worlds', date: 'October 14, 2026', boxed: true }
+    { id: 'vision', title: 'Vision Memo: Recursive Self-Improvement for Physical AI', date: 'October 2026', boxed: true, group: 'pinned' },
+    { id: 'simreal', title: 'The Turing Test for Virtual Worlds', date: 'October 14, 2026', boxed: true, group: 'pinned' },
+    { id: 'discovery', title: 'Discovery-0: Zero-Shot Sim-to-Real', date: 'October 21, 2026', boxed: true, isNew: true, group: 'articles' }
   ];
   function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
-  var html = posts.map(function (p) {
+  function item(p) {
     return '<li class="' + (p.boxed ? 'boxed' : '') + '"><a class="post" href="#' + p.id + '">' +
-      '<div class="prow"><span class="ptitle">' + (p.isNew ? '<span class="new">New</span>' : '') + (p.badge ? '<span class="new">' + esc(p.badge) + '</span>' : '') + esc(p.title) + '</span>' +
+      '<div class="prow"><span class="ptitle">' + (p.isNew ? '<span class="new">New</span>' : '') + esc(p.title) + '</span>' +
       '<span class="pdate">' + esc(p.date) + '</span></div></a></li>';
-  }).join('');
-  document.querySelectorAll('[data-feed]').forEach(function (el) { el.innerHTML = html; });
+  }
+  document.querySelectorAll('[data-feed]').forEach(function (el) {
+    el.innerHTML = posts.filter(function (p) { return p.group === el.dataset.feed; }).map(item).join('');
+  });
 
   var views = Array.prototype.slice.call(document.querySelectorAll('[data-view]'));
   var names = views.map(function (v) { return v.dataset.view; });
