@@ -293,6 +293,37 @@ td.pic img { display: block; width: 92px; height: 92px; object-fit: cover; borde
 td.pic.you { font: 400 11px/1.4 var(--f-mono); color: var(--accent-ink); white-space: nowrap; vertical-align: middle; }
 th.pic-col { width: 112px; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* the leaps timeline (vision memo) */
+.leaps { list-style: none; margin: 30px 0 10px; padding: 0; position: relative; }
+.leaps::before { content: ""; position: absolute; left: 7px; top: 12px; bottom: 150px; width: 1.5px; background: var(--fg); }
+.leaps::after { content: ""; position: absolute; left: 7px; bottom: 26px; height: 136px; width: 0; border-left: 1.5px dashed var(--accent-ink); }
+.leap { position: relative; display: grid; grid-template-columns: 96px minmax(0, 1fr) 96px; gap: 8px 22px; padding: 0 0 34px 34px; }
+.leap::before { content: ""; position: absolute; left: 2px; top: 10px; width: 12px; height: 12px; background: var(--fg); }
+.lyear { font: 400 34px/1 var(--f-serif); color: var(--fg); font-variant-numeric: tabular-nums; }
+.lbody { display: grid; gap: 10px; min-width: 0; }
+.lrow { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 2px 14px; font: 400 17px/1.4 var(--f-serif); color: var(--fg-2); }
+.lk { font: 500 10.5px/1.9 var(--f-mono); color: var(--muted); text-transform: lowercase; letter-spacing: .03em; }
+.lrow.unlock span:last-child { color: var(--fg); }
+.lrow strong { color: var(--fg); font-weight: 400; }
+.lpic { width: 96px; height: 96px; object-fit: cover; border-radius: 2px; filter: grayscale(.25); }
+.leap.now { grid-template-columns: 96px minmax(0, 1fr); background: var(--accent-soft); border: 1px solid var(--accent-ink); border-radius: 2px; padding: 22px 22px 22px 34px; margin: 0 0 34px; }
+.leap.now::before { left: -6px; top: 32px; width: 14px; height: 14px; background: var(--accent); outline: 1.5px solid var(--accent-ink); box-shadow: 0 0 0 6px var(--accent-soft); }
+.leap.now .lyear { color: var(--accent-ink); }
+.lhere { display: block; font: 500 10.5px/1 var(--f-mono); color: var(--on-accent); background: var(--accent); padding: 4px 6px; border-radius: 1px; width: max-content; margin-top: 10px; }
+.lq { font: 400 44px/1 var(--f-serif); color: var(--accent-ink); }
+.leap.next { grid-template-columns: 96px minmax(0, 1fr); padding-bottom: 26px; }
+.leap.next::before { background: var(--bg); border: 1.5px dashed var(--accent-ink); width: 9px; height: 9px; }
+.leap.next .lyear { font-size: 22px; color: var(--accent-ink); font-style: italic; padding-top: 4px; }
+.lfuture { margin: 0; font: 400 italic 27px/1.2 var(--f-serif); color: var(--fg); text-wrap: balance; }
+.leap.far .lfuture { color: var(--muted); }
+@media (max-width: 640px) {
+  .leap, .leap.now, .leap.next { grid-template-columns: minmax(0, 1fr); padding-left: 30px; }
+  .leap.now { padding: 18px 16px 18px 30px; }
+  .lrow { grid-template-columns: minmax(0, 1fr); }
+  .lpic { width: 100%; height: 150px; }
+  .lyear { font-size: 30px; }
+}
 </style>
   </head>
   <body>
@@ -329,17 +360,51 @@ th.pic-col { width: 112px; }
     <p>If you can build something that improves itself in the physical world, you unlock realities humans can't yet imagine. It starts with a world where you don't have to lift a finger to move anything, and it ends with every atom around you being manipulated at will.</p>
     <h2>Every leap forward has come from learning beyond the limits of reality</h2>
   </div>
-  <div class="tablewrap">
-    <table>
-      <thead><tr><th>Year</th><th>Status quo</th><th>The simulation</th><th>What it unlocked</th><th class="pic-col"><span class="sr">Photo</span></th></tr></thead>
-      <tbody>
-        <tr><td class="yr">1969</td><td>Apollo landing procedures had to account for uncertain computer alarms.<small>An incorrect abort decision could jeopardize the mission.</small></td><td>Simulated lunar landings rehearsing alarms and abort decisions</td><td>Apollo 11 continued through the real 1201 and 1202 alarms and landed on the Moon</td><td class="pic"><img src="/img/apollo.jpg" alt="Neil Armstrong in the lunar module simulator before Apollo 11" width="300" height="300" loading="lazy"></td></tr>
-        <tr><td class="yr">2017</td><td>Go AI learned from expert human games.<small>Human knowledge limited the starting point for discovery.</small></td><td>AlphaGo Zero played millions of games against itself</td><td>Superhuman play without human game data</td><td class="pic"><img src="/img/go.jpg" alt="A Go board mid-game" width="300" height="200" loading="lazy"></td></tr>
-        <tr><td class="yr">2019</td><td>Robot dexterity depended heavily on real-world experimentation.<small>Physical data collection was slow and expensive.</small></td><td>OpenAI trained a robotic hand in simulation with increasingly randomized environments</td><td>A real robot hand manipulated a Rubik's Cube</td><td class="pic"><img src="/img/rubiks.jpg" alt="OpenAI's robot hand holding a Rubik's Cube" width="300" height="300" loading="lazy"></td></tr>
-        <tr class="now"><td class="yr">2026</td><td>Robots learn through demonstrations in the physical world.<small>Expensive, slow, and dangerous.</small></td><td>Infinite worlds for robots to learn</td><td><span class="q">???</span></td><td class="pic you">← You are here</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <ol class="leaps" aria-label="Every leap forward has come from learning beyond the limits of reality">
+    <li class="leap">
+      <div class="lyear">1969</div>
+      <div class="lbody">
+        <div class="lrow"><span class="lk">The limit</span><span>Apollo landing procedures had to account for uncertain computer alarms. One wrong abort call could end the mission.</span></div>
+        <div class="lrow"><span class="lk">The world built to learn in</span><span>Simulated lunar landings that rehearsed alarms and abort decisions</span></div>
+        <div class="lrow unlock"><span class="lk">What it unlocked</span><span>Apollo 11 flew through the real 1201 and 1202 alarms and landed on the Moon</span></div>
+      </div>
+      <img class="lpic" src="/img/apollo.jpg" alt="Neil Armstrong in the lunar module simulator before Apollo 11" width="300" height="300" loading="lazy">
+    </li>
+    <li class="leap">
+      <div class="lyear">2017</div>
+      <div class="lbody">
+        <div class="lrow"><span class="lk">The limit</span><span>Go AI learned from expert human games. Human knowledge capped where discovery could start.</span></div>
+        <div class="lrow"><span class="lk">The world built to learn in</span><span>AlphaGo Zero played millions of games against itself</span></div>
+        <div class="lrow unlock"><span class="lk">What it unlocked</span><span>Superhuman play with no human game data</span></div>
+      </div>
+      <img class="lpic" src="/img/go.jpg" alt="A Go board mid-game" width="300" height="200" loading="lazy">
+    </li>
+    <li class="leap">
+      <div class="lyear">2019</div>
+      <div class="lbody">
+        <div class="lrow"><span class="lk">The limit</span><span>Robot dexterity depended on real-world experiments. Physical data was slow and expensive.</span></div>
+        <div class="lrow"><span class="lk">The world built to learn in</span><span>A robotic hand trained in simulations that grew more randomized as it improved</span></div>
+        <div class="lrow unlock"><span class="lk">What it unlocked</span><span>A real robot hand solved a Rubik's Cube</span></div>
+      </div>
+      <img class="lpic" src="/img/rubiks.jpg" alt="OpenAI's robot hand holding a Rubik's Cube" width="300" height="300" loading="lazy">
+    </li>
+    <li class="leap now">
+      <div class="lyear">2026<span class="lhere">you are here</span></div>
+      <div class="lbody">
+        <div class="lrow"><span class="lk">The limit</span><span>Robots learn from demonstrations in the physical world. Expensive, slow and dangerous.</span></div>
+        <div class="lrow"><span class="lk">The world built to learn in</span><span><strong>Infinite worlds for robots to learn in</strong></span></div>
+        <div class="lrow unlock"><span class="lk">What it unlocks</span><span class="lq">???</span></div>
+      </div>
+    </li>
+    <li class="leap next">
+      <div class="lyear">Next</div>
+      <div class="lbody"><p class="lfuture">A world where nobody has to lift a finger to move anything.</p></div>
+    </li>
+    <li class="leap next far">
+      <div class="lyear">Then</div>
+      <div class="lbody"><p class="lfuture">Every atom around you, manipulated at will.</p></div>
+    </li>
+  </ol>
   <div class="nextpost"><a href="#home">← Home</a><a href="#discovery">Discovery-0 →</a></div>
 </article>
 
