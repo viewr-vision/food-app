@@ -324,6 +324,15 @@ th.pic-col { width: 112px; }
   .lpic { width: 100%; height: 150px; }
   .lyear { font-size: 30px; }
 }
+
+/* inline article video, played with a big round button (pi.website style) */
+.fig.vid .vbox { position: relative; border-radius: 6px; overflow: hidden; background: var(--panel); border: 1px solid var(--line); }
+.fig.vid video { display: block; width: 100%; height: auto; max-width: 100%; aspect-ratio: 4 / 1; object-fit: cover; cursor: pointer; }
+.vplay { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 64px; height: 64px; border-radius: 50%; border: 0; background: rgba(243,242,237,.92); color: var(--fg); display: grid; place-items: center; cursor: pointer; box-shadow: 0 2px 14px rgba(0,0,0,.18); transition: transform .15s; }
+.vplay:hover { transform: translate(-50%, -50%) scale(1.06); }
+.vplay svg { width: 26px; height: 26px; fill: currentColor; margin-left: 3px; }
+.vbox.playing .vplay { opacity: 0; pointer-events: none; }
+@media (max-width: 640px) { .vplay { width: 48px; height: 48px; } .vplay svg { width: 20px; height: 20px; } }
 </style>
   </head>
   <body>
@@ -475,15 +484,12 @@ th.pic-col { width: 112px; }
     <p>The dishwasher was not the only thing the model figured out. In simulation, a plate got stuck at the edge of the rack, in a pose the gripper couldn't grasp well. Instead of retrying the same grasp, the model pushed the plate down, let it slide, and picked it up again from a better position.</p>
   </div>
 
-  <figure class="fig">
-    <div class="shots g2">
-      <div class="shot"><img src="/img/d0-plate-1.jpg" alt="Simulated wrist camera: plate stuck at the edge of the rack" width="630" height="474" loading="lazy"><span class="step">1 · Plate stuck at the edge</span></div>
-      <div class="shot"><img src="/img/d0-plate-2.jpg" alt="Simulated wrist camera: arm pushes the plate down" width="636" height="482" loading="lazy"><span class="step">2 · Arm pushes the plate down</span></div>
-      <div class="shot"><img src="/img/d0-plate-3.jpg" alt="Simulated wrist camera: plate slides down" width="626" height="474" loading="lazy"><span class="step">3 · Plate slides down</span></div>
-      <div class="shot"><img src="/img/d0-plate-4.jpg" alt="Simulated wrist camera: plate in position for picking" width="628" height="478" loading="lazy"><span class="step">4 · Optimal pose for picking</span></div>
+  <figure class="fig vid">
+    <div class="vbox">
+      <video id="plateVid" src="/media/d0-plate-recovery.mp4" poster="/media/d0-plate-recovery.jpg" width="1344" height="336" muted loop playsinline preload="metadata" aria-label="The model pushes a stuck plate down, lets it slide, and picks it up again, shown from an overview camera and both wrist cameras"></video>
+      <button class="vplay" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></button>
     </div>
-    <figcaption>Wrist-camera view in simulation. Nobody showed the model this recovery; it found it while exploring.</figcaption>
-    <a class="watch" href="https://drive.google.com/file/d/1dTEn4CBPbTnaCEi2OHCJcHeeNyk9xWVo/view?usp=sharing" target="_blank" rel="noopener">Watch the video ↗</a>
+    <figcaption>In simulation, the model pushes the stuck plate down, lets it slide, and picks it up again. Overview camera on the left, wrist cameras on the right. Nobody showed it this recovery; it found it while exploring.</figcaption>
   </figure>
 
   <div class="prose">
@@ -638,5 +644,17 @@ th.pic-col { width: 112px; }
   render();
 })();
 </script>
+<script>
+(function () {
+  document.querySelectorAll('.fig.vid .vbox').forEach(function (box) {
+    var v = box.querySelector('video'), btn = box.querySelector('.vplay');
+    function sync() { box.classList.toggle('playing', !v.paused); }
+    btn.addEventListener('click', function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); });
+    v.addEventListener('click', function () { if (v.paused) v.play(); else v.pause(); });
+    v.addEventListener('play', sync); v.addEventListener('pause', sync);
+  });
+})();
+</script>
+
   </body>
 </html>
