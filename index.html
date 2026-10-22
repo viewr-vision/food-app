@@ -329,7 +329,7 @@ th.pic-col { width: 112px; }
   <body>
 <div class="wrap">
 <header class="top">
-  <a class="brand" href="#home" aria-label="Argon Robotics home"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4.5 28L16 4l11.5 24" stroke-width="2.9" stroke-linejoin="miter" stroke-miterlimit="6"/><path d="M8.6 20.6h10.2" stroke-width="2.9"/></svg><span class="logo-word">rgon</span><span class="sr-only">Argon Robotics</span></a>
+  <a class="brand" href="/" aria-label="Argon Robotics home"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4.5 28L16 4l11.5 24" stroke-width="2.9" stroke-linejoin="miter" stroke-miterlimit="6"/><path d="M8.6 20.6h10.2" stroke-width="2.9"/></svg><span class="logo-word">rgon</span><span class="sr-only">Argon Robotics</span></a>
 </header>
 
 <main>
@@ -347,7 +347,7 @@ th.pic-col { width: 112px; }
 
 <!-- ============ POST: VISION MEMO ============ -->
 <article class="view" data-view="vision" hidden>
-  <a class="backlink" href="#home">← Home</a>
+  <a class="backlink" href="/">← Home</a>
   <h1 class="ph1">Recursive self-improvement for physical AI</h1>
   <dl class="meta">
     <dt>Published</dt><dd>October 2026</dd>
@@ -405,12 +405,12 @@ th.pic-col { width: 112px; }
       <div class="lbody"><p class="lfuture">Every atom around you, manipulated at will.</p></div>
     </li>
   </ol>
-  <div class="nextpost"><a href="#home">← Home</a><a href="#discovery">Discovery-0 →</a></div>
+  <div class="nextpost"><a href="/">← Home</a><a href="/discovery">Discovery-0 →</a></div>
 </article>
 
 <!-- ============ POST: SIM OR REAL ============ -->
 <article class="view" data-view="simreal" hidden>
-  <a class="backlink" href="#home">← Home</a>
+  <a class="backlink" href="/">← Home</a>
   <h1 class="ph1">The Turing test for virtual worlds</h1>
   <dl class="meta">
     <dt>Published</dt><dd>October 14, 2026</dd>
@@ -436,12 +436,12 @@ th.pic-col { width: 112px; }
     </div>
     <figcaption style="margin-top:14px">Real frames come from published evaluation runs of the ABC model. Sim frames are the same tasks rebuilt in our simulation and path-traced.</figcaption>
   </section>
-  <div class="nextpost"><a href="#home">← Home</a><a href="#discovery">Discovery-0 →</a></div>
+  <div class="nextpost"><a href="/">← Home</a><a href="/discovery">Discovery-0 →</a></div>
 </article>
 
 <!-- ============ POST: DISCOVERY-0 ============ -->
 <article class="view" data-view="discovery" hidden>
-  <a class="backlink" href="#home">← Home</a>
+  <a class="backlink" href="/">← Home</a>
   <h1 class="ph1">Discovery-0</h1>
   <dl class="meta">
     <dt>Published</dt><dd>October 21, 2026</dd>
@@ -498,7 +498,7 @@ th.pic-col { width: 112px; }
     <h2>Technical breakdown</h2>
     <p>We will be releasing the complete pipeline, with the technical details of each block, in the coming days.</p>
   </div>
-  <div class="nextpost"><a href="#home">← Home</a><span>Argon Robotics · October 2026</span></div>
+  <div class="nextpost"><a href="/">← Home</a><span>Argon Robotics · October 2026</span></div>
 </article>
 
 
@@ -520,7 +520,7 @@ th.pic-col { width: 112px; }
   ];
   function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
   function item(p) {
-    return '<li class="' + (p.boxed ? 'boxed' : '') + '"><a class="post" href="#' + p.id + '">' +
+    return '<li class="' + (p.boxed ? 'boxed' : '') + '"><a class="post" href="/' + p.id + '">' +
       '<div class="prow"><span class="ptitle">' + (p.isNew ? '<span class="new">New</span>' : '') + esc(p.title) + '</span>' +
       '<span class="pdate">' + esc(p.date) + '</span></div></a></li>';
   }
@@ -535,17 +535,32 @@ th.pic-col { width: 112px; }
     views.forEach(function (v) { v.hidden = v.dataset.view !== name; });
     if (!keepScroll) window.scrollTo(0, 0);
   }
+  var titles = { home: 'Argon Robotics' };
+  views.forEach(function (v) { var h = v.querySelector('h1'); if (h) titles[v.dataset.view] = h.textContent + ' · Argon Robotics'; });
+  function nameFromPath() { var n = location.pathname.replace(/^\/+|\/+$/g, ''); return n || 'home'; }
+  function go(name, keepScroll) {
+    if (names.indexOf(name) < 0) name = 'home';
+    document.title = titles[name] || titles.home;
+    show(name, keepScroll);
+  }
   document.addEventListener('click', function (e) {
-    var a = e.target.closest('a[href^="#"]');
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest('a[href^="/"]');
     if (!a) return;
-    var name = a.getAttribute('href').slice(1);
+    var href = a.getAttribute('href');
+    var name = href.replace(/^\/+|\/+$/g, '') || 'home';
     if (names.indexOf(name) < 0) return;
     e.preventDefault();
-    try { history.replaceState(null, '', '#' + name); } catch (err) {}
-    show(name);
+    if (href !== location.pathname) history.pushState(null, '', href);
+    go(name);
   });
-  window.addEventListener('hashchange', function () { show(location.hash.slice(1)); });
-  show(location.hash.slice(1), true);
+  window.addEventListener('popstate', function () { go(nameFromPath(), true); });
+  // old #links (e.g. /#vision) move to their clean address
+  var legacy = location.hash.slice(1);
+  if (legacy && names.indexOf(legacy) >= 0) {
+    history.replaceState(null, '', legacy === 'home' ? '/' : '/' + legacy);
+  }
+  go(nameFromPath(), true);
 })();
 </script>
 
