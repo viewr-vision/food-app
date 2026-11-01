@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/research/scaling-and-speeding-up-robots-in-the-real-world",
+      "destination": "/speed",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
