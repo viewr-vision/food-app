@@ -316,17 +316,15 @@ th.pic-col { width: 112px; }
 .leap { position: relative; display: grid; grid-template-columns: 96px minmax(0, 1fr) 96px; gap: 8px 22px; padding: 0 0 34px 34px; }
 .leap::before { content: ""; position: absolute; left: 2px; top: 10px; width: 12px; height: 12px; background: var(--fg); }
 .lyear { font: 400 34px/1 var(--f-serif); color: var(--fg); font-variant-numeric: tabular-nums; }
-.lbody { display: grid; gap: 10px; min-width: 0; }
-.lrow { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 2px 14px; font: 400 17px/1.4 var(--f-serif); color: var(--fg-2); }
-.lk { font: 500 10.5px/1.9 var(--f-mono); color: var(--muted); text-transform: lowercase; letter-spacing: .03em; }
-.lrow.unlock span:last-child { color: var(--fg); }
-.lrow strong { color: var(--fg); font-weight: 400; }
+.lbody { display: grid; gap: 10px; min-width: 0; align-content: start; padding-top: 4px; }
+.lhead { margin: 0; font: 400 26px/1.2 var(--f-serif); color: var(--fg); text-wrap: balance; }
+.lhow { margin: 0; font: 400 13px/1.6 var(--f-mono); color: var(--muted); max-width: 52ch; }
 .lpic { width: 96px; height: 96px; object-fit: cover; border-radius: 2px; filter: grayscale(.25); }
 .leap.now { grid-template-columns: 96px minmax(0, 1fr); background: var(--accent-soft); border: 1px solid var(--accent-ink); border-radius: 2px; padding: 22px 22px 22px 34px; margin: 0 0 34px; }
 .leap.now::before { left: -6px; top: 32px; width: 14px; height: 14px; background: var(--accent); outline: 1.5px solid var(--accent-ink); box-shadow: 0 0 0 6px var(--accent-soft); }
 .leap.now .lyear { color: var(--accent-ink); }
 .lhere { display: block; font: 500 10.5px/1 var(--f-mono); color: var(--on-accent); background: var(--accent); padding: 4px 6px; border-radius: 1px; width: max-content; margin-top: 10px; }
-.lq { font: 400 44px/1 var(--f-serif); color: var(--accent-ink); }
+.lq { font: 400 48px/1 var(--f-serif); color: var(--accent-ink); }
 .leap.next { grid-template-columns: 96px minmax(0, 1fr); padding-bottom: 26px; }
 .leap.next::before { background: var(--bg); border: 1.5px dashed var(--accent-ink); width: 9px; height: 9px; }
 .leap.next .lyear { font-size: 22px; color: var(--accent-ink); font-style: italic; padding-top: 4px; }
@@ -335,7 +333,7 @@ th.pic-col { width: 112px; }
 @media (max-width: 640px) {
   .leap, .leap.now, .leap.next { grid-template-columns: minmax(0, 1fr); padding-left: 30px; }
   .leap.now { padding: 18px 16px 18px 30px; }
-  .lrow { grid-template-columns: minmax(0, 1fr); }
+  .lhead { font-size: 23px; }
   .lpic { width: 100%; height: 150px; }
   .lyear { font-size: 30px; }
 }
@@ -388,36 +386,32 @@ th.pic-col { width: 112px; }
     <li class="leap">
       <div class="lyear">1969</div>
       <div class="lbody">
-        <div class="lrow"><span class="lk">The limit</span><span>Apollo landing procedures had to account for uncertain computer alarms. One wrong abort call could end the mission.</span></div>
-        <div class="lrow"><span class="lk">The world built to learn in</span><span>Simulated lunar landings that rehearsed alarms and abort decisions</span></div>
-        <div class="lrow unlock"><span class="lk">What it unlocked</span><span>Apollo 11 flew through the real 1201 and 1202 alarms and landed on the Moon</span></div>
+        <p class="lhead">Apollo 11 landed on the Moon through alarms it had already rehearsed.</p>
+        <p class="lhow">Simulated landings trained the crew on the 1201 and 1202 computer alarms and the abort calls, before they ever happened for real.</p>
       </div>
       <img class="lpic" src="/img/apollo.jpg" alt="Neil Armstrong in the lunar module simulator before Apollo 11" width="300" height="300" loading="lazy">
     </li>
     <li class="leap">
       <div class="lyear">2017</div>
       <div class="lbody">
-        <div class="lrow"><span class="lk">The limit</span><span>Go AI learned from expert human games. Human knowledge capped where discovery could start.</span></div>
-        <div class="lrow"><span class="lk">The world built to learn in</span><span>AlphaGo Zero played millions of games against itself</span></div>
-        <div class="lrow unlock"><span class="lk">What it unlocked</span><span>Superhuman play with no human game data</span></div>
+        <p class="lhead">Superhuman Go, with no human games to learn from.</p>
+        <p class="lhow">AlphaGo Zero played millions of games against itself instead of studying human experts, whose knowledge had capped where discovery could start.</p>
       </div>
       <img class="lpic" src="/img/go.jpg" alt="A Go board mid-game" width="300" height="200" loading="lazy">
     </li>
     <li class="leap">
       <div class="lyear">2019</div>
       <div class="lbody">
-        <div class="lrow"><span class="lk">The limit</span><span>Robot dexterity depended on real-world experiments. Physical data was slow and expensive.</span></div>
-        <div class="lrow"><span class="lk">The world built to learn in</span><span>A robotic hand trained in simulations that grew more randomized as it improved</span></div>
-        <div class="lrow unlock"><span class="lk">What it unlocked</span><span>A real robot hand solved a Rubik's Cube</span></div>
+        <p class="lhead">A real robot hand solved a Rubik's Cube.</p>
+        <p class="lhow">It trained in simulations that grew more randomized as it improved, instead of in slow, expensive real-world experiments.</p>
       </div>
       <img class="lpic" src="/img/rubiks.jpg" alt="OpenAI's robot hand holding a Rubik's Cube" width="300" height="300" loading="lazy">
     </li>
     <li class="leap now">
       <div class="lyear">2026<span class="lhere">you are here</span></div>
       <div class="lbody">
-        <div class="lrow"><span class="lk">The limit</span><span>Robots learn from demonstrations in the physical world. Expensive, slow and dangerous.</span></div>
-        <div class="lrow"><span class="lk">The world built to learn in</span><span><strong>Infinite worlds for robots to learn in</strong></span></div>
-        <div class="lrow unlock"><span class="lk">What it unlocks</span><span class="lq">???</span></div>
+        <p class="lhead"><span class="lq">???</span></p>
+        <p class="lhow">Robots still learn from demonstrations in the physical world: expensive, slow and dangerous. We are building infinite worlds for them to learn in instead.</p>
       </div>
     </li>
     <li class="leap next">
