@@ -14,7 +14,7 @@
     .t { font: 22px Georgia, "Times New Roman", serif; fill: #16191a; }
     .l { font: 500 12.5px ui-monospace, Menlo, Consolas, monospace; fill: #16191a; }
     .s { font: 12px ui-monospace, Menlo, Consolas, monospace; fill: #6b6f6c; }
-    .b { font: 500 12.5px ui-monospace, Menlo, Consolas, monospace; fill: #4f7000; }
+    .b { font: 500 12.5px ui-monospace, Menlo, Consolas, monospace; fill: #2a4f8f; }
     .sink { transform: translateY(40px); animation: sink 8s ease-in-out infinite; }
     @keyframes sink { 0%, 10% { transform: translateY(0); opacity: 1; } 75%, 92% { transform: translateY(40px); opacity: 1; } 98% { transform: translateY(40px); opacity: 0; } 100% { transform: translateY(0); opacity: 0; } }
     .tag { animation: tag 8s ease-in-out infinite; }
@@ -35,13 +35,13 @@
     <g class="sink"><use href="#cp-pile" fill="#f3f2ed" stroke="#16191a" stroke-width="1.6"/></g>
   </g>
   <g clip-path="url(#cp-below)">
-    <g class="sink"><use href="#cp-pile" fill="#f3f2ed" stroke="#4f7000" stroke-width="2"/></g>
+    <g class="sink"><use href="#cp-pile" fill="#f3f2ed" stroke="#2a4f8f" stroke-width="2"/></g>
   </g>
 
   <!-- depth bracket -->
   <g class="tag">
-    <line x1="334" y1="170" x2="334" y2="208" stroke="#4f7000" stroke-width="2"/>
-    <line x1="328" y1="208" x2="340" y2="208" stroke="#4f7000" stroke-width="2"/>
+    <line x1="334" y1="170" x2="334" y2="208" stroke="#2a4f8f" stroke-width="2"/>
+    <line x1="328" y1="208" x2="340" y2="208" stroke="#2a4f8f" stroke-width="2"/>
     <text x="344" y="194" class="b">74 mm</text>
   </g>
   <text x="40" y="266" class="b">271 of 1,681 particles</text>
