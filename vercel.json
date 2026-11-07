@@ -4,6 +4,11 @@
       "source": "/research/scaling-and-speeding-up-robots-in-the-real-world",
       "destination": "/speed",
       "permanent": true
+    },
+    {
+      "source": "/physics",
+      "destination": "/sim-to-real",
+      "permanent": true
     }
   ],
   "rewrites": [
