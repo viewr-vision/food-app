@@ -949,6 +949,93 @@ th.pic-col { width: 112px; }
   <div class="nextpost"><a href="/">← Home</a><a href="/discovery">Discovery-0 →</a></div>
 </article>
 
+<!-- ============ POST: ALLOY ============ -->
+<article class="view" data-view="alloy" hidden>
+  <a class="backlink" href="/">← Home</a>
+  <h1 class="ph1">Alloy: a physics engine for robot learning</h1>
+  <dl class="meta">
+    <dt>Published</dt><dd>November 11, 2026</dd>
+    <dt>Authors</dt><dd>Argon Robotics team</dd>
+    <dt>Type</dt><dd><span class="tag">release</span> · 4 min read</dd>
+    <dt>Install</dt><dd>pip install alloy-engine</dd>
+    <dt>Docs</dt><dd><a href="https://alloy.argonrobotics.ai/docs/" target="_blank" rel="noopener">alloy.argonrobotics.ai/docs</a></dd>
+  </dl>
+
+  <figure class="fig vid hero">
+    <div class="vbox">
+      <video src="https://alloy.argonrobotics.ai/static/media/reel-v11.mp4" poster="https://alloy.argonrobotics.ai/static/media/reel-v11.jpg" width="1280" height="720" style="aspect-ratio: 16 / 9" muted loop playsinline preload="metadata" aria-label="Short clips of robots, liquids and soft materials, all simulated in Alloy"></video>
+      <button class="vplay" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></button>
+    </div>
+    <figcaption>Robots, liquids and soft materials, all simulated in Alloy.</figcaption>
+    <a class="watch" href="https://alloy.argonrobotics.ai" target="_blank" rel="noopener">More clips on alloy.argonrobotics.ai ↗</a>
+  </figure>
+
+  <p class="summary">Alloy is a multi-material, parallel physics engine for robot learning, built on Newton and MuJoCo Warp. <b>Rigid bodies, cloth, cables, liquids, sand and soft bodies share one scene, in thousands of worlds at once on one GPU.</b> In an independent test, coding agents installed it from PyPI and taught a robot dog to walk in about 5 minutes of training.</p>
+
+  <div class="prose">
+    <h2>Robots need worlds that behave like ours</h2>
+    <p>Our bet is that robots will learn most of what they know inside virtual worlds. It starts with <a href="/vision">digitizing the physical world</a>: building virtual worlds good enough to <a href="/simreal">pass a Turing test</a>, so robots can learn there instead of through slow, expensive real-world trials.</p>
+    <p>That only works if whatever happens inside a virtual world would also happen outside it. When it doesn&rsquo;t, nothing warns you. The difference hides in training and shows up on the real robot as the <a href="/sim-to-real">sim-to-real gap</a>.</p>
+    <p>And robots don&rsquo;t only touch rigid boxes. They handle towels, cables, water and sand, and each of those has to behave like the real thing. Robots also learn by trying, millions of times, so all of it has to run in thousands of worlds at once and stay right in every one of them. In our last post we showed how today&rsquo;s engines quietly break at exactly that scale. Alloy is what we built instead.</p>
+
+    <h2>What it does</h2>
+    <ul>
+      <li><strong>Many materials in one scene.</strong> Rigid bodies, cloth, cables, liquids, sand and soft bodies push on each other, both ways: the robot moves the material, and the material pushes back.</li>
+      <li><strong>Thousands of worlds at once.</strong> One GPU steps thousands of worlds together. We have run pick-and-place in 16,384 worlds at once.</li>
+      <li><strong>Settings choose themselves.</strong> Each object gets its own solver and step, so you don&rsquo;t have to tune them. <code>sim.routes()</code> says what it picked and why.</li>
+      <li><strong>Every world checks itself.</strong> Each world reports whether it is OK, degraded or broken. Broken worlds freeze, so they never poison training.</li>
+      <li><strong>GPU or CPU.</strong> The same script, renderer included, runs on an NVIDIA GPU or on the CPU.</li>
+      <li><strong>Two cameras.</strong> A fast one for training, and a photoreal one with scanned, photo-textured objects.</li>
+      <li><strong>Robots ready to go.</strong> Load a robot and start training: reinforcement learning and imitation learning are built in.</li>
+      <li><strong>Built for agents.</strong> The docs ship inside the package, and as plain text at <a href="https://alloy.argonrobotics.ai/llms.txt" target="_blank" rel="noopener">alloy.argonrobotics.ai/llms.txt</a>. Give your coding agent one prompt and it builds and trains your task.</li>
+    </ul>
+
+    <h2>How it held up</h2>
+    <p>We wanted to know how Alloy does in the hands of someone who has never seen it. So we had it audited independently. Coding agents installed Alloy from PyPI like strangers would, trained with their own code on a single NVIDIA L4 GPU, and were scored on seeds held out from training.</p>
+    <ul>
+      <li><strong>Walking.</strong> A Go2 robot dog learned to walk to 97&nbsp;% success in about 5 minutes of training, and kept its feet under a 150&nbsp;N push 98&nbsp;% of the time.</li>
+      <li><strong>Learning from pixels.</strong> Reaching and pushing, learned from 64-pixel camera images only, got to 92&nbsp;% in 6 and 18 minutes.</li>
+      <li><strong>Imitation learning.</strong> 100&nbsp;% on pick-and-place 25 minutes after <code>pip install</code>, and 88&nbsp;% from camera images alone.</li>
+      <li><strong>Cables.</strong> A cable-lifting task reached 96&nbsp;% after 15 minutes.</li>
+      <li><strong>Liquids.</strong> Pouring reached 92&nbsp;% on the built-in pour task, and 100&nbsp;% on a cup-pouring task the agent wrote itself.</li>
+      <li><strong>New tasks.</strong> Agents built brand-new training tasks from the docs in 1 to 8 minutes each.</li>
+    </ul>
+    <p>The physics held up too. On 16 of 17 standard robot tasks, 1,024 parallel worlds ran with zero glitches. At every speed setting, 0 of 1,024 block towers failed.</p>
+    <p>Building Alloy, we also found a contact bug in Newton and fixed it upstream. The fix is merged.</p>
+
+    <h2>Keep in mind</h2>
+    <p>Alloy is new, and some things are not there yet:</p>
+    <ul>
+      <li>On simple single-robot tasks, Alloy is not yet the fastest engine.</li>
+      <li>Reinforcement learning for arm grasping is early.</li>
+      <li>Cloth and sand train slowly for now.</li>
+    </ul>
+    <p>The <a href="https://alloy.argonrobotics.ai/docs/keep-in-mind/" target="_blank" rel="noopener">Keep in mind</a> page of the docs has more, one line per limit.</p>
+
+    <h2>Start with one line</h2>
+    <p>Install it with <code>pip install alloy-engine</code>, then read the <a href="https://alloy.argonrobotics.ai/docs/" target="_blank" rel="noopener">docs</a>.</p>
+    <p>Or let your agent do it. Paste this prompt into your coding agent and replace &lt;your task&gt; with what you want your robot to learn. The agent reads the docs, builds the task and trains it.</p>
+    <figure class="fig">
+      <div class="bibwrap">
+        <button class="tt-new copybib" type="button" data-target="alloy-prompt" aria-label="Copy the prompt for your coding agent">Copy</button>
+<pre class="bib" id="alloy-prompt">Install alloy-engine with pip
+(Python 3.11 or 3.12, in a virtual
+environment). Read its docs: run
+python -m alloy.docs, or fetch
+https://alloy.argonrobotics.ai/llms.txt.
+Then build &lt;your task&gt; in many parallel
+worlds: start from the closest ready-made
+environment in the docs and change it
+step by step. Train a policy until it
+succeeds, check sim.health() after every
+run, and report the success rate.</pre>
+      </div>
+    </figure>
+    <p>Clips, docs and a guide to <a href="https://alloy.argonrobotics.ai/docs/agents/" target="_blank" rel="noopener">using Alloy with your coding agent</a> are at <a href="https://alloy.argonrobotics.ai" target="_blank" rel="noopener">alloy.argonrobotics.ai</a>.</p>
+  </div>
+  <div class="nextpost"><a href="/">← Home</a><a href="/sim-to-real">What really is the sim-to-real gap? →</a></div>
+</article>
+
 </main>
 
 <footer class="foot">
@@ -962,7 +1049,8 @@ th.pic-col { width: 112px; }
   var posts = [
     { id: 'vision', title: 'Vision Memo: Digitizing the Physical World', date: 'October 2026', boxed: true, group: 'pinned' },
     { id: 'simreal', title: 'The Turing Test for Virtual Worlds', date: 'October 14, 2026', boxed: true, group: 'pinned' },
-    { id: 'sim-to-real', title: 'What really is the sim-to-real gap?', date: 'November 7, 2026', boxed: true, isNew: true, group: 'articles' },
+    { id: 'alloy', title: 'Alloy: A Physics Engine for Robot Learning', date: 'November 11, 2026', boxed: true, isNew: true, group: 'articles' },
+    { id: 'sim-to-real', title: 'What really is the sim-to-real gap?', date: 'November 7, 2026', boxed: true, group: 'articles' },
     { id: 'discovery', title: 'Discovery-0: Zero-Shot Sim-to-Real', date: 'October 21, 2026', boxed: true, group: 'articles' },
     { id: 'speed', title: 'Scaling and Speeding Up Robots in the Real World', date: 'September 18, 2026', boxed: true, group: 'articles' }
   ];
