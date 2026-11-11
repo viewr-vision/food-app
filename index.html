@@ -1013,21 +1013,12 @@ th.pic-col { width: 112px; }
 
     <h2>Start with one line</h2>
     <p>Install it with <code>pip install alloy-engine</code>, then read the <a href="https://alloy.argonrobotics.ai/docs/" target="_blank" rel="noopener">docs</a>.</p>
-    <p>Or let your agent do it. Paste this prompt into your coding agent and replace &lt;your task&gt; with what you want your robot to learn. The agent reads the docs, builds the task and trains it.</p>
+    <p>Or let your agent do it: copy this, paste it into your coding agent and name your task.</p>
     <figure class="fig">
       <div class="bibwrap">
         <button class="tt-new copybib" type="button" data-target="alloy-prompt" aria-label="Copy the prompt for your coding agent">Copy</button>
-<pre class="bib" id="alloy-prompt">Install alloy-engine with pip
-(Python 3.11 or 3.12, in a virtual
-environment). Read its docs: run
-python -m alloy.docs, or fetch
-https://alloy.argonrobotics.ai/llms.txt.
-Then build &lt;your task&gt; in many parallel
-worlds: start from the closest ready-made
-environment in the docs and change it
-step by step. Train a policy until it
-succeeds, check sim.health() after every
-run, and report the success rate.</pre>
+<pre class="bib">Build and train &lt;your task&gt; with Alloy</pre>
+<span id="alloy-prompt" hidden>Install alloy-engine with pip (Python 3.11 or 3.12, in a virtual environment). Read its docs: run python -m alloy.docs, or fetch https://alloy.argonrobotics.ai/llms.txt. Then build &lt;your task&gt; in many parallel worlds: start from the closest ready-made environment in the docs and change it step by step. Train a policy until it succeeds, check sim.health() after every run, and report the success rate.</span>
       </div>
     </figure>
     <p>Clips, docs and a guide to <a href="https://alloy.argonrobotics.ai/docs/agents/" target="_blank" rel="noopener">using Alloy with your coding agent</a> are at <a href="https://alloy.argonrobotics.ai" target="_blank" rel="noopener">alloy.argonrobotics.ai</a>.</p>
