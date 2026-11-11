@@ -970,24 +970,23 @@ th.pic-col { width: 112px; }
     <a class="watch" href="https://alloy.argonrobotics.ai" target="_blank" rel="noopener">More clips on alloy.argonrobotics.ai ↗</a>
   </figure>
 
-  <p class="summary">Alloy is a multi-material, parallel physics engine for robot learning, built on Newton and MuJoCo Warp. <b>Rigid bodies, cloth, cables, liquids, sand and soft bodies share one scene, in thousands of worlds at once on one GPU.</b> In an independent test, coding agents installed it from PyPI and taught a robot dog to walk in about 5 minutes of training.</p>
+  <p class="summary"><a href="https://alloy.argonrobotics.ai" target="_blank" rel="noopener">Alloy</a> is a multi-material, parallel physics engine for robot learning, built on Newton and MuJoCo Warp. <b>Rigid bodies, cloth, cables, liquids, sand and soft bodies share one scene, in thousands of worlds at once on one GPU.</b> In an independent test, coding agents installed it from PyPI and taught a robot dog to walk in about 5 minutes of training.</p>
 
   <div class="prose">
     <h2>Robots need worlds that behave like ours</h2>
     <p>Our bet is that robots will learn most of what they know inside virtual worlds. It starts with <a href="/vision">digitizing the physical world</a>: building virtual worlds good enough to <a href="/simreal">pass a Turing test</a>, so robots can learn there instead of through slow, expensive real-world trials.</p>
     <p>That only works if whatever happens inside a virtual world would also happen outside it. When it doesn&rsquo;t, nothing warns you. The difference hides in training and shows up on the real robot as the <a href="/sim-to-real">sim-to-real gap</a>.</p>
-    <p>And robots don&rsquo;t only touch rigid boxes. They handle towels, cables, water and sand, and each of those has to behave like the real thing. Robots also learn by trying, millions of times, so all of it has to run in thousands of worlds at once and stay right in every one of them. In our last post we showed how today&rsquo;s engines quietly break at exactly that scale. Alloy is what we built instead.</p>
+    <p>And robots don&rsquo;t only touch rigid boxes. They handle towels, cables, water and sand, and each of those has to behave like the real thing. Robots also learn by trying, millions of times, so all of it has to run in thousands of worlds at once and stay right in every one of them. In our last post we showed how today&rsquo;s engines quietly break at exactly that scale. <a href="https://alloy.argonrobotics.ai" target="_blank" rel="noopener">Alloy</a> is what we built instead.</p>
 
     <h2>What it does</h2>
     <ul>
-      <li><strong>Many materials in one scene.</strong> Rigid bodies, cloth, cables, liquids, sand and soft bodies push on each other, both ways: the robot moves the material, and the material pushes back.</li>
-      
-      <li><strong>Settings choose themselves.</strong> Each object gets its own solver and step, so you don&rsquo;t have to tune them. <code>sim.routes()</code> says what it picked and why.</li>
-      <li><strong>Every world checks itself.</strong> Each world reports whether it is OK, degraded or broken. Broken worlds freeze, so they never poison training.</li>
-      <li><strong>GPU or CPU.</strong> The same script, renderer included, runs on an NVIDIA GPU or on the CPU.</li>
-      <li><strong>Two cameras.</strong> A fast one for training, and a photoreal one with scanned, photo-textured objects.</li>
-      <li><strong>Robots ready to go.</strong> Load a robot and start training: reinforcement learning and imitation learning are built in.</li>
-      <li><strong>Built for agents.</strong> The docs ship inside the package, and as plain text at <a href="https://alloy.argonrobotics.ai/llms.txt" target="_blank" rel="noopener">alloy.argonrobotics.ai/llms.txt</a>. Give your coding agent one prompt and it builds and trains your task.</li>
+      <li><strong>Many materials, one scene.</strong> Robots, cloth, cables, liquids, sand and soft bodies, stepped together.</li>
+      <li><strong>GPU or CPU.</strong> The same script, renderer included, runs on an NVIDIA GPU or the CPU.</li>
+      <li><strong>A camera for every world.</strong> Colour, depth and segmentation of every world at once.</li>
+      <li><strong>Robots ready to go.</strong> Arms, a hand, a quadruped and two humanoids, with RL and demo recording.</li>
+      <li><strong>Settings choose themselves.</strong> Solvers and steps are picked; <code>sim.routes()</code> says why.</li>
+      <li><strong>Health in every world.</strong> Tells a physics failure from a policy failure.</li>
+      <li><strong>Built for agents.</strong> Give your coding agent one prompt. It reads the docs, builds your world and trains your robot, in minutes.</li>
     </ul>
 
     <h2>How it held up</h2>
@@ -1010,7 +1009,7 @@ th.pic-col { width: 112px; }
       <li>Reinforcement learning for arm grasping is early.</li>
       <li>Cloth and sand train slowly for now.</li>
     </ul>
-    <p>The <a href="https://alloy.argonrobotics.ai/docs/keep-in-mind/" target="_blank" rel="noopener">Keep in mind</a> page of the docs has more, one line per limit.</p>
+    <p>We are fixing these fast. Our goal is for Alloy to be the default way to simulate the world, so start using it now. The <a href="https://alloy.argonrobotics.ai/docs/keep-in-mind/" target="_blank" rel="noopener">Keep in mind</a> page of the docs has the details.</p>
 
     <h2>Start with one line</h2>
     <p>Install it with <code>pip install alloy-engine</code>, then read the <a href="https://alloy.argonrobotics.ai/docs/" target="_blank" rel="noopener">docs</a>.</p>
