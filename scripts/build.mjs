@@ -76,9 +76,24 @@ function buildArticle(src, info) {
   return { url, lastmod: info.date };
 }
 
-function buildHome(src) {
-  const ld = { '@context': 'https://schema.org', '@graph': [orgLd, { '@type': 'WebSite', name: ORG.name, url: `${SITE}/`, publisher: { '@id': `${SITE}/#org` } }] };
-  writeFileSync('dist/index.html', stripArticles(withHead(src, headTags({ title: 'Argon Robotics', description: ORG.description, url: `${SITE}/`, image: null, type: 'website', jsonld: ld })), null));
+// The home list, as static links (the page script redraws the same markup), so crawlers that run no script see it.
+function feedPosts(src) {
+  const list = src.match(/var posts = \[([\s\S]*?)\];/)[1];
+  return [...list.matchAll(/\{([^}]*)\}/g)].map(([, o]) => {
+    const str = (k) => (o.match(new RegExp(`${k}: '((?:[^'\\\\]|\\\\.)*)'`)) || [])[1]?.replace(/\\'/g, "'");
+    return { id: str('id'), title: str('title'), date: str('date'), group: str('group'), boxed: /boxed: true/.test(o), isNew: /isNew: true/.test(o) };
+  });
+}
+function staticFeeds(src) {
+  const item = (p) => `<li class="${p.boxed ? 'boxed' : ''}"><a class="post" href="/${p.id}"><div class="prow"><span class="ptitle">${p.isNew ? '<span class="new">New</span>' : ''}${esc(p.title)}</span><span class="pdate">${esc(p.date)}</span></div></a></li>`;
+  const posts = feedPosts(src);
+  return src.replace(/<ol class="feed" data-feed="([a-z]+)"><\/ol>/g, (m, g) => `<ol class="feed" data-feed="${g}">${posts.filter((p) => p.group === g).map(item).join('')}</ol>`);
+}
+
+function buildHome(src, infos) {
+  const list = { '@type': 'ItemList', name: 'Argon Robotics articles', itemListElement: infos.map((i, n) => ({ '@type': 'ListItem', position: n + 1, url: `${SITE}/${i.id}`, name: i.title, description: i.description })) };
+  const ld = { '@context': 'https://schema.org', '@graph': [orgLd, { '@type': 'WebSite', name: ORG.name, url: `${SITE}/`, publisher: { '@id': `${SITE}/#org` } }, list] };
+  writeFileSync('dist/index.html', staticFeeds(stripArticles(withHead(src, headTags({ title: 'Argon Robotics', description: ORG.description, url: `${SITE}/`, image: null, type: 'website', jsonld: ld })), null)));
 }
 
 function build404(src) {
@@ -103,7 +118,7 @@ const src = readFileSync('index.html', 'utf8');
 const ids = [...src.matchAll(/<article class="view" data-view="([a-z0-9-]+)" hidden>/g)].map((m) => m[1]);
 const infos = ids.map((id) => articleInfo(id, src));
 const entries = infos.map((info) => { const e = buildArticle(src, info); console.log(`/${info.id} → ${info.title} (${info.date})`); return e; });
-buildHome(src);
+buildHome(src, infos);
 build404(src);
 buildSitemapAndLlms(entries, infos);
 console.log('Built dist/ (home, 404, sitemap.xml, llms.txt)');
