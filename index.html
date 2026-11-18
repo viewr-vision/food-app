@@ -369,6 +369,7 @@ th.pic-col { width: 112px; }
 
 <!-- ============ HOME ============ -->
 <section class="view" data-view="home" data-nav="home">
+  <h1 class="sr-only">Argon Robotics: digitizing the physical world for robot learning</h1>
   <div class="intro">
     <p>Digitizing the physical world | Manipulating the world at will</p>
   </div>
@@ -713,7 +714,7 @@ th.pic-col { width: 112px; }
 <li><strong>In MuJoCo Warp, route box pairs to the box-box routine</strong> (turn <code>NATIVECCD</code> off) until <a href="https://github.com/google-deepmind/mujoco_warp/pull/1845">#1845</a> and <a href="https://github.com/google-deepmind/mujoco_warp/pull/1866">#1866</a> land.</li>
 </ol>
 <h2>What&rsquo;s next</h2>
-<p>Today&rsquo;s engines are tuned for scenes where a millimetre doesn&rsquo;t matter, you don&rsquo;t need to rerun a world million times, and speed is measured on falling boxes. That is the right tuning for most people but for training robots at scale. So we are building Alloy, a physics engine for robots at scale, with formally verifiable physics. <a href="/alloy">It is out now.</a></p>
+<p>Today&rsquo;s engines are tuned for scenes where a millimetre doesn&rsquo;t matter, you don&rsquo;t need to rerun a world million times, and speed is measured on falling boxes. That is the right tuning for most people but for training robots at scale. So we are building Alloy, a physics engine for robots at scale, with formally verifiable physics. <a href="/alloy">It is out now</a>, with <a href="https://alloy.argonrobotics.ai/docs/" target="_blank" rel="noopener">docs</a> and a <a href="https://arxiv.org/abs/2611.16312" target="_blank" rel="noopener">paper</a>.</p>
 <h2>Footnotes</h2>
 <div class="ox-list">
 <style>
@@ -962,6 +963,7 @@ th.pic-col { width: 112px; }
     <dt>Install</dt><dd>pip install alloy-engine</dd>
     <dt>Docs</dt><dd><a href="https://alloy.argonrobotics.ai/docs/" target="_blank" rel="noopener">alloy.argonrobotics.ai/docs</a></dd>
     <dt>Code</dt><dd><a href="https://github.com/argonrobotics-ai/alloy" target="_blank" rel="noopener">github.com/argonrobotics-ai/alloy</a> · Apache-2.0</dd>
+    <dt>Paper</dt><dd><a href="https://arxiv.org/abs/2611.16312" target="_blank" rel="noopener">arXiv:2611.16312</a></dd>
   </dl>
 
   <figure class="fig vid hero">
@@ -1013,7 +1015,7 @@ th.pic-col { width: 112px; }
     <p>We are fixing these fast. Alloy will be the default way to simulate the world, so start using it now. The <a href="https://alloy.argonrobotics.ai/docs/keep-in-mind/" target="_blank" rel="noopener">Keep in mind</a> page of the docs has the details.</p>
 
     <h2>Start with one line</h2>
-    <p>Alloy is open source under Apache-2.0: the code is on <a href="https://github.com/argonrobotics-ai/alloy" target="_blank" rel="noopener">GitHub</a>. Install it with <code>pip install alloy-engine</code>, then read the <a href="https://alloy.argonrobotics.ai/docs/" target="_blank" rel="noopener">docs</a>.</p>
+    <p>Alloy is open source under Apache-2.0: the code is on <a href="https://github.com/argonrobotics-ai/alloy" target="_blank" rel="noopener">GitHub</a>. Install it with <code>pip install alloy-engine</code>, then read the <a href="https://alloy.argonrobotics.ai/docs/" target="_blank" rel="noopener">docs</a>. The paper is on <a href="https://arxiv.org/abs/2611.16312" target="_blank" rel="noopener">arXiv</a>.</p>
     <p>Or let your agent do it: copy this, paste it into your coding agent and name your task.</p>
     <figure class="fig">
       <div class="bibwrap">
@@ -1028,10 +1030,32 @@ th.pic-col { width: 112px; }
   <div class="nextpost"><a href="/">← Home</a><a href="/sim-to-real">What really is the sim-to-real gap? →</a></div>
 </article>
 
+<!-- ============ ABOUT ============ -->
+<article class="view" data-view="about" hidden>
+  <a class="backlink" href="/">← Home</a>
+  <h1 class="ph1">About Argon Robotics</h1>
+  <dl class="meta">
+    <dt>Team</dt><dd>Pranay Gupta, Deepanshu Rohilla</dd>
+    <dt>Based in</dt><dd>San Francisco</dd>
+    <dt>Email</dt><dd><a href="mailto:pranay@argonrobotics.ai">pranay@argonrobotics.ai</a></dd>
+  </dl>
+  <div class="prose">
+    <p class="summary">Argon Robotics is digitizing the physical world for robot learning.</p>
+    <p>We make <a href="https://alloy.argonrobotics.ai" target="_blank" rel="noopener">Alloy</a>, an open-source physics engine for robot learning. Robots, cloth, cables, liquids, sand and soft bodies share one scene, in many parallel worlds on one GPU or on a CPU.</p>
+    <ul>
+      <li>Docs: <a href="https://alloy.argonrobotics.ai/docs/" target="_blank" rel="noopener">alloy.argonrobotics.ai/docs</a></li>
+      <li>Paper: <a href="https://arxiv.org/abs/2611.16312" target="_blank" rel="noopener">Alloy: A Multi-Material Physics Engine for Robot Learning</a> (arXiv:2611.16312)</li>
+      <li>Code: <a href="https://github.com/argonrobotics-ai" target="_blank" rel="noopener">github.com/argonrobotics-ai</a></li>
+      <li>Writing: <a href="/">articles and memos</a></li>
+      <li>Contact: <a href="mailto:pranay@argonrobotics.ai">pranay@argonrobotics.ai</a></li>
+    </ul>
+  </div>
+</article>
+
 </main>
 
 <footer class="foot">
-  <span>Argon Robotics</span>
+  <span>Argon Robotics · <a href="/about">About</a></span>
   <span>San Francisco · © 2026</span>
 </footer>
 </div>
@@ -1064,7 +1088,7 @@ th.pic-col { width: 112px; }
     if (!keepScroll) window.scrollTo(0, 0);
   }
   var titles = { home: 'Argon Robotics' };
-  views.forEach(function (v) { var h = v.querySelector('h1'); if (h) titles[v.dataset.view] = h.textContent + ' · Argon Robotics'; });
+  views.forEach(function (v) { var h = v.querySelector('h1'); if (h && v.dataset.view !== 'home') titles[v.dataset.view] = h.textContent + ' · Argon Robotics'; });
   function nameFromPath() { var n = location.pathname.replace(/^\/+|\/+$/g, ''); return n || 'home'; }
   function go(name, keepScroll) {
     if (names.indexOf(name) < 0) name = 'home';

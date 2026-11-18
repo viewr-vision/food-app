@@ -21,6 +21,18 @@ const ALLOY_APP = {
   sameAs: ['https://github.com/argonrobotics-ai/alloy', 'https://pypi.org/project/alloy-engine/'],
 };
 
+// Who and where, for the About page's structured data (names as on the article bylines).
+export const ABOUT = { email: 'pranay@argonrobotics.ai', locality: 'San Francisco', members: ['Pranay Gupta', 'Deepanshu Rohilla'] };
+
+export const PAPER = {
+  '@type': 'ScholarlyArticle',
+  headline: 'Alloy: A Multi-Material Physics Engine for Robot Learning',
+  url: 'https://arxiv.org/abs/2611.16312',
+  datePublished: '2026-11-12',
+  author: ['Pranay Gupta', 'Deepanshu Rohilla'].map((name) => ({ '@type': 'Person', name })),
+};
+
+// `page: true` marks a site page (not an article): it stays out of the home list and the article lists.
 export const posts = [
   { id: 'vision', description: 'Vision memo from Argon Robotics: everything that has been digitised has been learned, but the digital world captures less than 0.001% of the physical one.' },
   { id: 'simreal', description: 'Can you tell which robot frames are real? Ten frames from the same robot stations, some from the real robot and some from the Argon Robotics simulation of it.' },
@@ -31,6 +43,7 @@ export const posts = [
     description: 'The Alloy physics engine from Argon Robotics: rigid bodies, cloth, cables, liquids, sand and soft bodies in thousands of parallel worlds on one GPU. Open source; pip install alloy-engine.',
     about: ALLOY_APP,
   },
+  { id: 'about', page: true, description: 'Argon Robotics is digitizing the physical world for robot learning. Makers of Alloy, an open-source physics engine for robot learning. Team, paper, code and contact.' },
 ];
 
 export const ALLOY_LINKS = [
@@ -40,4 +53,5 @@ export const ALLOY_LINKS = [
   ['FAQ', 'https://alloy.argonrobotics.ai/docs/faq/', 'common questions about Alloy'],
   ['GitHub', 'https://github.com/argonrobotics-ai/alloy', 'source code, Apache-2.0'],
   ['PyPI', 'https://pypi.org/project/alloy-engine/', 'pip install alloy-engine'],
+  ['Paper', 'https://arxiv.org/abs/2611.16312', 'Alloy: A Multi-Material Physics Engine for Robot Learning (arXiv:2611.16312)'],
 ];

@@ -3,7 +3,7 @@
 // (description, canonical, Open Graph, Twitter, BlogPosting structured data). The home page keeps the list and
 // links out. Also writes 404.html, sitemap.xml and llms.txt. Unknown paths get the 404 page (see vercel.json).
 import { cpSync, rmSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { posts, ORG, SITE, ALLOY_LINKS } from './site-meta.mjs';
+import { posts, ORG, SITE, ALLOY_LINKS, ABOUT, PAPER } from './site-meta.mjs';
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 const text = (h) => h.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
@@ -13,6 +13,7 @@ const ARTICLE_RE = /<article class="view" data-view="([a-z0-9-]+)" hidden>[\s\S]
 const HOME_RE = /<section class="view" data-view="home" data-nav="home">[\s\S]*?<\/section>\n?/; // the home section holds no nested sections
 
 function isoDate(s) {
+  if (!s.trim()) return null; // pages without a Published date (About)
   const d = new Date(s.includes(',') ? s : `1 ${s}`);
   if (isNaN(d)) return null;
   return s.includes(',') ? d.toISOString().slice(0, 10) : d.toISOString().slice(0, 7);
@@ -59,17 +60,25 @@ const HEAD_RE = /<title>[\s\S]*?<meta name="twitter:card" content="[^"]*" \/>/;
 const withHead = (html, tags) => html.replace(HEAD_RE, tags);
 const stripArticles = (html, keep) => html.replace(ARTICLE_RE, (m, id) => (id === keep ? m.replace(' hidden>', '>') : ''));
 
+const isPage = (info) => Boolean(posts.find((p) => p.id === info.id)?.page);
 const orgLd = { '@type': 'Organization', '@id': `${SITE}/#org`, name: ORG.name, url: `${SITE}/`, logo: ORG.logo, description: ORG.description, sameAs: ORG.sameAs };
+
+// About page: the Organization with its people, email and city, plus the paper.
+function pageLd(info, url) {
+  const org = { ...orgLd, email: ABOUT.email, address: { '@type': 'PostalAddress', addressLocality: ABOUT.locality }, member: ABOUT.members.map((name) => ({ '@type': 'Person', name })) };
+  return { '@context': 'https://schema.org', '@graph': [org, { ...PAPER, publisher: { '@id': `${SITE}/#org` } },
+    { '@type': 'AboutPage', name: info.title, description: info.description, url, mainEntity: { '@id': `${SITE}/#org` } }] };
+}
 
 function buildArticle(src, info) {
   const url = `${SITE}/${info.id}`;
-  const ld = { '@context': 'https://schema.org', '@graph': [orgLd, {
+  const ld = isPage(info) ? pageLd(info, url) : { '@context': 'https://schema.org', '@graph': [orgLd, {
     '@type': 'BlogPosting', headline: info.title, description: info.description, url, mainEntityOfPage: url,
     datePublished: info.date, author: info.authors.map((n) => (/team$/i.test(n) ? { '@id': `${SITE}/#org` } : { '@type': 'Person', name: n })),
     publisher: { '@id': `${SITE}/#org` }, ...(info.image ? { image: info.image } : {}),
     ...(info.about ? { about: info.about, mentions: info.about } : {}),
   }] };
-  let page = withHead(src, headTags({ title: `${info.title} · Argon Robotics`, description: info.description, url, image: info.image, type: 'article', jsonld: ld }));
+  let page = withHead(src, headTags({ title: `${info.title} · Argon Robotics`, description: info.description, url, image: info.image, type: isPage(info) ? 'website' : 'article', jsonld: ld }));
   page = stripArticles(page, info.id).replace(HOME_RE, '');
   mkdirSync(`dist/${info.id}`, { recursive: true });
   writeFileSync(`dist/${info.id}/index.html`, page);
@@ -103,10 +112,13 @@ function build404(src) {
 }
 
 function buildSitemapAndLlms(entries, infos) {
+  const pages = infos.filter(isPage);
+  infos = infos.filter((i) => !isPage(i));
   const urls = [{ url: `${SITE}/`, lastmod: entries.map((e) => e.lastmod).filter(Boolean).sort().pop() }, ...entries];
   writeFileSync('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${u.url}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`);
   const lines = [`# Argon Robotics`, '', `> ${ORG.description}`, '', '## Articles', '',
-    ...infos.map((i) => `- [${i.title}](${SITE}/${i.id}): ${i.description}`), '', '## Alloy', '',
+    ...infos.map((i) => `- [${i.title}](${SITE}/${i.id}): ${i.description}`), '', '## About', '',
+    ...pages.map((i) => `- [${i.title}](${SITE}/${i.id}): ${i.description}`), '', '## Alloy', '',
     ...ALLOY_LINKS.map(([name, url, note]) => `- [${name}](${url}): ${note}`), ''];
   writeFileSync('dist/llms.txt', lines.join('\n'));
 }
@@ -118,7 +130,7 @@ const src = readFileSync('index.html', 'utf8');
 const ids = [...src.matchAll(/<article class="view" data-view="([a-z0-9-]+)" hidden>/g)].map((m) => m[1]);
 const infos = ids.map((id) => articleInfo(id, src));
 const entries = infos.map((info) => { const e = buildArticle(src, info); console.log(`/${info.id} → ${info.title} (${info.date})`); return e; });
-buildHome(src, infos);
+buildHome(src, infos.filter((i) => !isPage(i)));
 build404(src);
 buildSitemapAndLlms(entries, infos);
 console.log('Built dist/ (home, 404, sitemap.xml, llms.txt)');
