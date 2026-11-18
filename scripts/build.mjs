@@ -33,6 +33,7 @@ function articleInfo(id, html) {
     authors: (field('Authors?') || 'Argon Robotics team').split(/,\s*|\s+and\s+/),
     image: img ? abs(img) : null,
     about: meta.about || null,
+    modified: meta.modified || null,
   };
 }
 
@@ -74,7 +75,7 @@ function buildArticle(src, info) {
   const url = `${SITE}/${info.id}`;
   const ld = isPage(info) ? pageLd(info, url) : { '@context': 'https://schema.org', '@graph': [orgLd, {
     '@type': 'BlogPosting', headline: info.title, description: info.description, url, mainEntityOfPage: url,
-    datePublished: info.date, author: info.authors.map((n) => (/team$/i.test(n) ? { '@id': `${SITE}/#org` } : { '@type': 'Person', name: n })),
+    datePublished: info.date, ...(info.modified ? { dateModified: info.modified } : {}), author: info.authors.map((n) => (/team$/i.test(n) ? { '@id': `${SITE}/#org` } : { '@type': 'Person', name: n })),
     publisher: { '@id': `${SITE}/#org` }, ...(info.image ? { image: info.image } : {}),
     ...(info.about ? { about: info.about, mentions: info.about } : {}),
   }] };
@@ -82,7 +83,7 @@ function buildArticle(src, info) {
   page = stripArticles(page, info.id).replace(HOME_RE, '');
   mkdirSync(`dist/${info.id}`, { recursive: true });
   writeFileSync(`dist/${info.id}/index.html`, page);
-  return { url, lastmod: info.date };
+  return { url, lastmod: info.modified || info.date };
 }
 
 // The home list, as static links (the page script redraws the same markup), so crawlers that run no script see it.

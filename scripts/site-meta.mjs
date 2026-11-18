@@ -33,17 +33,19 @@ export const PAPER = {
 };
 
 // `page: true` marks a site page (not an article): it stays out of the home list and the article lists.
+// `modified` (YYYY-MM-DD) is the last real content change; it becomes sitemap lastmod and dateModified.
 export const posts = [
   { id: 'vision', description: 'Vision memo from Argon Robotics: everything that has been digitised has been learned, but the digital world captures less than 0.001% of the physical one.' },
   { id: 'simreal', description: 'Can you tell which robot frames are real? Ten frames from the same robot stations, some from the real robot and some from the Argon Robotics simulation of it.' },
   { id: 'speed', description: 'Speed is the final frontier that needs to be unlocked before robots can assist humans in the real world.' },
-  { id: 'sim-to-real', description: 'With GPT-6 Astra one-shotting 3D scenes, simulation is all the hype. But a simulator works only if whatever happens inside it would happen outside, thousands of times over.' },
+  { id: 'sim-to-real', modified: '2026-11-17', description: 'With GPT-6 Astra one-shotting 3D scenes, simulation is all the hype. But a simulator works only if whatever happens inside it would happen outside, thousands of times over.' },
   {
     id: 'alloy',
+    modified: '2026-11-17',
     description: 'The Alloy physics engine from Argon Robotics: rigid bodies, cloth, cables, liquids, sand and soft bodies in thousands of parallel worlds on one GPU. Open source; pip install alloy-engine.',
     about: ALLOY_APP,
   },
-  { id: 'about', page: true, description: 'Argon Robotics is digitizing the physical world for robot learning. Makers of Alloy, an open-source physics engine for robot learning. Team, paper, code and contact.' },
+  { id: 'about', page: true, modified: '2026-11-17', description: 'Argon Robotics is digitizing the physical world for robot learning. Makers of Alloy, an open-source physics engine for robot learning. Team, paper, code and contact.' },
 ];
 
 export const ALLOY_LINKS = [
