@@ -30,5 +30,11 @@
         }
       ]
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/sample/:path*",
+      "destination": "https://argon-samples.vercel.app/sample/:path*"
+    }
   ]
 }
